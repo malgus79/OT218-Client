@@ -60,4 +60,11 @@ dependencies {
     //Fragment
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation "androidx.fragment:fragment-ktx:1.4.1"
+    // OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+
+
+
 }
