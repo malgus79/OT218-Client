@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_home"
+        android:title="Inicio"
+        android:icon="@drawable/ic_home"/>
+
+    <item android:id="@+id/nav_staff"
+        android:title="Staff"
+        android:icon="@drawable/ic_people"/>
+
+    <item android:id="@+id/nav_news"
+        android:title="Novedades"
+        android:icon="@drawable/ic_newspaper"/>
+
+    <item android:id="@+id/nav_contribute"
+        android:title="Contribuir"
+        android:icon="@drawable/ic_handshake"/>
+
+    <item android:id="@+id/nav_contact"
+        android:title="Contacto"
+        android:icon="@drawable/ic_contact"/>
+
+</menu>
