@@ -1,13 +1,14 @@
 package com.melvin.ongandroid.model
 
 
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.OkHttpClient
 
 
 const val BASE_URL = "http://ongapi.alkemy.org/"
+const val SLIDE_URL = "api/slides"
 
 //Create logging interceptor
 private val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -25,13 +26,10 @@ private val retrofit = Retrofit.Builder()
 
 enum class ApiStatus {LOADING, ERROR, DONE}
 
-interface APIService {
-    //TODO Add request functions
-}
 
 //Create retrofit instance
 object ONGApi {
-    val retrofitService: APIService by lazy {
-        retrofit.create(APIService::class.java)
+    val retrofitService: APIServiceSlide by lazy {
+        retrofit.create(APIServiceSlide::class.java)
     }
 }

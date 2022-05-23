@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ONGAndroid</string>
+    <string name="description_img_home">Image slides</string>
+    <string name="slide_descriptions">Slide Descriptions</string>
+    <string name="slide_name">Slide Name</string>
+    <string name="description_img_logo">Logo home</string>
+    <string name="image_slide">Image Slide</string>
 </resources>
