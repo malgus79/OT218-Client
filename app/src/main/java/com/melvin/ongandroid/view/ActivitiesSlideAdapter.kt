@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.melvin.ongandroid.databinding.ActivitiesListItemBinding
-import com.melvin.ongandroid.model.data.Activity
 import com.melvin.ongandroid.model.data.ListSlide
 
 class ActivitiesSlideAdapter ( private val dataSet: List<ListSlide>) : RecyclerView.Adapter<ActivitiesSlideAdapter.ActivitiesViewHolder>() {

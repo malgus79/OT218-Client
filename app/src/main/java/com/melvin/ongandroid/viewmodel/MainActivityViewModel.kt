@@ -24,6 +24,13 @@ class MainActivityViewModel(private val homeRepository: HomeRepository) : ViewMo
         }
     }
 
+    suspend fun getNews(){
+        _state.value = State.Loading()
+        viewModelScope.launch {
+            val news = homeRepository.getNews()
+        }
+    }
+
     sealed class State() {
         class Success() : State()
         class Failure(val cause: Throwable) : State()
