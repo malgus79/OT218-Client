@@ -17,8 +17,15 @@ class MainActivityViewModel(private val homeRepository: HomeRepository) : ViewMo
         }
     }
 
+    suspend fun getTestimonials(){
+        _state.value = State.Loading()
+        viewModelScope.launch {
+            val testimonials = homeRepository.getTestimonials()
+        }
+    }
+
     sealed class State() {
-        class Success(val homeSlide: HomeSlides) : State()
+        class Success() : State()
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
