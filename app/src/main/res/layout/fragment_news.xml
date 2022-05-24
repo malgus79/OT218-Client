@@ -5,7 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".view.fragment.NewsFragment">
+=======
+    tools:context=".view.NewsFragment">
+
+>>>>>>> 68f780d (merge conflicts)
 
     <TextView
         android:id="@+id/tvNewsHead"
@@ -24,7 +29,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+<<<<<<< HEAD
         android:id="@+id/rvNews"
+=======
+        android:id="@+id/recyclerView"
+>>>>>>> 68f780d (merge conflicts)
         android:layout_width="410dp"
         android:layout_height="557dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,10 +41,17 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+<<<<<<< HEAD
         app:layout_constraintVertical_bias="0.408" />
 
     <Button
         android:id="@+id/button"
+=======
+        app:layout_constraintVertical_bias="0.419" />
+
+
+    <Button
+>>>>>>> 68f780d (merge conflicts)
         android:layout_width="198dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
@@ -46,6 +62,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -90,5 +107,11 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+=======
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955" />
+>>>>>>> 68f780d (merge conflicts)
 
 </androidx.constraintlayout.widget.ConstraintLayout>
