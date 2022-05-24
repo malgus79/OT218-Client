@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_activity_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+       >
+
+        <ImageView
+            android:id="@+id/iv_activity_image"
+            android:layout_width="328dp"
+            android:layout_height="216dp"
+            android:cropToPadding="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/act1" />
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/tv_activity_title"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cv_activity_image"
+        android:layout_margin="4dp"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_activity_description"
+        android:layout_width="386dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_activity_title"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>
+
+
+
+

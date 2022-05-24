@@ -29,7 +29,7 @@ enum class ApiStatus {LOADING, ERROR, DONE}
 
 //Create retrofit instance
 object ONGApi {
-    val retrofitService: APIServiceSlide by lazy {
-        retrofit.create(APIServiceSlide::class.java)
+    val retrofitService: APIServices by lazy {
+        retrofit.create(APIServices::class.java)
     }
 }

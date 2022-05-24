@@ -5,13 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
-import com.melvin.ongandroid.model.data.HomeSlides
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor (private val homeRepository: HomeRepository) : ViewModel() {
+class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
+    ViewModel() {
 
     //Create states
     private val _state = MutableLiveData<State>()
@@ -33,6 +33,14 @@ class MainActivityViewModel @Inject constructor (private val homeRepository: Hom
         _state.value = State.Loading()
         viewModelScope.launch {
             val homeSlides = homeRepository.getHomeSlides()
+        }
+    }
+
+    //Definition of states
+    suspend fun getTestimonials() {
+        _state.value = State.Loading()
+        viewModelScope.launch {
+            val testimonials = homeRepository.getTestimonials()
         }
     }
 
