@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.melvin.ongandroid.R
 
@@ -13,6 +14,8 @@ class Navigation : AppCompatActivity() {
         setContentView(R.layout.activity_navigation)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+
+        val newsFragment =NewsFragment()
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
 
@@ -28,6 +31,7 @@ class Navigation : AppCompatActivity() {
                 }
 
                 R.id.nav_news -> {
+                    setCurrentFragment(newsFragment)
                     Toast.makeText(this,"Novedades", Toast.LENGTH_SHORT).show()
                     true
                 }
@@ -45,5 +49,12 @@ class Navigation : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun setCurrentFragment(fragment : Fragment){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.containerView, fragment)
+            commit()
+        }
     }
 }
