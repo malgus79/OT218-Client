@@ -31,4 +31,7 @@ object ONGApi {
     val retrofitService: APIServices by lazy {
         retrofit.create(APIServices::class.java)
     }
+    val newsService: APIServiceNews by lazy {
+        retrofit.create(APIServiceNews::class.java)
+    }
 }
