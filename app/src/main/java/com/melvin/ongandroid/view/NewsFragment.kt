@@ -50,6 +50,8 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
 
 
     private fun addDataToList() {
+        // TODO: Call service to get all news
+        // is added a item to test
         newsList.add(
             Novedades(
                 R.drawable.voluntario_pobreza,
