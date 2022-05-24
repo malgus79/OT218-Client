@@ -5,7 +5,8 @@ import com.melvin.ongandroid.model.data.HomeSlides
 
 class HomeRepository(private val APIService: APIServiceSlide) {
 
-    suspend fun getHomeSlides() : HomeSlides{
+    //Search in the repository for the API call
+    suspend fun getHomeSlides(): HomeSlides {
         return APIService.getHomeSlides()
     }
 }
