@@ -7,6 +7,7 @@ import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import javax.inject.Inject
 import javax.inject.Singleton
 
+
 @Singleton
 class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
@@ -20,10 +21,8 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
         return APIService.getTestimonials()
     }
 
-
     //Calls APIService getNews function
     suspend fun getNews(): NewsList {
         return APIService.getNews()
     }
-
 }
