@@ -44,7 +44,7 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
         }
     }
 
-    //Definition of states
+
     sealed class State() {
         class Success() : State()
         class Failure(val cause: Throwable) : State()
