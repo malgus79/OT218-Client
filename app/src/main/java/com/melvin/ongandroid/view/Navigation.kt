@@ -15,34 +15,34 @@ class Navigation : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-        val newsFragment =NewsFragment()
+        val newsFragment = NewsFragment()
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
 
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.nav_home -> {
-                    Toast.makeText(this,"Inicio", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Inicio", Toast.LENGTH_SHORT).show()
                     true
                 }
 
                 R.id.nav_staff -> {
-                    Toast.makeText(this,"Staff", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Staff", Toast.LENGTH_SHORT).show()
                     true
                 }
 
                 R.id.nav_news -> {
                     setCurrentFragment(newsFragment)
-                    Toast.makeText(this,"Novedades", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Novedades", Toast.LENGTH_SHORT).show()
                     true
                 }
 
                 R.id.nav_contribute -> {
-                    Toast.makeText(this,"Contribuir", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Contribuir", Toast.LENGTH_SHORT).show()
                     true
                 }
 
                 R.id.nav_contact -> {
-                    Toast.makeText(this,"Contacto", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Contacto", Toast.LENGTH_SHORT).show()
                     true
                 }
                 else -> false
@@ -51,7 +51,7 @@ class Navigation : AppCompatActivity() {
 
     }
 
-    private fun setCurrentFragment(fragment : Fragment){
+    private fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.containerView, fragment)
             commit()
