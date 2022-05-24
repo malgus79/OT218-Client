@@ -51,7 +51,11 @@
 
 
     <Button
+<<<<<<< HEAD
 >>>>>>> 68f780d (merge conflicts)
+=======
+        android:id="@+id/button"
+>>>>>>> 5a65935 (changes)
         android:layout_width="198dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
