@@ -65,6 +65,8 @@ dependencies {
     // OkHttp
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    //ViewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
 
 
 
