@@ -6,10 +6,13 @@
     <string name="description_img_logo">Logo home</string>
     <string name="image_slide">Image Slide</string>
     <string name="contact_us">Contactanos</string>
+<<<<<<< HEAD
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
+=======
+>>>>>>> 827da8a (Testimonials layout created)
     <string name="testimony_name">Nombre y Apellido</string>
     <string name="description_testimony">Description testimony</string>
     <string name="testimonios">Testimonios</string>
