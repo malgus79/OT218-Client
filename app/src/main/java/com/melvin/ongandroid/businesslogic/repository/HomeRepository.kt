@@ -3,16 +3,20 @@ package com.melvin.ongandroid.businesslogic.repository
 import com.melvin.ongandroid.model.APIServices
 import com.melvin.ongandroid.model.data.HomeSlides
 import com.melvin.ongandroid.model.data.Testimonials
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class HomeRepository(private val APIService: APIServices) {
+@Singleton
+class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
-    //Search in the repository for the API call
+    //Calls APIservice getHomeSlides suspend function
     suspend fun getHomeSlides(): HomeSlides {
         return APIService.getHomeSlides()
     }
 
     //Calls APIservice getTestimonials suspend function
-    suspend fun getTestimonials(): Testimonials{
+    suspend fun getTestimonials(): Testimonials {
         return APIService.getTestimonials()
     }
+
 }

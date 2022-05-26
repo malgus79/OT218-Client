@@ -6,5 +6,6 @@
     <dimen name="common_margin_middle">32dp</dimen>
 
     <dimen name="common_size_default">20sp</dimen>
+    <dimen name="common_padding_min">8dp</dimen>
 
 </resources>
