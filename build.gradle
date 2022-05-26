@@ -13,6 +13,7 @@ buildscript {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
 <<<<<<< HEAD
 =======
@@ -41,6 +42,13 @@ buildscript {
 =======
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
+=======
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
+=======
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
+>>>>>>> 1fea821 (Testimonials layout created)
+>>>>>>> 827da8a (Testimonials layout created)
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.41"
 
 >>>>>>> 1a14aae (fex gradle)

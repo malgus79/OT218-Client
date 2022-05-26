@@ -68,6 +68,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+<<<<<<< HEAD
     <ProgressBar
         android:id="@+id/progressBar1"
         android:layout_width="50dp"
@@ -79,4 +80,6 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
+=======
+>>>>>>> 827da8a (Testimonials layout created)
 </androidx.constraintlayout.widget.ConstraintLayout>
