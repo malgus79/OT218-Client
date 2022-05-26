@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 919f2e0 (Testimonials layout created)
@@ -19,11 +20,14 @@
 
 >>>>>>> 5e4589c (Testimony fragment added)
 >>>>>>> dd3c420 (Testimony fragment added)
+=======
+>>>>>>> e7b752f (Testimonials layout created)
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 >>>>>>> a49bb72 (Testimonials layout created)
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 827da8a (Testimonials layout created)
@@ -31,6 +35,10 @@
 >>>>>>> 827da8a (Testimonials layout created)
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+=======
+>>>>>>> 827da8a (Testimonials layout created)
+>>>>>>> e7b752f (Testimonials layout created)
     <string name="testimony_name">Nombre y Apellido</string>
     <string name="description_testimony">Description testimony</string>
     <string name="testimonios">Testimonios</string>

@@ -1,6 +1,7 @@
 package com.melvin.ongandroid.businesslogic.repository
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
@@ -33,12 +34,23 @@ import com.melvin.ongandroid.model.data.Testimonials
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
 >>>>>>> dd3c420 (Testimony fragment added)
+=======
+import com.melvin.ongandroid.model.APIServices
+<<<<<<< HEAD
+import com.melvin.ongandroid.model.data.slides.SlidesList
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
+=======
+import com.melvin.ongandroid.model.data.HomeSlides
+import com.melvin.ongandroid.model.data.Testimonials
+>>>>>>> 827da8a (Testimonials layout created)
+>>>>>>> e7b752f (Testimonials layout created)
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -59,11 +71,16 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
 <<<<<<< HEAD
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
+=======
+>>>>>>> e7b752f (Testimonials layout created)
  //Calls APIservice getHomeSlides suspend function
     suspend fun getHomeSlides() : SlidesList {
 =======
     //Search in the repository for the API call
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e7b752f (Testimonials layout created)
 =======
     //Calls APIservice getHomeSlides suspend function
 >>>>>>> 827da8a (Testimonials layout created)
@@ -89,13 +106,17 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Calls APIService getTestimonials function
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> e7b752f (Testimonials layout created)
     //Calls APIservice getTestimonials function
 >>>>>>> a49bb72 (Testimonials layout created)
     suspend fun getTestimonials(): TestimonialsList {
 =======
+<<<<<<< HEAD
 =======
 =======
  //Calls APIservice getHomeSlides suspend function
@@ -115,6 +136,11 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
 =======
     suspend fun getTestimonials(): TestimonialsList {
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+    //Calls APIservice getTestimonials suspend function
+    suspend fun getTestimonials(): Testimonials {
+>>>>>>> 827da8a (Testimonials layout created)
+>>>>>>> e7b752f (Testimonials layout created)
         return APIService.getTestimonials()
     }
 
