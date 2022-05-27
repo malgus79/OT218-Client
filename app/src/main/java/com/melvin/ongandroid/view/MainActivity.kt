@@ -13,7 +13,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+<<<<<<< HEAD
     private val viewModel by viewModels<MainActivityViewModel>()
+=======
+    private lateinit var mainActivityViewModel: MainActivityViewModel
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Show Spinner Loading
+<<<<<<< HEAD
         viewModel.isShowProgress()
+=======
+        mainActivityViewModel.isShowProgress()
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
         binding.button.setOnClickListener {
             startActivity(Intent(this, NavigationActivity::class.java))
