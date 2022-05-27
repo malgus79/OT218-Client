@@ -14,8 +14,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <Button
 =======
+=======
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
     <Button
@@ -53,6 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 <<<<<<< HEAD
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.5"/>
 <<<<<<< HEAD
 =======
@@ -66,6 +70,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"/>
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
+=======
+        app:layout_constraintHorizontal_bias="0.5"/>
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -74,6 +81,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
@@ -166,6 +174,23 @@
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
 >>>>>>> cb766a0 (fix commit)
+=======
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:progressBarStyle"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
 =======
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)

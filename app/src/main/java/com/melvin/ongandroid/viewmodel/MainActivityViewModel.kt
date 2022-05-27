@@ -14,6 +14,7 @@ import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 =======
 import com.melvin.ongandroid.model.data.HomeSlides
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> 03694ee (fix commit)
@@ -36,6 +37,8 @@ import com.melvin.ongandroid.model.data.HomeSlides
 =======
 >>>>>>> 03694ee (fix commit)
 >>>>>>> cb766a0 (fix commit)
+=======
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -48,6 +51,7 @@ import javax.inject.Inject
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
@@ -81,6 +85,9 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> cb766a0 (fix commit)
+=======
+class MainActivityViewModel @Inject constructor (private val homeRepository: HomeRepository) : ViewModel() {
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
     //Create states
     private val _state = MutableLiveData<State>()
@@ -112,6 +119,7 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
@@ -121,6 +129,8 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
     suspend fun getTestimonials(){
@@ -148,6 +158,7 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -198,11 +209,17 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
     //Definition of states
 >>>>>>> 03694ee (fix commit)
 >>>>>>> cb766a0 (fix commit)
+=======
+=======
+    //Definition of states
+>>>>>>> f49350f (Hilt dependencies and spinner  added)
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
     sealed class State() {
         class Success() : State()
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -226,4 +243,6 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 =======
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
+=======
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 }

@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
@@ -50,6 +51,9 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainActivityViewModel>()
 >>>>>>> 827da8a (Testimonials layout created)
 >>>>>>> e7b752f (Testimonials layout created)
+=======
+    private lateinit var mainActivityViewModel: MainActivityViewModel
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Show Spinner Loading
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -101,6 +106,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.isShowProgress()
 >>>>>>> 827da8a (Testimonials layout created)
 >>>>>>> e7b752f (Testimonials layout created)
+=======
+        mainActivityViewModel.isShowProgress()
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
     }
 <<<<<<< HEAD

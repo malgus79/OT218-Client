@@ -57,6 +57,7 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Calls APIService getHomeSlides suspend function
     suspend fun getHomeSlides(): SlidesList {
 =======
@@ -102,6 +103,10 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
     suspend fun getHomeSlides(): HomeSlides {
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
+=======
+    //Search in the repository for the API call
+    suspend fun getHomeSlides(): HomeSlides {
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
         return APIService.getHomeSlides()
     }
 

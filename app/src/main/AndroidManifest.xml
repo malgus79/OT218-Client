@@ -6,7 +6,11 @@
 
     <application
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:name=".model.ONGAndroidApp"
+=======
+        android:name=".model.data.ONGAndroidApp"
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
         android:name=".model.data.ONGAndroidApp"
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
