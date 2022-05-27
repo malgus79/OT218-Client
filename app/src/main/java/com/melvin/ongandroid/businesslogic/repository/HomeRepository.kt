@@ -9,8 +9,13 @@ import javax.inject.Singleton
 @Singleton
 class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
+<<<<<<< HEAD
  //Calls APIservice getHomeSlides suspend function
     suspend fun getHomeSlides() : SlidesList {
+=======
+    //Search in the repository for the API call
+    suspend fun getHomeSlides(): HomeSlides {
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
         return APIService.getHomeSlides()
     }
 

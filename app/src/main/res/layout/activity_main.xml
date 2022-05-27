@@ -7,15 +7,48 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
+<<<<<<< HEAD
 <Button
+=======
+    <Button
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.5"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:progressBarStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+<<<<<<< HEAD
+=======
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:progressBarStyle"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
 </androidx.constraintlayout.widget.ConstraintLayout>
