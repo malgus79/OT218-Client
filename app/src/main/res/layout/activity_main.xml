@@ -10,6 +10,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <Button
 =======
 =======
@@ -19,10 +20,14 @@
 =======
     <Button
 >>>>>>> 03694ee (fix commit)
+=======
+    <Button
+>>>>>>> 03694ee (fix commit)
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,10 +72,13 @@
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> 03694ee (fix commit)
+=======
+>>>>>>> 03694ee (fix commit)
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -87,6 +95,8 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
+=======
+>>>>>>> 03694ee (fix commit)
 =======
 >>>>>>> 03694ee (fix commit)
 
