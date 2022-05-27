@@ -14,6 +14,7 @@ buildscript {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
 <<<<<<< HEAD
 =======
@@ -34,9 +35,12 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0"
 >>>>>>> 827da8a (Testimonials layout created)
 =======
+=======
+>>>>>>> 1a14aae (fex gradle)
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
 >>>>>>> 1fea821 (Testimonials layout created)
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.41"
+<<<<<<< HEAD
 =======
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
 =======
@@ -50,6 +54,9 @@ buildscript {
 >>>>>>> 1fea821 (Testimonials layout created)
 >>>>>>> 827da8a (Testimonials layout created)
         classpath "com.google.dagger:hilt-android-gradle-plugin:2.41"
+=======
+
+>>>>>>> 1a14aae (fex gradle)
 
 >>>>>>> 1a14aae (fex gradle)
 =======
