@@ -1,8 +1,8 @@
-package com.melvin.ongandroid.model.data
+package com.melvin.ongandroid.model.data.testimonials
 
 import com.google.gson.annotations.SerializedName
 
-data class Testimony(
+data class Testimonial(
     @SerializedName("id") val id: Int?,
     @SerializedName("name") val name: String?,
     @SerializedName("image") val image: String?,
