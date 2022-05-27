@@ -10,4 +10,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
+    <string name="testimony_name">Nombre y Apellido</string>
+    <string name="description_testimony">Description testimony</string>
+    <string name="testimonios">Testimonios</string>
+    <string name="add_my_testimonial">Agregar mi testimonio</string>
+    <string name="img_testimony">Imagen de testimonio</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vector_down">Vector down</string>
 </resources>
