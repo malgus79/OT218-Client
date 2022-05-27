@@ -18,10 +18,14 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
     private val viewModel by viewModels<MainActivityViewModel>()
 =======
     private lateinit var mainActivityViewModel: MainActivityViewModel
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
+<<<<<<< HEAD
 =======
     private val viewModel by viewModels<MainActivityViewModel>()
 >>>>>>> 827da8a (Testimonials layout created)
@@ -35,6 +39,8 @@ class MainActivity : AppCompatActivity() {
 //    private lateinit var mainActivityViewModel: MainActivityViewModel
     private val viewModel by viewModels<MainActivityViewModel>()
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,10 +54,14 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
         viewModel.isShowProgress()
 =======
         mainActivityViewModel.isShowProgress()
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
+<<<<<<< HEAD
 =======
         viewModel.isShowProgress()
 >>>>>>> 827da8a (Testimonials layout created)
@@ -71,6 +81,8 @@ class MainActivity : AppCompatActivity() {
         binding.button.setOnClickListener {
             startActivity(Intent(this, NavigationActivity::class.java))
         }
+=======
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
 
     }
 <<<<<<< HEAD

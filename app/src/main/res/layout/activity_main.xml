@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <Button
 =======
 =======
@@ -28,16 +29,31 @@
     <!--
     <Button
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+<Button
+=======
+    <Button
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
+<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 <<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.5"/>
 <<<<<<< HEAD
 =======
+=======
+<<<<<<< HEAD
+        app:layout_constraintHorizontal_bias="0.5"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"/>
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -46,11 +62,29 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
 
+<<<<<<< HEAD
+=======
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+<<<<<<< HEAD
+=======
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:progressBarStyle"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_centerHorizontal="true"
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+<<<<<<< HEAD
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:progressBarStyle"
@@ -112,4 +146,8 @@
         android:name="com.melvin.ongandroid.view.HomeFragment"/>
 >>>>>>> 5e4589c (Testimony fragment added)
 
+=======
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
+
+>>>>>>> c555745 (Hilt dependencies and spinner  added)
 </androidx.constraintlayout.widget.ConstraintLayout>
