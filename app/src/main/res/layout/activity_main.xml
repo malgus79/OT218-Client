@@ -13,6 +13,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <Button
 =======
 =======
@@ -30,15 +31,24 @@
     <Button
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
+=======
+>>>>>>> cb766a0 (fix commit)
 <Button
 =======
     <Button
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
+<<<<<<< HEAD
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
+=======
+=======
+    <Button
+>>>>>>> 03694ee (fix commit)
+>>>>>>> cb766a0 (fix commit)
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
+<<<<<<< HEAD
 <<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +57,8 @@
 <<<<<<< HEAD
 =======
 =======
+=======
+>>>>>>> cb766a0 (fix commit)
 <<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.5"
 =======
@@ -107,8 +119,11 @@
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> 03694ee (fix commit)
+<<<<<<< HEAD
 =======
 >>>>>>> 03694ee (fix commit)
+=======
+>>>>>>> cb766a0 (fix commit)
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -116,6 +131,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cb766a0 (fix commit)
 =======
 
     <ProgressBar
@@ -132,6 +150,7 @@
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> 03694ee (fix commit)
+<<<<<<< HEAD
 =======
 >>>>>>> 03694ee (fix commit)
 =======
@@ -145,6 +164,8 @@
         android:layout_height="match_parent"
         android:name="com.melvin.ongandroid.view.HomeFragment"/>
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> cb766a0 (fix commit)
 
 =======
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
