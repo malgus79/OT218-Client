@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private val viewModel by viewModels<MainActivityViewModel>()
 =======
     private lateinit var mainActivityViewModel: MainActivityViewModel
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
 =======
     private val viewModel by viewModels<MainActivityViewModel>()
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+    private lateinit var mainActivityViewModel: MainActivityViewModel
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         //Show Spinner Loading
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         viewModel.isShowProgress()
 =======
         mainActivityViewModel.isShowProgress()
@@ -38,6 +43,9 @@ class MainActivity : AppCompatActivity() {
 =======
         viewModel.isShowProgress()
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+        mainActivityViewModel.isShowProgress()
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
         binding.button.setOnClickListener {
             startActivity(Intent(this, NavigationActivity::class.java))

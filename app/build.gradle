@@ -72,6 +72,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 <<<<<<< HEAD
+<<<<<<< HEAD
     //ViewPager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     // Hilt
@@ -80,6 +81,11 @@ dependencies {
 <<<<<<< HEAD
 =======
 
+=======
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.41"
+    kapt "com.google.dagger:hilt-android-compiler:2.41"
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
     // Hilt
     implementation "com.google.dagger:hilt-android:2.41"
