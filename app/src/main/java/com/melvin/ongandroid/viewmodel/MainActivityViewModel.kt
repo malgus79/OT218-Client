@@ -6,10 +6,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.data.HomeSlides
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainActivityViewModel(private val homeRepository: HomeRepository) : ViewModel() {
+@HiltViewModel
+class MainActivityViewModel @Inject constructor (private val homeRepository: HomeRepository) : ViewModel() {
 
+    //Create states
+    private val _state = MutableLiveData<State>()
+    val state: LiveData<State>
+        get() = _state
+
+    //Create Spinner Loading
+    private val _showProgress: MutableLiveData<State> = MutableLiveData()
+    val showProgress: LiveData<State>
+        get() = _state
+
+    //Create progressBar
+    fun isShowProgress(): LiveData<State> {
+        return showProgress
+    }
+
+    //Call Slides
     suspend fun getHomeSlides() {
         _state.value = State.Loading()
         viewModelScope.launch {
@@ -17,6 +36,7 @@ class MainActivityViewModel(private val homeRepository: HomeRepository) : ViewMo
         }
     }
 
+<<<<<<< HEAD
     suspend fun getTestimonials(){
         _state.value = State.Loading()
         viewModelScope.launch {
@@ -24,14 +44,12 @@ class MainActivityViewModel(private val homeRepository: HomeRepository) : ViewMo
         }
     }
 
+=======
+    //Definition of states
+>>>>>>> f49350f (Hilt dependencies and spinner  added)
     sealed class State() {
         class Success() : State()
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
-
-    private val _state = MutableLiveData<State>()
-    val state: LiveData<State>
-        get() = _state
-
 }
