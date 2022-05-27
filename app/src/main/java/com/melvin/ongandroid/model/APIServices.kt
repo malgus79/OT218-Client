@@ -6,6 +6,7 @@ import retrofit2.http.GET
 
 interface APIServices {
 
+    //This endpoint returns a list of Slides
     @GET("api/slides")
     suspend fun getHomeSlides(): HomeSlides
 
