@@ -50,4 +50,5 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
+
 }
