@@ -9,8 +9,11 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <Button
 =======
+=======
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
     <Button
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
@@ -27,6 +30,32 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"/>
+<<<<<<< HEAD
+=======
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:progressBarStyle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:progressBarStyle"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+>>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
     <ProgressBar
         android:id="@+id/progressBar1"
