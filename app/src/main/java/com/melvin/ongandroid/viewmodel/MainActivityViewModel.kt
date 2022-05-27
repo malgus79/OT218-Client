@@ -54,7 +54,10 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Definition of states
+=======
+>>>>>>> ccc2116416078e599d55bef32066aef99fd105ca
     suspend fun getTestimonials() {
 =======
 <<<<<<< HEAD
