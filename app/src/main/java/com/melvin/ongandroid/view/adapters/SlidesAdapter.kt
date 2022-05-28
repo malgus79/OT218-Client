@@ -22,7 +22,7 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
                 //Load image
                 Glide.with(binding.root.context)
                     .load(slide.imageSlide)
-                    .error(R.drawable.ic_baseline_broken_image_100)
+                    .error(R.drawable.ic_home) // ic_baseline_broken_image_100 not found
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(binding.ivSlideImage)
             }

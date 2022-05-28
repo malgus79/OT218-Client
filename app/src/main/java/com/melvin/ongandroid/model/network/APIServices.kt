@@ -1,8 +1,8 @@
 package com.melvin.ongandroid.model.network
 
+import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
-import com.melvin.ongandroid.model.data.News
 
 import retrofit2.http.GET
 
@@ -12,13 +12,12 @@ interface APIServices {
     @GET("api/slides")
     suspend fun getHomeSlides(): SlidesList
 
-
     //This endpoint returns a list of Testimonials
     @GET("api/testimonials")
     suspend fun getTestimonials(): TestimonialsList
 
-
+    //This endpoint returns a list of News
     @GET("api/news")
-    suspend fun getNews(): News
+    suspend fun getNews(): NewsList
 
 }

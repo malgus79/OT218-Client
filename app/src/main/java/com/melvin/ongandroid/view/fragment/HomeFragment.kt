@@ -1,4 +1,4 @@
-package com.melvin.ongandroid.view
+package com.melvin.ongandroid.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +13,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/view/HomeFragment.kt
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
+=======
+>>>>>>> e4be640 (update and refactor proyect):app/src/main/java/com/melvin/ongandroid/view/fragment/HomeFragment.kt
 import com.melvin.ongandroid.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +25,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel by viewModels<HomeViewModel>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,15 +36,21 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
 
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/view/HomeFragment.kt
         //Loads data and updates on changes
         viewModel.slidesList.observe(this, Observer {
             setSlides(viewModel, binding) //Load Slides
             setTestimonials(viewModel, binding) //Load testimonials
         })
+=======
+        setSlides(viewModel, binding) //Load activities
+        setNews(viewModel, binding) //Load news
+>>>>>>> e4be640 (update and refactor proyect):app/src/main/java/com/melvin/ongandroid/view/fragment/HomeFragment.kt
 
         return binding.root
     }
 
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/view/HomeFragment.kt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -52,6 +60,11 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         onDestroyNews()
 
+=======
+    override fun onDestroyView() {
+        super.onDestroyView()
+        onDestroyNews()
+>>>>>>> e4be640 (update and refactor proyect):app/src/main/java/com/melvin/ongandroid/view/fragment/HomeFragment.kt
     }
 
 
@@ -91,6 +104,7 @@ class HomeFragment : Fragment() {
          )*/
     }
 
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/view/HomeFragment.kt
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val testimonialsList = viewModel.testimonialsList.value
 
@@ -106,6 +120,8 @@ class HomeFragment : Fragment() {
         }
     }
 
+=======
+>>>>>>> e4be640 (update and refactor proyect):app/src/main/java/com/melvin/ongandroid/view/fragment/HomeFragment.kt
     private fun onDestroyNews() {
         val viewpager = view?.findViewById<ViewPager2>(R.id.vp_news)
         //Unregistering the onPageChangedCallback
