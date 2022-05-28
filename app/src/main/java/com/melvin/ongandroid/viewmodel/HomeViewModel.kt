@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.APIServices
+import com.melvin.ongandroid.model.data.news.New
 import com.melvin.ongandroid.model.data.slides.Slide
 import com.melvin.ongandroid.model.data.testimonials.Testimonial
 import kotlinx.coroutines.launch
@@ -51,9 +52,26 @@ class HomeViewModel() : ViewModel() {
         }
     }
 
-    sealed class State() {
-        class Success() : State()
-        class Failure(val cause: Throwable) : State()
-        class Loading() : State()
+    /* ---------------------------NEWS REQUEST--------------------------- */
+    //Internal MutableLiveData
+    private val _newsStatus = MutableLiveData<State>()
+    private val _newsList = MutableLiveData<List<New>?>()
+    //External LiveData
+    val newsStatus: LiveData<State> = _newsStatus
+    val newsList: LiveData<List<New>?> = _newsList
+
+    suspend fun getNews(){
+        _newsStatus.value = State.Loading()
+        viewModelScope.launch {
+            try {
+                // val news = homeRepository.getNews().data
+                _newsStatus.value = State.Success()
+                // _newsList.value = news
+            }
+            catch (e: Exception){
+                _newsStatus.value = State.Failure(e)
+            }
+        }
     }
+
 }

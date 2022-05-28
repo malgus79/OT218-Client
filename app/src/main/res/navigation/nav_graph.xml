@@ -8,22 +8,22 @@
 
     <fragment
         android:id="@+id/nav_news"
-        android:name="com.melvin.ongandroid.view.NewsFragment"
+        android:name="com.melvin.ongandroid.view.fragment.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/nav_staff"
-        android:name="com.melvin.ongandroid.view.StaffFragment"
+        android:name="com.melvin.ongandroid.view.fragment.StaffFragment"
         android:label="fragment_staff"
         tools:layout="@layout/fragment_staff" />
     <fragment
         android:id="@+id/nav_contribute"
-        android:name="com.melvin.ongandroid.view.ContributeFragment"
+        android:name="com.melvin.ongandroid.view.fragment.ContributeFragment"
         android:label="fragment_contribute"
         tools:layout="@layout/fragment_contribute" />
     <fragment
         android:id="@+id/nav_contact"
-        android:name="com.melvin.ongandroid.view.ContactFragment"
+        android:name="com.melvin.ongandroid.view.fragment.ContactFragment"
         android:label="fragment_contact"
         tools:layout="@layout/fragment_contact" />
 
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.melvin.ongandroid.view.HomeFragment"
+        android:name="com.melvin.ongandroid.view.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action

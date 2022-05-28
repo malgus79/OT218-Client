@@ -1,8 +1,6 @@
-package com.melvin.ongandroid.model.data
+package com.melvin.ongandroid.model.data.news
 
 import com.google.gson.annotations.SerializedName
-
-
 
 data class New(
     @SerializedName("id")
@@ -34,5 +32,4 @@ data class New(
 
     @SerializedName("deleted_at")
     val deleted_at : String = ""
-
 )
