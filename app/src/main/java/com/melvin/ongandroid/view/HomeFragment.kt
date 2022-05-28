@@ -67,6 +67,9 @@ class HomeFragment : Fragment() {
                 //TODO ERROR IMPLEMENTATION
             }
         }
+        //Initialize slides adapter
+        if (slidesList != null)
+            binding.rvSlides.adapter = SlidesAdapter(slidesList)
     }
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {

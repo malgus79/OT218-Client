@@ -21,6 +21,7 @@ import retrofit2.Response
 class NewsFragment : Fragment(R.layout.fragment_news) {
 
     // private lateinit var recyclerView: RecyclerView
+
     private lateinit var newsList: ArrayList<Novedades>
     private lateinit var newsAdapter: NewsAdapter
 

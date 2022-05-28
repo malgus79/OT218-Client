@@ -3,6 +3,7 @@ package com.melvin.ongandroid.model.network
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import com.melvin.ongandroid.model.data.News
+
 import retrofit2.http.GET
 
 interface APIServices {

@@ -7,10 +7,11 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import com.melvin.ongandroid.model.data.News
 
+
 @Singleton
 class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
- //Calls APIservice getHomeSlides suspend function
+    //Calls APIservice getHomeSlides suspend function
     suspend fun getHomeSlides() : SlidesList {
         return APIService.getHomeSlides()
     }
@@ -24,4 +25,5 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
     suspend fun getNews() : News{
         return APIService.getNews()
     }
+
 }
