@@ -47,26 +47,24 @@ class HomeFragment : Fragment() {
         val slidesList = viewModel.slidesList.value
         //Initialize slides adapter
         if (slidesList != null)
-        binding.rvSlides.adapter = SlidesAdapter(slidesList)
+            binding.rvSlides.adapter = SlidesAdapter(slidesList)
     }
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding){
-       /* val newsList //Add news
-        //Initialize news adapter
-        binding.vpNews.adapter = NewsViewPagerAdapter()
-
-        //Set starting page for news viewpager
-        val currentPageIndex = 0
-        binding.vpNews.currentItem = currentPageIndex
-
-        //Registering for page change callback
-        binding.vpNews.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback(){
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                }
-            }
-        )*/
+        /* val newsList //Add news
+         //Initialize news adapter
+         binding.vpNews.adapter = NewsViewPagerAdapter()
+         //Set starting page for news viewpager
+         val currentPageIndex = 0
+         binding.vpNews.currentItem = currentPageIndex
+         //Registering for page change callback
+         binding.vpNews.registerOnPageChangeCallback(
+             object : ViewPager2.OnPageChangeCallback(){
+                 override fun onPageSelected(position: Int) {
+                     super.onPageSelected(position)
+                 }
+             }
+         )*/
     }
 
     private fun onDestroyNews(){
