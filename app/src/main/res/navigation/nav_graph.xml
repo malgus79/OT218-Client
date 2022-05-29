@@ -6,32 +6,24 @@
     app:startDestination="@id/nav_home">
 
 
-    <fragment
-        android:id="@+id/nav_news"
-        android:name="com.melvin.ongandroid.view.fragment.NewsFragment"
-        android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+
     <fragment
         android:id="@+id/nav_staff"
         android:name="com.melvin.ongandroid.view.fragment.StaffFragment"
         android:label="fragment_staff"
         tools:layout="@layout/fragment_staff" />
-    <fragment
-        android:id="@+id/nav_contribute"
-        android:name="com.melvin.ongandroid.view.fragment.ContributeFragment"
-        android:label="fragment_contribute"
-        tools:layout="@layout/fragment_contribute" />
+
     <fragment
         android:id="@+id/nav_contact"
         android:name="com.melvin.ongandroid.view.fragment.ContactFragment"
         android:label="fragment_contact"
         tools:layout="@layout/fragment_contact" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/ourActivitiesFragment"-->
-<!--        android:name="com.melvin.ongandroid.view.OurActivitiesFragment"-->
-<!--        android:label="fragment_our_activities"-->
-<!--        tools:layout="@layout/fragment_our_activities" />-->
+    <fragment
+        android:id="@+id/nav_our_activities"
+        android:name="com.melvin.ongandroid.view.fragment.OurActivitiesFragment"
+        android:label="fragment_our_activities"
+        tools:layout="@layout/fragment_our_activities" />
 
     <fragment
         android:id="@+id/nav_home"
@@ -39,17 +31,15 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_nav_news"
-            app:destination="@id/nav_news" />
-        <action
             android:id="@+id/action_nav_home_to_nav_staff"
             app:destination="@id/nav_staff" />
         <action
-            android:id="@+id/action_nav_home_to_nav_contribute"
-            app:destination="@id/nav_contribute" />
+            android:id="@+id/action_nav_home_to_ourActivitiesFragment"
+            app:destination="@id/nav_our_activities"/>
         <action
             android:id="@+id/action_nav_home_to_nav_contact"
             app:destination="@id/nav_contact" />
+
     </fragment>
 
 </navigation>
