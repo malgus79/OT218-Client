@@ -5,15 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+=======
+import androidx.fragment.app.viewModels
+>>>>>>> 5e4589c (Testimony fragment added)
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
+<<<<<<< HEAD
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
+=======
+import com.melvin.ongandroid.view.adapters.TestimonyAdapter
+>>>>>>> 5e4589c (Testimony fragment added)
 import com.melvin.ongandroid.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,18 +41,32 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
+<<<<<<< HEAD
 
         //Loads data and updates on changes
         viewModel.slidesList.observe(this, Observer {
             setSlides(viewModel, binding) //Load Slides
             setTestimonials(viewModel, binding) //Load testimonials
         })
+=======
+
+
+        setSlides(viewModel, binding) //Load activities
+        setNews(viewModel,binding) //Load news
+        setTestimony(viewModel, binding) //Load testimony
+>>>>>>> 5e4589c (Testimony fragment added)
 
         return binding.root
     }
 
+<<<<<<< HEAD
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+=======
+
+
+    override fun onDestroyView() {
+>>>>>>> 5e4589c (Testimony fragment added)
 
     }
 
@@ -58,6 +80,7 @@ class HomeFragment : Fragment() {
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
 
+<<<<<<< HEAD
         if (slidesList == null || !slidesList.success) {
             //TODO ERROR IMPLEMENTATION
         } else {
@@ -65,10 +88,28 @@ class HomeFragment : Fragment() {
                 binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
             } else {
                 //TODO ERROR IMPLEMENTATION
+=======
+    private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding){
+/*        val newsList //Add news
+        //Initialize news adapter
+        binding.vpNews.adapter = NewsViewPagerAdapter()
+
+        //Set starting page for news viewpager
+        val currentPageIndex = 0
+        binding.vpNews.currentItem = currentPageIndex
+
+        //Registering for page change callback
+        binding.vpNews.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback(){
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                }
+>>>>>>> 5e4589c (Testimony fragment added)
             }
         }
     }
 
+<<<<<<< HEAD
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         /* val newsList //Add news
          //Initialize news adapter
@@ -104,6 +145,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun onDestroyNews() {
+=======
+    private fun setTestimony(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
+        val testimonyList = viewModel.testimonialsList.value
+        //Initialize testimony adapter
+        if (testimonyList != null)
+            binding.rvTestimony.adapter = TestimonyAdapter(testimonyList)
+
+    }
+
+    private fun onDestroyNews(){
+>>>>>>> 5e4589c (Testimony fragment added)
         val viewpager = view?.findViewById<ViewPager2>(R.id.vp_news)
         //Unregistering the onPageChangedCallback
         viewpager?.unregisterOnPageChangeCallback(

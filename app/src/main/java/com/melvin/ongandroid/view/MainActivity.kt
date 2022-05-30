@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private val viewModel by viewModels<MainActivityViewModel>()
 =======
     private lateinit var mainActivityViewModel: MainActivityViewModel
@@ -30,6 +31,10 @@ class MainActivity : AppCompatActivity() {
 =======
     private val viewModel by viewModels<MainActivityViewModel>()
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+//    private lateinit var mainActivityViewModel: MainActivityViewModel
+    private val viewModel by viewModels<MainActivityViewModel>()
+>>>>>>> 5e4589c (Testimony fragment added)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         viewModel.isShowProgress()
 =======
         mainActivityViewModel.isShowProgress()
@@ -54,8 +60,12 @@ class MainActivity : AppCompatActivity() {
 =======
         viewModel.isShowProgress()
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+        viewModel.isShowProgress()
+>>>>>>> 5e4589c (Testimony fragment added)
 
     }
+
 }
 
 

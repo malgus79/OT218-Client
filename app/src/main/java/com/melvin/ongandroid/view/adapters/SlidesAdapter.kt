@@ -9,9 +9,15 @@ import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.SlidesListItemBinding
 import com.melvin.ongandroid.model.data.slides.Slide
 
+<<<<<<< HEAD
 class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
 
     class SlidesViewHolder(private var binding: SlidesListItemBinding):
+=======
+class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.TestimonyViewHolder>() {
+
+    class TestimonyViewHolder(private var binding: SlidesListItemBinding):
+>>>>>>> 5e4589c (Testimony fragment added)
         RecyclerView.ViewHolder(binding.root){
 
             fun bind(slide: Slide){
@@ -22,14 +28,19 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
                 //Load image
                 Glide.with(binding.root.context)
                     .load(slide.imageSlide)
-                    .error(R.drawable.ic_baseline_broken_image_100)
+                    //.error(R.drawable.ic_baseline_broken_image_100)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(binding.ivSlideImage)
             }
         }
 
+<<<<<<< HEAD
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlidesViewHolder {
         return SlidesViewHolder(
+=======
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestimonyViewHolder {
+        return TestimonyViewHolder(
+>>>>>>> 5e4589c (Testimony fragment added)
             SlidesListItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
@@ -38,7 +49,11 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
         )
     }
 
+<<<<<<< HEAD
     override fun onBindViewHolder(holder: SlidesViewHolder, position: Int) {
+=======
+    override fun onBindViewHolder(holder: TestimonyViewHolder, position: Int) {
+>>>>>>> 5e4589c (Testimony fragment added)
         holder.bind(dataSet[position])
     }
 
