@@ -8,7 +8,9 @@ import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.APIServices
 import com.melvin.ongandroid.model.data.news.New
 import com.melvin.ongandroid.model.data.slides.Slide
+import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.Testimonial
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -18,44 +20,63 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
 
 
+    init {
+        getSlides()
+        getTestimonials()
+    }
+
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _slidesStatus = MutableLiveData<State>()
-    private val _slidesList = MutableLiveData<List<Slide>>()
+    private val _slidesList = MutableLiveData<SlidesList>()
     //External LiveData
-    val slidesStatus: LiveData<State> = _slidesStatus
-    val slidesList: LiveData<List<Slide>> = _slidesList
 
-    suspend fun getSlides() {
-        _slidesStatus.value = State.Loading()
+    val slidesList: LiveData<SlidesList> = _slidesList
+
+
+    fun getSlides() {
+        var homeSlides: SlidesList
         viewModelScope.launch {
-           // val homeSlides = homeRepository.getHomeSlides()
+
+            try {
+                homeSlides = homeRepository.getHomeSlides()
+                _slidesList.value = homeSlides
+
+            } catch (e: Exception) {
+                homeSlides = SlidesList(emptyList(), "Error retrieving slides", false)
+                _slidesList.value = homeSlides
+
+            }
         }
     }
 
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _testimonialsStatus = MutableLiveData<State>()
-    private val _testimonialsList = MutableLiveData<List<Testimonial>?>()
-    //External LiveData
-    val testimonialsStatus: LiveData<State> = _testimonialsStatus
-    val testimonialsList: LiveData<List<Testimonial>?> = _testimonialsList
 
-    suspend fun getTestimonials(){
-        _testimonialsStatus.value = State.Loading()
+    private val _testimonialsList = MutableLiveData<TestimonialsList>()
+    //External LiveData
+
+    val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
+
+    fun getTestimonials(){
+        var homeTestimonials: TestimonialsList
         viewModelScope.launch {
+
             try {
-              //  val testimonials = homeRepository.getTestimonials().testimonialsList
-                _testimonialsStatus.value = State.Success()
-              //  _testimonialsList.value = testimonials
-            }
-            catch (e: Exception){
-                _testimonialsStatus.value = State.Failure(e)
+                homeTestimonials = homeRepository.getTestimonials()
+                _testimonialsList.value = homeTestimonials
+
+            } catch (e: Exception) {
+                homeTestimonials = TestimonialsList(false,null,"Error retrieving testimonials")
+                _testimonialsList.value = homeTestimonials
             }
         }
     }
 
-    /* ---------------------------NEWS REQUEST--------------------------- */
+/*
+
+    */
+/* ---------------------------NEWS REQUEST--------------------------- *//*
+
     //Internal MutableLiveData
     private val _newsStatus = MutableLiveData<State>()
     private val _newsList = MutableLiveData<List<New>?>()
@@ -76,6 +97,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
             }
         }
     }
+*/
 
     sealed class State() {
         class Success() : State()
