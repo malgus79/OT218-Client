@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         viewModel.isShowProgress()
 =======
         mainActivityViewModel.isShowProgress()
@@ -63,6 +64,9 @@ class MainActivity : AppCompatActivity() {
 =======
         viewModel.isShowProgress()
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+        //viewModel.isShowProgress()
+>>>>>>> fa6b629 (spinner)
 
         binding.button.setOnClickListener {
             startActivity(Intent(this, NavigationActivity::class.java))

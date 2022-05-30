@@ -41,6 +41,12 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<HomeViewModel>()
 
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/view/fragment/HomeFragment.kt
+=======
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+>>>>>>> 6726a62 (spinner):app/src/main/java/com/melvin/ongandroid/view/HomeFragment.kt
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,6 +77,7 @@ class HomeFragment : Fragment() {
             setSlides(viewModel, binding) //Load Slides
             setTestimonials(viewModel, binding) //Load testimonials
         })
+<<<<<<< HEAD
 
 <<<<<<< HEAD
         setSlides(viewModel, binding) //Load activities
@@ -80,6 +87,8 @@ class HomeFragment : Fragment() {
 =======
 >>>>>>> 08a6025 (slider compiling)
 
+=======
+>>>>>>> fa6b629 (spinner)
         return binding.root
     }
 
@@ -95,7 +104,6 @@ class HomeFragment : Fragment() {
     }
 >>>>>>> 08a6025 (slider compiling)
 
-
     override fun onDestroyView() {
 >>>>>>> 5e4589c (Testimony fragment added)
 
@@ -106,7 +114,6 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         onDestroyNews()
     }
-
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
@@ -217,7 +224,6 @@ class HomeFragment : Fragment() {
                 binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonialsList,true)
             } else {
                 //TODO ERROR IMPLEMENTATION
-
             }
         }
     }
@@ -230,5 +236,14 @@ class HomeFragment : Fragment() {
             object : ViewPager2.OnPageChangeCallback() {}
         )
     }
+<<<<<<< HEAD
 
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/view/fragment/HomeFragment.kt
+=======
+
+
+
+=======
+>>>>>>> fa6b629 (spinner)
+>>>>>>> 6726a62 (spinner):app/src/main/java/com/melvin/ongandroid/view/HomeFragment.kt
 }
