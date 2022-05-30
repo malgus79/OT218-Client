@@ -16,8 +16,17 @@ interface APIServices {
     @GET("api/testimonials")
     suspend fun getTestimonials(): TestimonialsList
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/model/network/APIServices.kt
+=======
+>>>>>>> dd3c420 (Testimony fragment added)
     //This endpoint returns a list of News
     @GET("api/news")
     suspend fun getNews(): NewsList
 
+<<<<<<< HEAD
+=======
+>>>>>>> 5e4589c (Testimony fragment added):app/src/main/java/com/melvin/ongandroid/model/APIServices.kt
+>>>>>>> dd3c420 (Testimony fragment added)
 }

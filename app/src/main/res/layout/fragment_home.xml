@@ -97,21 +97,35 @@
             android:text="@string/testimonios"
             android:textSize="24sp"
             android:textStyle="bold"
+<<<<<<< HEAD
             android:textColor="@color/black"
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_want_to_join" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_testimony"
+<<<<<<< HEAD
             android:layout_width="match_parent"
             android:layout_height="360dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+=======
+            android:layout_width="0dp"
+            android:layout_height="360dp"
+            android:layout_marginTop="@dimen/common_margin_middle"
+            android:orientation="vertical"
+>>>>>>> 5e4589c (Testimony fragment added)
             app:layout_constraintBottom_toTopOf="@+id/btn_add_my_testimonial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_Testimony_title"
+<<<<<<< HEAD
+=======
+            app:layout_constraintVertical_bias="0.0"
+>>>>>>> 5e4589c (Testimony fragment added)
             tools:listitem="@layout/fragment_testimony_item">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -139,7 +153,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e4589c (Testimony fragment added)
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+<<<<<<< HEAD
 
 </androidx.core.widget.NestedScrollView>
+=======
+</androidx.core.widget.NestedScrollView>
+>>>>>>> dd3c420 (Testimony fragment added)

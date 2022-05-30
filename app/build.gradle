@@ -73,6 +73,9 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
     //ViewPager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     // Hilt
@@ -81,6 +84,7 @@ dependencies {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 =======
     // Hilt
     implementation "com.google.dagger:hilt-android:2.41"
@@ -93,6 +97,8 @@ dependencies {
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
 
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 
 >>>>>>> f744c22 (Hilt dependencies and spinner  added)
 }

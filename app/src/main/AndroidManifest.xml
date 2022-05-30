@@ -19,7 +19,11 @@
         android:theme="@style/Theme.ONGAndroid">
         <activity
             android:name=".view.NavigationActivity"
+<<<<<<< HEAD
             android:exported="false" />
+=======
+            android:exported="true" />
+>>>>>>> dd3c420 (Testimony fragment added)
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

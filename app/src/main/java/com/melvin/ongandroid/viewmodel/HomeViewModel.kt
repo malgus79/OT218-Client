@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
+<<<<<<< HEAD
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,6 +18,19 @@ import kotlin.Exception
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
+=======
+import com.melvin.ongandroid.model.APIServices
+import com.melvin.ongandroid.model.data.news.New
+import com.melvin.ongandroid.model.data.slides.Slide
+import com.melvin.ongandroid.model.data.testimonials.Testimonial
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import java.lang.Exception
+import javax.inject.Inject
+
+@HiltViewModel
+class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
+>>>>>>> 5e4589c (Testimony fragment added)
 
     init {
         getSlides()
@@ -72,6 +86,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+<<<<<<< HEAD
     /* ---------------------------NEWS REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _newsList = MutableLiveData<NewsList>()
@@ -98,3 +113,36 @@ class HomeViewModel @Inject constructor(
     }
 
 }
+=======
+<<<<<<< HEAD
+=======
+    /* ---------------------------NEWS REQUEST--------------------------- */
+    //Internal MutableLiveData
+    private val _newsStatus = MutableLiveData<State>()
+    private val _newsList = MutableLiveData<List<New>?>()
+    //External LiveData
+    val newsStatus: LiveData<State> = _newsStatus
+    val newsList: LiveData<List<New>?> = _newsList
+
+    suspend fun getNews(){
+        _newsStatus.value = State.Loading()
+        viewModelScope.launch {
+            try {
+                // val news = homeRepository.getNews().data
+                _newsStatus.value = State.Success()
+                // _newsList.value = news
+            }
+            catch (e: Exception){
+                _newsStatus.value = State.Failure(e)
+            }
+        }
+    }
+
+    sealed class State() {
+        class Success() : State()
+        class Failure(val cause: Throwable) : State()
+        class Loading() : State()
+    }
+}
+>>>>>>> 5e4589c (Testimony fragment added)
+>>>>>>> dd3c420 (Testimony fragment added)
