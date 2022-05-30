@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Show Spinner Loading
-        viewModel.isShowProgress()
+        //viewModel.isShowProgress()
 
     }
 
