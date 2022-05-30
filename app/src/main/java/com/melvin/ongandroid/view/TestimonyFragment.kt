@@ -6,6 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+<<<<<<< HEAD
+=======
+import androidx.fragment.app.activityViewModels
+>>>>>>> 5e4589c (Testimony fragment added)
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,13 +27,21 @@ class TestimonyFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
+<<<<<<< HEAD
     ): View {
+=======
+    ): View? {
+>>>>>>> 5e4589c (Testimony fragment added)
         // Inflate the layout for this fragment
         binding = FragmentTestimonyBinding.inflate(layoutInflater, container, false)
         return binding.root
 
         viewmodel.state.observe(viewLifecycleOwner, Observer {
+<<<<<<< HEAD
             when (it) {
+=======
+            when (it){
+>>>>>>> 5e4589c (Testimony fragment added)
                 is TestimonyViewModel.State.Success -> showTestimony(it.testimonialsList)
                 is TestimonyViewModel.State.Failure -> showErrorDialog()
                 is TestimonyViewModel.State.Loading -> showSpinnerLoading()
@@ -38,12 +50,20 @@ class TestimonyFragment : Fragment() {
     }
 
     private fun showSpinnerLoading() {
+<<<<<<< HEAD
         binding.progressBar1.isVisible = true
+=======
+     binding.progressBar1.isVisible = true
+>>>>>>> 5e4589c (Testimony fragment added)
     }
 
     private fun showTestimony(testimonialsList: TestimonialsList) {
         binding.rvTestimony.adapter
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e4589c (Testimony fragment added)
     }
 
     //llamar al metodo showErrorDialog dentro del recyclerview

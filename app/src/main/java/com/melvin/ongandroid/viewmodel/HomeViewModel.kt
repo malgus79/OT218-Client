@@ -24,7 +24,10 @@ import com.melvin.ongandroid.model.data.news.New
 import com.melvin.ongandroid.model.data.slides.Slide
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.Testimonial
+<<<<<<< HEAD
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -32,6 +35,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
+<<<<<<< HEAD
+>>>>>>> 5e4589c (Testimony fragment added)
+=======
 >>>>>>> 5e4589c (Testimony fragment added)
 
     init {
@@ -113,6 +119,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* ---------------------------NEWS REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _newsList = MutableLiveData<NewsList>()
@@ -153,6 +160,10 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
 >>>>>>> 08a6025 (slider compiling)
     //Internal MutableLiveData
+=======
+    /* ---------------------------NEWS REQUEST--------------------------- */
+    //Internal MutableLiveData
+>>>>>>> 5e4589c (Testimony fragment added)
     private val _newsStatus = MutableLiveData<State>()
     private val _newsList = MutableLiveData<List<New>?>()
     //External LiveData
@@ -172,7 +183,10 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
             }
         }
     }
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 
     sealed class State() {
         class Success() : State()

@@ -98,7 +98,10 @@
             android:textSize="24sp"
             android:textStyle="bold"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:textColor="@color/black"
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,21 +111,31 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_testimony"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:layout_width="match_parent"
             android:layout_height="360dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 =======
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
             android:layout_width="0dp"
             android:layout_height="360dp"
             android:layout_marginTop="@dimen/common_margin_middle"
             android:orientation="vertical"
+<<<<<<< HEAD
+>>>>>>> 5e4589c (Testimony fragment added)
+=======
 >>>>>>> 5e4589c (Testimony fragment added)
             app:layout_constraintBottom_toTopOf="@+id/btn_add_my_testimonial"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_Testimony_title"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            app:layout_constraintVertical_bias="0.0"
+>>>>>>> 5e4589c (Testimony fragment added)
 =======
             app:layout_constraintVertical_bias="0.0"
 >>>>>>> 5e4589c (Testimony fragment added)
@@ -149,11 +162,15 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
+<<<<<<< HEAD
             android:visibility="gone"
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -162,6 +179,11 @@
 
 <<<<<<< HEAD
 
+=======
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+>>>>>>> 5e4589c (Testimony fragment added)
 </androidx.core.widget.NestedScrollView>
 =======
 </androidx.core.widget.NestedScrollView>

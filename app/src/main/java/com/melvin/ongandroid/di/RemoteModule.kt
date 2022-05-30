@@ -1,7 +1,11 @@
 package com.melvin.ongandroid.di
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.melvin.ongandroid.model.network.APIServices
+=======
+import com.melvin.ongandroid.model.APIServices
+>>>>>>> 5e4589c (Testimony fragment added)
 =======
 import com.melvin.ongandroid.model.APIServices
 >>>>>>> 5e4589c (Testimony fragment added)

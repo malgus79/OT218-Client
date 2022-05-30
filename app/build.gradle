@@ -43,9 +43,15 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+<<<<<<< HEAD
     testImplementation 'junit:junit:4.+'
     testImplementation "io.mockk:mockk:1.12.2"
     testImplementation 'junit:junit:'
+=======
+    implementation 'androidx.fragment:fragment:1.4.1'
+    testImplementation 'junit:junit:4.+'
+    testImplementation "io.mockk:mockk:1.12.2"
+>>>>>>> 5e4589c (Testimony fragment added)
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.2'
@@ -76,10 +82,13 @@ dependencies {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
     //ViewPager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     // Hilt
@@ -105,6 +114,7 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:2.41"
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
+<<<<<<< HEAD
 =======
     // Hilt
     implementation "com.google.dagger:hilt-android:2.41"
@@ -115,4 +125,7 @@ dependencies {
 >>>>>>> 5e4589c (Testimony fragment added)
 
 >>>>>>> f744c22 (Hilt dependencies and spinner  added)
+=======
+
+>>>>>>> 5e4589c (Testimony fragment added)
 }

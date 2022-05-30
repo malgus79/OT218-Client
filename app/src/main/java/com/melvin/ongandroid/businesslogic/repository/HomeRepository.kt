@@ -37,9 +37,11 @@ import com.melvin.ongandroid.model.data.Testimonials
 >>>>>>> dd3c420 (Testimony fragment added)
 =======
 import com.melvin.ongandroid.model.APIServices
-<<<<<<< HEAD
+import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
+import com.melvin.ongandroid.model.data.testimonials.Testimonial
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
+<<<<<<< HEAD
 =======
 import com.melvin.ongandroid.model.data.HomeSlides
 import com.melvin.ongandroid.model.data.Testimonials
@@ -47,12 +49,15 @@ import com.melvin.ongandroid.model.data.Testimonials
 >>>>>>> e7b752f (Testimonials layout created)
 =======
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -154,6 +159,15 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
     suspend fun getTestimonials(): Testimonials {
 >>>>>>> 827da8a (Testimonials layout created)
 >>>>>>> e7b752f (Testimonials layout created)
+=======
+ //Calls APIservice getHomeSlides suspend function
+    suspend fun getHomeSlides() : SlidesList {
+        return APIService.getHomeSlides()
+    }
+
+    //Calls APIservice getTestimonials suspend function
+    suspend fun getTestimonials(): TestimonialsList {
+>>>>>>> 5e4589c (Testimony fragment added)
         return APIService.getTestimonials()
     }
 
@@ -162,10 +176,13 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
         return APIService.getNews()
     }
 
+<<<<<<< HEAD
 =======
     suspend fun getTestimonials(): Testimonials {
         return APIService.getTestimonials()
     }
 
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 }

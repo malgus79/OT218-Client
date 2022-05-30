@@ -11,6 +11,7 @@ import com.melvin.ongandroid.model.data.slides.Slide
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 class SlidesAdapter(private val dataSet: List<Slide>) :
     RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
 
@@ -48,6 +49,11 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
 
     class SlideViewHolder(private var binding: SlidesListItemBinding):
 >>>>>>> 08a6025 (slider compiling)
+=======
+class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.TestimonyViewHolder>() {
+
+    class TestimonyViewHolder(private var binding: SlidesListItemBinding):
+>>>>>>> 5e4589c (Testimony fragment added)
         RecyclerView.ViewHolder(binding.root){
 
             fun bind(slide: Slide){
@@ -58,6 +64,7 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
                 //Load image
                 Glide.with(binding.root.context)
                     .load(slide.imageSlide)
+<<<<<<< HEAD
                     .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(binding.ivSlideImage)
@@ -74,11 +81,22 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestimonyViewHolder {
         return TestimonyViewHolder(
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+                    //.error(R.drawable.ic_baseline_broken_image_100)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(binding.ivSlideImage)
+            }
+        }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestimonyViewHolder {
+        return TestimonyViewHolder(
+>>>>>>> 5e4589c (Testimony fragment added)
             SlidesListItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
                 )
             )
+<<<<<<< HEAD
 =======
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideViewHolder {
         val binding = SlidesListItemBinding.inflate(
@@ -100,10 +118,17 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
 
     override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
 >>>>>>> 08a6025 (slider compiling)
+=======
+        )
+    }
+
+    override fun onBindViewHolder(holder: TestimonyViewHolder, position: Int) {
+>>>>>>> 5e4589c (Testimony fragment added)
         holder.bind(dataSet[position])
     }
 
     override fun getItemCount(): Int {
+<<<<<<< HEAD
 <<<<<<< HEAD
         return dataSet.size
 =======
@@ -112,6 +137,9 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
 
         return  dataSet.size
 >>>>>>> a53495d (slider compiling)
+=======
+      return  dataSet.size
+>>>>>>> 5e4589c (Testimony fragment added)
     }
 
 

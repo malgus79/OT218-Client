@@ -16,6 +16,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <Button
 =======
 =======
@@ -51,6 +52,10 @@
 =======
     <Button
 >>>>>>> 03694ee (fix commit)
+=======
+    <!--
+    <Button
+>>>>>>> 5e4589c (Testimony fragment added)
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,6 +63,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 <<<<<<< HEAD
@@ -172,6 +178,12 @@
 =======
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+=======
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+>>>>>>> 5e4589c (Testimony fragment added)
         app:layout_constraintTop_toTopOf="parent"/>
 -->
     <androidx.fragment.app.FragmentContainerView
@@ -179,6 +191,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.melvin.ongandroid.view.HomeFragment"/>
+<<<<<<< HEAD
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
 >>>>>>> cb766a0 (fix commit)
@@ -189,6 +202,8 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 =======
 >>>>>>> 03694ee (fix commit)
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 
     <ProgressBar
         android:id="@+id/progressBar2"

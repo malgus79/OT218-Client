@@ -11,6 +11,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 919f2e0 (Testimonials layout created)
@@ -23,11 +24,15 @@
 >>>>>>> dd3c420 (Testimony fragment added)
 =======
 >>>>>>> e7b752f (Testimonials layout created)
+=======
+
+>>>>>>> 5e4589c (Testimony fragment added)
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 >>>>>>> a49bb72 (Testimonials layout created)
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -42,6 +47,8 @@
 >>>>>>> e7b752f (Testimonials layout created)
 =======
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
     <string name="testimony_name">Nombre y Apellido</string>
     <string name="description_testimony">Description testimony</string>
     <string name="testimonios">Testimonios</string>
@@ -56,7 +63,11 @@
 >>>>>>> dd3c420 (Testimony fragment added)
 =======
     <!-- TODO: Remove or change this placeholder text -->
+<<<<<<< HEAD
     <string name="hello_blank_fragment">Hello blank fragment</string>
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+    <string name="hello_blank_fragment_Testimony">Hello blank fragment</string>
+>>>>>>> 5e4589c (Testimony fragment added)
     <string name="vector_down">Vector down</string>
 </resources>

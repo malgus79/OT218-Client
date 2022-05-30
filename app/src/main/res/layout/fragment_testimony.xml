@@ -69,6 +69,9 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
     <ProgressBar
         android:id="@+id/progressBar1"
         android:layout_width="50dp"
@@ -80,6 +83,9 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> 827da8a (Testimonials layout created)
+=======
+>>>>>>> 5e4589c (Testimony fragment added)
 </androidx.constraintlayout.widget.ConstraintLayout>
