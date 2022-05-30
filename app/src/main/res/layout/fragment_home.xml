@@ -163,9 +163,13 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:visibility="gone"
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+            android:visibility="gone"
+>>>>>>> fa6b629 (spinner)
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

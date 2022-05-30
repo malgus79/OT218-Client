@@ -21,7 +21,6 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel by viewModels<HomeViewModel>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -37,8 +36,6 @@ class HomeFragment : Fragment() {
             setSlides(viewModel, binding) //Load Slides
             setTestimonials(viewModel, binding) //Load testimonials
         })
-
-
         return binding.root
     }
 
@@ -47,15 +44,12 @@ class HomeFragment : Fragment() {
 
     }
 
-
     override fun onDestroyView() {
 
         super.onDestroyView()
         onDestroyNews()
 
-
     }
-
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
@@ -100,7 +94,6 @@ class HomeFragment : Fragment() {
                 binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonialsList,true)
             } else {
                 //TODO ERROR IMPLEMENTATION
-
             }
         }
     }
@@ -112,5 +105,4 @@ class HomeFragment : Fragment() {
             object : ViewPager2.OnPageChangeCallback(){}
         )
     }
-
 }

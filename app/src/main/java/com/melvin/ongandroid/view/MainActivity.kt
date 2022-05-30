@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
@@ -130,6 +131,9 @@ class MainActivity : AppCompatActivity() {
 =======
 =======
         viewModel.isShowProgress()
+=======
+        //viewModel.isShowProgress()
+>>>>>>> fa6b629 (spinner)
 
     }
 >>>>>>> 5e4589c (Testimony fragment added)
