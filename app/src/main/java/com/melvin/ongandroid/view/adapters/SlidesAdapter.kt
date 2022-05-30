@@ -10,6 +10,7 @@ import com.melvin.ongandroid.databinding.SlidesListItemBinding
 import com.melvin.ongandroid.model.data.slides.Slide
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
 
     class SlidesViewHolder(private var binding: SlidesListItemBinding):
@@ -18,6 +19,14 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
 
     class TestimonyViewHolder(private var binding: SlidesListItemBinding):
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boolean) :
+    RecyclerView.Adapter<SlidesAdapter.SlideViewHolder>() {
+
+    private val homeDataSet = dataSet.take(4)
+
+    class SlideViewHolder(private var binding: SlidesListItemBinding):
+>>>>>>> 08a6025 (slider compiling)
         RecyclerView.ViewHolder(binding.root){
 
             fun bind(slide: Slide){
@@ -28,12 +37,13 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
                 //Load image
                 Glide.with(binding.root.context)
                     .load(slide.imageSlide)
-                    //.error(R.drawable.ic_baseline_broken_image_100)
+                    .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(binding.ivSlideImage)
             }
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlidesViewHolder {
         return SlidesViewHolder(
@@ -46,19 +56,35 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
                     parent.context
                 )
             )
+=======
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideViewHolder {
+        val binding = SlidesListItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+>>>>>>> 08a6025 (slider compiling)
         )
+        return SlideViewHolder(binding)
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     override fun onBindViewHolder(holder: SlidesViewHolder, position: Int) {
 =======
     override fun onBindViewHolder(holder: TestimonyViewHolder, position: Int) {
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+
+    override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
+>>>>>>> 08a6025 (slider compiling)
         holder.bind(dataSet[position])
     }
 
     override fun getItemCount(): Int {
-      return  dataSet.size
+        if (isHome)
+            return homeDataSet.size
+
+        return  dataSet.size
     }
 
 

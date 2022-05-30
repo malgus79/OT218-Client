@@ -18,14 +18,22 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(testimonial: Testimonial) {
+<<<<<<< HEAD
             //Set name
+=======
+            //Set title
+>>>>>>> 08a6025 (slider compiling)
             binding.tvTestimonyName.text = testimonial.name
             //Set description
             binding.tvTestimonyDescription.text = testimonial.description
             //Load image
             Glide.with(binding.root.context)
                 .load(testimonial.image)
+<<<<<<< HEAD
                 .error(R.drawable.ic_baseline_broken_image_24)
+=======
+                .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
+>>>>>>> 08a6025 (slider compiling)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivTestimonyImage)
         }
@@ -48,6 +56,13 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
         if (isHome)
             return homeDataSet.size
 
+<<<<<<< HEAD
         return  dataSet.size
     }
+=======
+        return dataSet.size
+    }
+
+
+>>>>>>> 08a6025 (slider compiling)
 }

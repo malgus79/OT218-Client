@@ -21,7 +21,9 @@ class HomeViewModel @Inject constructor(
 import com.melvin.ongandroid.model.APIServices
 import com.melvin.ongandroid.model.data.news.New
 import com.melvin.ongandroid.model.data.slides.Slide
+import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.Testimonial
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -40,6 +42,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _slidesList = MutableLiveData<SlidesList>()
+<<<<<<< HEAD
 
     //External LiveData
     val slidesList: LiveData<SlidesList> = _slidesList
@@ -47,6 +50,13 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
 
 
+=======
+    //External LiveData
+
+    val slidesList: LiveData<SlidesList> = _slidesList
+
+
+>>>>>>> 08a6025 (slider compiling)
     fun getSlides() {
         var homeSlides: SlidesList
         viewModelScope.launch {
@@ -65,6 +75,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
+<<<<<<< HEAD
     private val _testimonialsList = MutableLiveData<TestimonialsList>()
 
     //External LiveData
@@ -73,6 +84,15 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
 
     fun getTestimonials() {
+=======
+
+    private val _testimonialsList = MutableLiveData<TestimonialsList>()
+    //External LiveData
+
+    val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
+
+    fun getTestimonials(){
+>>>>>>> 08a6025 (slider compiling)
         var homeTestimonials: TestimonialsList
         viewModelScope.launch {
 
@@ -89,8 +109,16 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     /* ---------------------------NEWS REQUEST--------------------------- */
+=======
+/*
+
+    */
+/* ---------------------------NEWS REQUEST--------------------------- *//*
+
+>>>>>>> 08a6025 (slider compiling)
     //Internal MutableLiveData
     private val _newsStatus = MutableLiveData<State>()
     private val _newsList = MutableLiveData<List<New>?>()
@@ -111,6 +139,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
             }
         }
     }
+*/
 
     sealed class State() {
         class Success() : State()

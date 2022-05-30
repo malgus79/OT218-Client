@@ -9,19 +9,26 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+<<<<<<< HEAD
 =======
 import androidx.fragment.app.viewModels
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> 08a6025 (slider compiling)
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
 =======
 import com.melvin.ongandroid.view.adapters.TestimonyAdapter
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
+>>>>>>> 08a6025 (slider compiling)
 import com.melvin.ongandroid.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,19 +57,34 @@ class HomeFragment : Fragment() {
         })
 =======
 
+        //Loads data and updates on changes
+        viewModel.slidesList.observe(viewLifecycleOwner, Observer {
+            setSlides(viewModel, binding) //Load Slides
+            setTestimonials(viewModel, binding) //Load testimonials
+        })
 
+<<<<<<< HEAD
         setSlides(viewModel, binding) //Load activities
         setNews(viewModel,binding) //Load news
         setTestimony(viewModel, binding) //Load testimony
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> 08a6025 (slider compiling)
 
         return binding.root
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 =======
+=======
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+>>>>>>> 08a6025 (slider compiling)
 
 
     override fun onDestroyView() {
@@ -79,6 +101,20 @@ class HomeFragment : Fragment() {
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
+<<<<<<< HEAD
+=======
+
+        if (slidesList == null || !slidesList.success!!) {
+            //TODO ERROR IMPLEMENTATION
+        } else {
+            if (!slidesList.slide.isNullOrEmpty()) {
+                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide, true)
+            } else {
+                //TODO ERROR IMPLEMENTATION
+            }
+        }
+    }
+>>>>>>> 08a6025 (slider compiling)
 
 <<<<<<< HEAD
         if (slidesList == null || !slidesList.success) {
@@ -109,6 +145,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         /* val newsList //Add news
@@ -151,7 +188,21 @@ class HomeFragment : Fragment() {
         //Initialize testimony adapter
         if (testimonyList != null)
             binding.rvTestimony.adapter = TestimonyAdapter(testimonyList)
+=======
+    private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
+        val testimonialsList = viewModel.testimonialsList.value
+>>>>>>> 08a6025 (slider compiling)
 
+        if (testimonialsList == null || !testimonialsList.success) {
+            //TODO ERROR IMPLEMENTATION
+        } else {
+            if (!testimonialsList.testimonialsList.isNullOrEmpty()) {
+                binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonialsList,true)
+            } else {
+                //TODO ERROR IMPLEMENTATION
+
+            }
+        }
     }
 
     private fun onDestroyNews(){
