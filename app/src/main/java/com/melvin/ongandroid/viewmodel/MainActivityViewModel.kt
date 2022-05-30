@@ -9,6 +9,7 @@ import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import com.melvin.ongandroid.model.data.HomeSlides
 <<<<<<< HEAD
@@ -22,6 +23,9 @@ import com.melvin.ongandroid.model.data.HomeSlides
 =======
 
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -81,7 +85,11 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Definition of states
+=======
+    //Call Testimonials
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
     suspend fun getTestimonials() {
 =======
 <<<<<<< HEAD
@@ -138,6 +146,7 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
@@ -145,4 +154,6 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 }

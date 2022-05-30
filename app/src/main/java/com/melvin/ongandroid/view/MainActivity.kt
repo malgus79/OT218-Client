@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+//    private lateinit var mainActivityViewModel: MainActivityViewModel
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
     private val viewModel by viewModels<MainActivityViewModel>()
 =======
     private lateinit var mainActivityViewModel: MainActivityViewModel
@@ -48,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         viewModel.isShowProgress()
 =======
         mainActivityViewModel.isShowProgress()
@@ -67,6 +72,9 @@ class MainActivity : AppCompatActivity() {
 =======
         //viewModel.isShowProgress()
 >>>>>>> fa6b629 (spinner)
+=======
+        //viewModel.isShowProgress()
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 
     }
 

@@ -6,10 +6,14 @@ import com.melvin.ongandroid.model.network.APIServices
 import com.melvin.ongandroid.model.APIServices
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> e7b752f (Testimonials layout created)
 =======
 import com.melvin.ongandroid.model.data.news.NewsList
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+import com.melvin.ongandroid.model.data.news.NewsList
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.Testimonial
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
@@ -59,12 +63,15 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
     //Calls APIservice getTestimonials suspend function
 <<<<<<< HEAD
+<<<<<<< HEAD
     suspend fun getTestimonials(): Testimonials {
 <<<<<<< HEAD
 >>>>>>> 827da8a (Testimonials layout created)
 =======
 >>>>>>> 827da8a (Testimonials layout created)
 =======
+=======
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
     suspend fun getTestimonials(): TestimonialsList {
 >>>>>>> 5e4589c (Testimony fragment added)
         return APIService.getTestimonials()

@@ -16,7 +16,10 @@ interface APIServices {
     suspend fun getTestimonials(): TestimonialsList
 
 <<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/model/network/APIServices.kt
+<<<<<<< HEAD:app/src/main/java/com/melvin/ongandroid/model/network/APIServices.kt
 =======
+=======
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932:app/src/main/java/com/melvin/ongandroid/model/APIServices.kt
     //This endpoint returns a list of News
     @GET("api/news")
     suspend fun getNews(): NewsList

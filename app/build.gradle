@@ -93,8 +93,11 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:2.41"
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
 
+=======
+>>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 }
