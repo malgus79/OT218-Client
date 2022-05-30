@@ -1,6 +1,6 @@
 package com.melvin.ongandroid.businesslogic.repository
 
-import com.melvin.ongandroid.model.APIServices
+import com.melvin.ongandroid.model.network.APIServices
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import javax.inject.Inject
