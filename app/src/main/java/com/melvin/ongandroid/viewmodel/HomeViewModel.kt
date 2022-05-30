@@ -18,7 +18,6 @@ class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
 
-
     init {
         getSlides()
         getTestimonials()
@@ -27,8 +26,10 @@ class HomeViewModel @Inject constructor(
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _slidesList = MutableLiveData<SlidesList>()
+    private val _slidesStatus = MutableLiveData<State>()
 
     //External LiveData
+    val slidesStatus: LiveData<State> = _slidesStatus
     val slidesList: LiveData<SlidesList> = _slidesList
 
 
@@ -37,7 +38,6 @@ class HomeViewModel @Inject constructor(
     fun getSlides() {
         var homeSlides: SlidesList
         viewModelScope.launch {
-
             try {
                 homeSlides = homeRepository.getHomeSlides()
                 _slidesList.value = homeSlides
@@ -47,6 +47,7 @@ class HomeViewModel @Inject constructor(
                 _slidesList.value = homeSlides
 
             }
+
         }
     }
 
@@ -56,7 +57,6 @@ class HomeViewModel @Inject constructor(
 
     //External LiveData
     val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
-
 
 
     fun getTestimonials() {
@@ -78,19 +78,19 @@ class HomeViewModel @Inject constructor(
     //Internal MutableLiveData
     private val _newsStatus = MutableLiveData<State>()
     private val _newsList = MutableLiveData<List<New>?>()
+
     //External LiveData
     val newsStatus: LiveData<State> = _newsStatus
     val newsList: LiveData<List<New>?> = _newsList
 
-    suspend fun getNews(){
+    private fun getNews() {
         _newsStatus.value = State.Loading()
         viewModelScope.launch {
             try {
-                // val news = homeRepository.getNews().data
+                val news = homeRepository.getNews().data
                 _newsStatus.value = State.Success()
-                // _newsList.value = news
-            }
-            catch (e: Exception){
+                _newsList.value = news
+            } catch (e: Exception) {
                 _newsStatus.value = State.Failure(e)
             }
         }
