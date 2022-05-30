@@ -1,4 +1,4 @@
-package com.melvin.ongandroid.view
+package com.melvin.ongandroid.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,13 +17,13 @@ class NewsViewPagerAdapter(private val newsList: List<New>): RecyclerView.Adapte
 
         fun setData (new: New){
             //Set title
-            binding.tvNewName.text = new.title
+            binding.tvNewName.text = new.name
             //Set description
-            binding.tvNewDesc.text = new.desc
+            binding.tvNewDesc.text = new.content
             //Load image
             Glide.with(binding.root.context)
-                .load(new.imageUrl)
-                .error(R.drawable.ic_baseline_broken_image_100)
+                .load(new.image)
+                .error(R.drawable.ic_home) // ic_baseline_broken_image_100 not found
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivNewsImage)
         }

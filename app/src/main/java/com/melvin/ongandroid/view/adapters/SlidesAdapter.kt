@@ -1,4 +1,4 @@
-package com.melvin.ongandroid.view
+package com.melvin.ongandroid.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,9 +9,9 @@ import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.SlidesListItemBinding
 import com.melvin.ongandroid.model.data.slides.Slide
 
-class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.ActivitiesViewHolder>() {
+class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.TestimonyViewHolder>() {
 
-    class ActivitiesViewHolder(private var binding: SlidesListItemBinding):
+    class TestimonyViewHolder(private var binding: SlidesListItemBinding):
         RecyclerView.ViewHolder(binding.root){
 
             fun bind(slide: Slide){
@@ -22,14 +22,14 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
                 //Load image
                 Glide.with(binding.root.context)
                     .load(slide.imageSlide)
-                    .error(R.drawable.ic_baseline_broken_image_100)
+                    //.error(R.drawable.ic_baseline_broken_image_100)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(binding.ivSlideImage)
             }
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivitiesViewHolder {
-        return SlidesAdapter.ActivitiesViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestimonyViewHolder {
+        return TestimonyViewHolder(
             SlidesListItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
@@ -38,7 +38,7 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
         )
     }
 
-    override fun onBindViewHolder(holder: ActivitiesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TestimonyViewHolder, position: Int) {
         holder.bind(dataSet[position])
     }
 

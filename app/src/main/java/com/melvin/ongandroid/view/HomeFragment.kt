@@ -5,16 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.melvin.ongandroid.R
-import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
-import com.melvin.ongandroid.model.ONGApi
+import com.melvin.ongandroid.view.adapters.SlidesAdapter
+import com.melvin.ongandroid.view.adapters.TestimonyAdapter
 import com.melvin.ongandroid.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private val viewModel by viewModels<HomeViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,13 +30,16 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
-        val viewModel = HomeViewModel()
+
 
         setSlides(viewModel, binding) //Load activities
         setNews(viewModel,binding) //Load news
+        setTestimony(viewModel, binding) //Load testimony
 
         return binding.root
     }
+
+
 
     override fun onDestroyView() {
 
@@ -51,7 +58,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding){
-       /* val newsList //Add news
+/*        val newsList //Add news
         //Initialize news adapter
         binding.vpNews.adapter = NewsViewPagerAdapter()
 
@@ -67,6 +74,14 @@ class HomeFragment : Fragment() {
                 }
             }
         )*/
+    }
+
+    private fun setTestimony(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
+        val testimonyList = viewModel.testimonialsList.value
+        //Initialize testimony adapter
+        if (testimonyList != null)
+            binding.rvTestimony.adapter = TestimonyAdapter(testimonyList)
+
     }
 
     private fun onDestroyNews(){

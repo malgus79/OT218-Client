@@ -14,8 +14,8 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ONGAndroid">
         <activity
-            android:name=".view.Navigation"
-            android:exported="false" />
+            android:name=".view.NavigationActivity"
+            android:exported="true" />
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

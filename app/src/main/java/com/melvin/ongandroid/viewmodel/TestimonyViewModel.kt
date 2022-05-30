@@ -5,50 +5,39 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
-
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
+class TestimonyViewModel @Inject constructor(private val homeRepository: HomeRepository) :
     ViewModel() {
 
-    //Create states
+    //Create states testimony
     private val _state = MutableLiveData<State>()
     val state: LiveData<State>
         get() = _state
 
-    //Create Spinner Loading
-    private val _showProgress: MutableLiveData<State> = MutableLiveData()
-    val showProgress: LiveData<State>
-        get() = _state
-
-    //Create progressBar
-    fun isShowProgress(): LiveData<State> {
-        return showProgress
-    }
-
-    //Call Slides
-    suspend fun getHomeSlides() {
+    //metodo show Testimony
+    fun getTestimonials() {
         _state.value = State.Loading()
         viewModelScope.launch {
-            val homeSlides = homeRepository.getHomeSlides()
+            val testimonyList = homeRepository.getTestimonials()
+            if (testimonyList.testimonialsList.isNullOrEmpty()) {
+                throw TestimonyListNotFoundedException()
+            } else {
+                _state.postValue(State.Success(testimonyList))
+            }
         }
     }
 
-    //Call Testimonials
-    suspend fun getTestimonials() {
-        _state.value = State.Loading()
-        viewModelScope.launch {
-            val testimonials = homeRepository.getTestimonials()
-        }
-    }
 
     //Definition of states
     sealed class State() {
-        class Success() : State()
+        class Success(val testimonialsList: TestimonialsList) : State()
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
+    class TestimonyListNotFoundedException : Exception("The api returned an empty list")
 }

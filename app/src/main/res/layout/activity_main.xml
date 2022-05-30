@@ -7,65 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<Button
-=======
+    <!--
     <Button
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-    <Button
->>>>>>> 03694ee (fix commit)
-=======
-    <Button
->>>>>>> ccc2116416078e599d55bef32066aef99fd105ca
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        app:layout_constraintHorizontal_bias="0.5"
-=======
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:progressBarStyle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> 03694ee (fix commit)
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:progressBarStyle"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_centerHorizontal="true"
-=======
->>>>>>> ccc2116416078e599d55bef32066aef99fd105ca
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> 03694ee (fix commit)
+        app:layout_constraintTop_toTopOf="parent"/>
+-->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.melvin.ongandroid.view.HomeFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
