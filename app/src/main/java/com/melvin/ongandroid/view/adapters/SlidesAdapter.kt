@@ -12,6 +12,7 @@ import com.melvin.ongandroid.model.data.slides.Slide
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 class SlidesAdapter(private val dataSet: List<Slide>) :
     RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
 
@@ -54,6 +55,14 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
 
     class TestimonyViewHolder(private var binding: SlidesListItemBinding):
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boolean) :
+    RecyclerView.Adapter<SlidesAdapter.SlideViewHolder>() {
+
+    private val homeDataSet = dataSet.take(4)
+
+    class SlideViewHolder(private var binding: SlidesListItemBinding):
+>>>>>>> 08a6025 (slider compiling)
         RecyclerView.ViewHolder(binding.root){
 
             fun bind(slide: Slide){
@@ -64,6 +73,7 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
                 //Load image
                 Glide.with(binding.root.context)
                     .load(slide.imageSlide)
+<<<<<<< HEAD
 <<<<<<< HEAD
                     .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
                     .transition(DrawableTransitionOptions.withCrossFade())
@@ -83,11 +93,15 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
                     //.error(R.drawable.ic_baseline_broken_image_100)
+=======
+                    .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
+>>>>>>> 08a6025 (slider compiling)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(binding.ivSlideImage)
             }
         }
 
+<<<<<<< HEAD
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestimonyViewHolder {
         return TestimonyViewHolder(
 >>>>>>> 5e4589c (Testimony fragment added)
@@ -98,11 +112,14 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
             )
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> 08a6025 (slider compiling)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideViewHolder {
         val binding = SlidesListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
+<<<<<<< HEAD
 >>>>>>> 08a6025 (slider compiling)
         )
         return SlideViewHolder(binding)
@@ -119,27 +136,41 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
     override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
 >>>>>>> 08a6025 (slider compiling)
 =======
+=======
+>>>>>>> 08a6025 (slider compiling)
         )
+        return SlideViewHolder(binding)
     }
 
+<<<<<<< HEAD
     override fun onBindViewHolder(holder: TestimonyViewHolder, position: Int) {
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+
+    override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
+>>>>>>> 08a6025 (slider compiling)
         holder.bind(dataSet[position])
     }
 
     override fun getItemCount(): Int {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         return dataSet.size
 =======
+=======
+>>>>>>> 08a6025 (slider compiling)
         if (isHome)
             return homeDataSet.size
 
         return  dataSet.size
+<<<<<<< HEAD
 >>>>>>> a53495d (slider compiling)
 =======
       return  dataSet.size
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> 08a6025 (slider compiling)
     }
 
 

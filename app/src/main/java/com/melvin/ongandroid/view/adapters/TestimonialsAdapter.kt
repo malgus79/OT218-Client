@@ -19,7 +19,11 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
 
         fun bind(testimonial: Testimonial) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             //Set name
+=======
+            //Set title
+>>>>>>> 08a6025 (slider compiling)
 =======
             //Set title
 >>>>>>> 08a6025 (slider compiling)
@@ -30,7 +34,11 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
             Glide.with(binding.root.context)
                 .load(testimonial.image)
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .error(R.drawable.ic_baseline_broken_image_24)
+=======
+                .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
+>>>>>>> 08a6025 (slider compiling)
 =======
                 .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
 >>>>>>> 08a6025 (slider compiling)
@@ -57,12 +65,18 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
             return homeDataSet.size
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         return  dataSet.size
     }
 =======
+=======
+>>>>>>> 08a6025 (slider compiling)
         return dataSet.size
     }
 
 
+<<<<<<< HEAD
+>>>>>>> 08a6025 (slider compiling)
+=======
 >>>>>>> 08a6025 (slider compiling)
 }

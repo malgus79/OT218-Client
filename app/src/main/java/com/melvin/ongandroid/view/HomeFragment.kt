@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
-import com.melvin.ongandroid.view.adapters.TestimonyAdapter
+import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
 import com.melvin.ongandroid.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,14 +32,20 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater)
 
+        //Loads data and updates on changes
+        viewModel.slidesList.observe(viewLifecycleOwner, Observer {
+            setSlides(viewModel, binding) //Load Slides
+            setTestimonials(viewModel, binding) //Load testimonials
+        })
 
-        setSlides(viewModel, binding) //Load activities
-        setNews(viewModel,binding) //Load news
-        setTestimony(viewModel, binding) //Load testimony
 
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
 
 
     override fun onDestroyView() {
@@ -50,11 +57,18 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun setSlides(viewModel : HomeViewModel, binding: FragmentHomeBinding){
+    private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
-        //Initialize slides adapter
-        if (slidesList != null)
-        binding.rvSlides.adapter = SlidesAdapter(slidesList)
+
+        if (slidesList == null || !slidesList.success!!) {
+            //TODO ERROR IMPLEMENTATION
+        } else {
+            if (!slidesList.slide.isNullOrEmpty()) {
+                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide, true)
+            } else {
+                //TODO ERROR IMPLEMENTATION
+            }
+        }
     }
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding){
@@ -76,12 +90,19 @@ class HomeFragment : Fragment() {
         )*/
     }
 
-    private fun setTestimony(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val testimonyList = viewModel.testimonialsList.value
-        //Initialize testimony adapter
-        if (testimonyList != null)
-            binding.rvTestimony.adapter = TestimonyAdapter(testimonyList)
+    private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
+        val testimonialsList = viewModel.testimonialsList.value
 
+        if (testimonialsList == null || !testimonialsList.success) {
+            //TODO ERROR IMPLEMENTATION
+        } else {
+            if (!testimonialsList.testimonialsList.isNullOrEmpty()) {
+                binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonialsList,true)
+            } else {
+                //TODO ERROR IMPLEMENTATION
+
+            }
+        }
     }
 
     private fun onDestroyNews(){

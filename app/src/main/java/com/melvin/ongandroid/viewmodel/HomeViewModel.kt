@@ -25,9 +25,13 @@ import com.melvin.ongandroid.model.data.slides.Slide
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.Testimonial
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
+>>>>>>> 08a6025 (slider compiling)
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
@@ -46,9 +50,15 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         getNews()
     }
 
+    init {
+        getSlides()
+        getTestimonials()
+    }
+
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _slidesList = MutableLiveData<SlidesList>()
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     //External LiveData
@@ -70,6 +80,17 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     fun getSlides() {
         var homeSlides: SlidesList
         viewModelScope.launch {
+=======
+    //External LiveData
+
+    val slidesList: LiveData<SlidesList> = _slidesList
+
+
+    fun getSlides() {
+        var homeSlides: SlidesList
+        viewModelScope.launch {
+
+>>>>>>> 08a6025 (slider compiling)
             try {
                 homeSlides = homeRepository.getHomeSlides()
                 _slidesList.value = homeSlides
@@ -84,6 +105,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
+<<<<<<< HEAD
 <<<<<<< HEAD
     private val _testimonialsList = MutableLiveData<TestimonialsList>()
 
@@ -103,6 +125,16 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 >>>>>>> 08a6025 (slider compiling)
         var homeTestimonials: TestimonialsList
 
+=======
+
+    private val _testimonialsList = MutableLiveData<TestimonialsList>()
+    //External LiveData
+
+    val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
+
+    fun getTestimonials(){
+        var homeTestimonials: TestimonialsList
+>>>>>>> 08a6025 (slider compiling)
         viewModelScope.launch {
 
             try {
@@ -110,9 +142,14 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
                 _testimonialsList.value = homeTestimonials
 
             } catch (e: Exception) {
+<<<<<<< HEAD
                 homeTestimonials = TestimonialsList(false, null, "Error retrieving testimonials")
                 _testimonialsList.value = homeTestimonials
 
+=======
+                homeTestimonials = TestimonialsList(false,null,"Error retrieving testimonials")
+                _testimonialsList.value = homeTestimonials
+>>>>>>> 08a6025 (slider compiling)
             }
         }
     }
@@ -120,7 +157,15 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* ---------------------------NEWS REQUEST--------------------------- */
+=======
+/*
+
+    */
+/* ---------------------------NEWS REQUEST--------------------------- *//*
+
+>>>>>>> 08a6025 (slider compiling)
     //Internal MutableLiveData
     private val _newsList = MutableLiveData<NewsList>()
 
@@ -184,9 +229,13 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 */
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+*/
+>>>>>>> 08a6025 (slider compiling)
 
     sealed class State() {
         class Success() : State()
