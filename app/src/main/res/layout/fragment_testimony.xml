@@ -68,26 +68,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-<<<<<<< HEAD
-
-=======
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
     <ProgressBar
         android:id="@+id/progressBar1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-<<<<<<< HEAD
         android:visibility="gone"
-=======
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 </androidx.constraintlayout.widget.ConstraintLayout>

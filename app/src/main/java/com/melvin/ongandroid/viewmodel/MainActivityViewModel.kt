@@ -36,7 +36,7 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
         }
     }
 
-    //Call Testimonials
+    //Definition of states
     suspend fun getTestimonials() {
         _state.value = State.Loading()
         viewModelScope.launch {
@@ -44,13 +44,4 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
         }
     }
 
-<<<<<<< HEAD
-=======
-    //Definition of states
-    sealed class State() {
-        class Success() : State()
-        class Failure(val cause: Throwable) : State()
-        class Loading() : State()
-    }
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 }

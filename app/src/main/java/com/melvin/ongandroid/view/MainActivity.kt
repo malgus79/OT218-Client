@@ -13,12 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-<<<<<<< HEAD
     private lateinit var binding: ActivityNavigationBinding
-=======
-    private lateinit var binding: ActivityMainBinding
-//    private lateinit var mainActivityViewModel: MainActivityViewModel
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
     private val viewModel by viewModels<MainActivityViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         //Show Spinner Loading
         viewModel.isShowProgress()
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
     }
 }

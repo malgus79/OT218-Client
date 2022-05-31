@@ -13,12 +13,7 @@
     <string name="testimonios">Testimonios</string>
     <string name="add_my_testimonial">Agregar mi testimonio</string>
     <string name="img_testimony">Imagen de testimonio</string>
-<<<<<<< HEAD
     <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment_Testimony">Hello blank fragment</string>
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
     <string name="vector_down">Vector down</string>
     <string name="activities">Actividades</string>
 </resources>

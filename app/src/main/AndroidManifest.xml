@@ -14,13 +14,8 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ONGAndroid">
         <activity
-<<<<<<< HEAD
             android:name=".view.NavigationActivity"
             android:exported="false" />
-=======
-            android:name=".view.Navigation"
-            android:exported="true" />
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

@@ -1,9 +1,6 @@
 package com.melvin.ongandroid.model.network
 
-<<<<<<< HEAD
 import com.melvin.ongandroid.model.data.activities.ActivitiesList
-=======
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
@@ -24,11 +21,8 @@ interface APIServices {
     @GET("api/news")
     suspend fun getNews(): NewsList
 
-<<<<<<< HEAD
     //This endpoint returns a list of Activities
     @GET("api/activities")
     suspend fun getActivities(): ActivitiesList
 
-=======
->>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 }
