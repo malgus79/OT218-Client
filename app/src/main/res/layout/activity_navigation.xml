@@ -14,10 +14,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toTopOf="parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"/>
+=======
+        app:layout_constraintTop_toTopOf="parent"/>
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

@@ -14,9 +14,13 @@ import javax.inject.Inject
 import kotlin.Exception
 
 @HiltViewModel
+<<<<<<< HEAD
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
+=======
+class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 
     init {
         getSlides()
@@ -31,7 +35,10 @@ class HomeViewModel @Inject constructor(
     //External LiveData
     val slidesList: LiveData<SlidesList> = _slidesList
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
     fun getSlides() {
         var homeSlides: SlidesList
         viewModelScope.launch {
@@ -54,7 +61,10 @@ class HomeViewModel @Inject constructor(
     //External LiveData
     val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
     fun getTestimonials() {
         var homeTestimonials: TestimonialsList
 
@@ -72,6 +82,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+<<<<<<< HEAD
     /* ---------------------------NEWS REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _newsList = MutableLiveData<NewsList>()
@@ -97,4 +108,35 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+=======
+/* ---------------------------NEWS REQUEST--------------------------- *//*
+
+    //Internal MutableLiveData
+    private val _newsStatus = MutableLiveData<State>()
+    private val _newsList = MutableLiveData<List<New>?>()
+    //External LiveData
+    val newsStatus: LiveData<State> = _newsStatus
+    val newsList: LiveData<List<New>?> = _newsList
+
+    suspend fun getNews(){
+        _newsStatus.value = State.Loading()
+        viewModelScope.launch {
+            try {
+                // val news = homeRepository.getNews().data
+                _newsStatus.value = State.Success()
+                // _newsList.value = news
+            }
+            catch (e: Exception){
+                _newsStatus.value = State.Failure(e)
+            }
+        }
+    }
+*/
+
+    sealed class State() {
+        class Success() : State()
+        class Failure(val cause: Throwable) : State()
+        class Loading() : State()
+    }
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 }

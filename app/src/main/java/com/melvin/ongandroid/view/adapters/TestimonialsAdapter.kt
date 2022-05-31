@@ -25,7 +25,7 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
             //Load image
             Glide.with(binding.root.context)
                 .load(testimonial.image)
-                .error(R.drawable.ic_baseline_broken_image_24)
+                .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivTestimonyImage)
         }

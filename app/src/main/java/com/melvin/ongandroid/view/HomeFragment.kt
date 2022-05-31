@@ -26,6 +26,12 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<HomeViewModel>()
 
+<<<<<<< HEAD
+=======
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +40,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         //Loads data and updates on changes
-        viewModel.slidesList.observe(this, Observer {
+        viewModel.slidesList.observe(viewLifecycleOwner, Observer {
             setSlides(viewModel, binding) //Load Slides
 
 
@@ -48,20 +54,28 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+<<<<<<< HEAD
+=======
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        }
+
+
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
     override fun onDestroyView() {
         super.onDestroyView()
         onDestroyNews()
     }
 
-
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
 
-        if (slidesList == null || !slidesList.success) {
+        if (slidesList == null || !slidesList.success!!) {
             //TODO ERROR IMPLEMENTATION
         } else {
             if (!slidesList.slide.isNullOrEmpty()) {
-                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
+                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide, true)
             } else {
                 //TODO ERROR IMPLEMENTATION
             }
@@ -110,12 +124,15 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun onDestroyNews() {
+    private fun onDestroyNews(){
         val viewpager = view?.findViewById<ViewPager2>(R.id.vp_news)
         //Unregistering the onPageChangedCallback
         viewpager?.unregisterOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {}
         )
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ee97f54ad755c3795943cd7fc03e4f3485834fc8
 }
