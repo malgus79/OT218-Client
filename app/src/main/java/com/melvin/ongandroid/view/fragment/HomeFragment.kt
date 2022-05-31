@@ -36,7 +36,13 @@ class HomeFragment : Fragment() {
         //Loads data and updates on changes
         viewModel.slidesList.observe(this, Observer {
             setSlides(viewModel, binding) //Load Slides
+
+
+        })
+        viewModel.testimonialsList.observe(this, Observer{
             setTestimonials(viewModel, binding) //Load testimonials
+        })
+        viewModel.newsList.observe(this, Observer {
             setNews(viewModel, binding) //Load news
         })
         return binding.root
