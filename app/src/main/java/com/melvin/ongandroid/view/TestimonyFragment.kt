@@ -73,7 +73,7 @@ class TestimonyFragment : Fragment() {
     }
 
     private fun showTestimony(testimonialsList: TestimonialsList) {
-        binding.rvTestimony.adapter
+       
 
 <<<<<<< HEAD
 <<<<<<< HEAD
