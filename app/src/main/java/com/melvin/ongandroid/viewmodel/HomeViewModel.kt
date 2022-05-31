@@ -9,6 +9,7 @@ import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import com.melvin.ongandroid.model.data.news.New
+import com.melvin.ongandroid.model.data.news.NewsList
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.Exception
@@ -21,23 +22,21 @@ class HomeViewModel @Inject constructor(
     init {
         getSlides()
         getTestimonials()
+        getNews()
     }
 
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _slidesList = MutableLiveData<SlidesList>()
-    private val _slidesStatus = MutableLiveData<State>()
 
     //External LiveData
-    val slidesStatus: LiveData<State> = _slidesStatus
     val slidesList: LiveData<SlidesList> = _slidesList
-
-
 
 
     fun getSlides() {
         var homeSlides: SlidesList
         viewModelScope.launch {
+
             try {
                 homeSlides = homeRepository.getHomeSlides()
                 _slidesList.value = homeSlides
@@ -47,7 +46,6 @@ class HomeViewModel @Inject constructor(
                 _slidesList.value = homeSlides
 
             }
-
         }
     }
 
@@ -68,7 +66,7 @@ class HomeViewModel @Inject constructor(
                 _testimonialsList.value = homeTestimonials
 
             } catch (e: Exception) {
-                homeTestimonials = TestimonialsList(false,null,"Error retrieving testimonials")
+                homeTestimonials = TestimonialsList(false, null, "Error retrieving testimonials")
                 _testimonialsList.value = homeTestimonials
             }
         }
@@ -76,23 +74,26 @@ class HomeViewModel @Inject constructor(
 
     /* ---------------------------NEWS REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _newsStatus = MutableLiveData<State>()
-    private val _newsList = MutableLiveData<List<New>?>()
+    private val _newsList = MutableLiveData<NewsList>()
 
     //External LiveData
-    val newsStatus: LiveData<State> = _newsStatus
-    val newsList: LiveData<List<New>?> = _newsList
+    val newsList: LiveData<NewsList> = _newsList
 
     private fun getNews() {
-        _newsStatus.value = State.Loading()
+        var newsList: NewsList
         viewModelScope.launch {
+
             try {
-                val news = homeRepository.getNews().data
-                _newsStatus.value = State.Success()
-                _newsList.value = news
+                newsList = homeRepository.getNews()
+                _newsList.value = newsList
+
             } catch (e: Exception) {
-                _newsStatus.value = State.Failure(e)
+                newsList = NewsList(emptyList(), "Error retrieving slides", false)
+                _newsList.value = newsList
+
             }
+
+
         }
     }
 

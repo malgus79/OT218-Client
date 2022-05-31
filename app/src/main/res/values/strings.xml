@@ -6,7 +6,6 @@
     <string name="description_img_logo">Logo home</string>
     <string name="image_slide">Image Slide</string>
     <string name="contact_us">Contactanos</string>
-<<<<<<< HEAD
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
     <string name="testimony_name">Nombre y Apellido</string>
@@ -16,8 +15,4 @@
     <string name="img_testimony">Imagen de testimonio</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="vector_down">Vector down</string>
-=======
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> 68f780d (merge conflicts)
 </resources>

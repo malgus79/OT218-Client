@@ -1,4 +1,4 @@
-package com.melvin.ongandroid.model
+package com.melvin.ongandroid.model.network
 
 
 import okhttp3.OkHttpClient

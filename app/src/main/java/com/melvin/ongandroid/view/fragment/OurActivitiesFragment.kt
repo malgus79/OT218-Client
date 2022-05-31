@@ -21,8 +21,7 @@ import javax.inject.Inject
 class OurActivitiesFragment : Fragment() {
 
     private var _binding: FragmentOurActivitiesBinding? = null
-    @Inject
-    lateinit var viewModel: HomeViewModel
+    private val viewModel by viewModels<HomeViewModel>()
     private val binding get() = _binding!!
 
     override fun onCreateView(
