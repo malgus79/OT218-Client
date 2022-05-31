@@ -2,7 +2,7 @@ package com.melvin.ongandroid.model.data.activities
 
 import com.google.gson.annotations.SerializedName
 
-class Activities (
+class Activity (
     @SerializedName("id")
     val id : Int?,
 
@@ -25,11 +25,17 @@ class Activities (
     val category_id : Int?,
 
     @SerializedName("created_at")
-    val created_at : String,
+    val created_at : String?,
 
     @SerializedName("updated_at")
-    val updated_at : String,
+    val updated_at : String?,
 
     @SerializedName("deleted_at")
-    val deleted_at : String = ""
+    val deleted_at : String?
+)
+
+data class ActivitiesList(
+    @SerializedName("success") val success: Boolean = false,
+    @SerializedName("data") val data: List<Activity>?,
+    @SerializedName("message") val message: String?
 )
