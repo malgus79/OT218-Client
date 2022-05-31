@@ -4,32 +4,32 @@ import com.google.gson.annotations.SerializedName
 
 data class New(
     @SerializedName("id")
-    val id : Int?,
+    val id: Int?,
 
     @SerializedName("name")
-    val name : String?,
+    val name: String?,
 
     @SerializedName("slug")
-    val slug : String?,
+    val slug: String?,
 
     @SerializedName("content")
-    val content : String?,
+    val content: String?,
 
     @SerializedName("image")
-    val image : String?,
+    val image: String?,
 
     @SerializedName("user_id")
-    val user_id : Int?,
+    val user_id: Int?,
 
     @SerializedName("category_id")
-    val category_id : Int?,
+    val category_id: Int?,
 
     @SerializedName("created_at")
-    val created_at : String,
+    val created_at: String,
 
     @SerializedName("updated_at")
-    val updated_at : String,
+    val updated_at: String,
 
     @SerializedName("deleted_at")
-    val deleted_at : String = ""
+    val deleted_at: String = "",
 )

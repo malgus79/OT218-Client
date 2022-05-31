@@ -7,6 +7,7 @@ data class NewsList(
     @SerializedName("message") val message: String?,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     @SerializedName("success") val success: Boolean = false
 =======
     @SerializedName("success") val success: Boolean?
@@ -14,4 +15,7 @@ data class NewsList(
 =======
     @SerializedName("success") val success: Boolean?
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+    @SerializedName("success") val success: Boolean?,
+>>>>>>> ee97f54 (post PR en local)
 )

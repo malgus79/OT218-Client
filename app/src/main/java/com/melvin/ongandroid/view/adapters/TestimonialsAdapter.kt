@@ -18,30 +18,30 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(testimonial: Testimonial) {
-<<<<<<< HEAD
-<<<<<<< HEAD
             //Set name
+<<<<<<< HEAD
 =======
             //Set title
 >>>>>>> 08a6025 (slider compiling)
 =======
             //Set title
 >>>>>>> 08a6025 (slider compiling)
+=======
+>>>>>>> ee97f54 (post PR en local)
             binding.tvTestimonyName.text = testimonial.name
             //Set description
             binding.tvTestimonyDescription.text = testimonial.description
             //Load image
             Glide.with(binding.root.context)
                 .load(testimonial.image)
-<<<<<<< HEAD
-<<<<<<< HEAD
-                .error(R.drawable.ic_baseline_broken_image_24)
-=======
                 .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
+<<<<<<< HEAD
 >>>>>>> 08a6025 (slider compiling)
 =======
                 .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
 >>>>>>> 08a6025 (slider compiling)
+=======
+>>>>>>> ee97f54 (post PR en local)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivTestimonyImage)
         }
@@ -64,10 +64,9 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
         if (isHome)
             return homeDataSet.size
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         return  dataSet.size
     }
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 08a6025 (slider compiling)
@@ -79,4 +78,6 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
 >>>>>>> 08a6025 (slider compiling)
 =======
 >>>>>>> 08a6025 (slider compiling)
+=======
+>>>>>>> ee97f54 (post PR en local)
 }

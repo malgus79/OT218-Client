@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
+=======
+import androidx.core.view.isVisible
+>>>>>>> ee97f54 (post PR en local)
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
@@ -36,16 +40,25 @@ class HomeFragment : Fragment() {
             setSlides(viewModel, binding) //Load Slides
             setTestimonials(viewModel, binding) //Load testimonials
         })
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee97f54 (post PR en local)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-    }
+        }
 
+<<<<<<< HEAD
     override fun onDestroyView() {
 
+=======
+
+    override fun onDestroyView() {
+>>>>>>> ee97f54 (post PR en local)
         super.onDestroyView()
         onDestroyNews()
 
@@ -65,6 +78,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+<<<<<<< HEAD
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding){
 /*        val newsList //Add news
         //Initialize news adapter
@@ -82,6 +96,25 @@ class HomeFragment : Fragment() {
                 }
             }
         )*/
+=======
+    private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
+        /* val newsList //Add news
+         //Initialize news adapter
+         binding.vpNews.adapter = NewsViewPagerAdapter()
+
+         //Set starting page for news viewpager
+         val currentPageIndex = 0
+         binding.vpNews.currentItem = currentPageIndex
+
+         //Registering for page change callback
+         binding.vpNews.registerOnPageChangeCallback(
+             object : ViewPager2.OnPageChangeCallback(){
+                 override fun onPageSelected(position: Int) {
+                     super.onPageSelected(position)
+                 }
+             }
+         )*/
+>>>>>>> ee97f54 (post PR en local)
     }
 
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
@@ -90,10 +123,18 @@ class HomeFragment : Fragment() {
         if (testimonialsList == null || !testimonialsList.success) {
             //TODO ERROR IMPLEMENTATION
         } else {
+<<<<<<< HEAD
             if (!testimonialsList.testimonialsList.isNullOrEmpty()) {
                 binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonialsList,true)
             } else {
                 //TODO ERROR IMPLEMENTATION
+=======
+            if (!testimonialsList.testimonials.isNullOrEmpty()) {
+                binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonials,true)
+            } else {
+                //TODO ERROR IMPLEMENTATION
+
+>>>>>>> ee97f54 (post PR en local)
             }
         }
     }

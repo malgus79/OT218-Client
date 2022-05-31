@@ -2,6 +2,7 @@ package com.melvin.ongandroid.businesslogic.repository
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
@@ -17,9 +18,12 @@ import com.melvin.ongandroid.model.APIServices
 =======
 import com.melvin.ongandroid.model.data.news.NewsList
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+import com.melvin.ongandroid.model.data.news.NewsList
+>>>>>>> ee97f54 (post PR en local)
 import com.melvin.ongandroid.model.data.slides.SlidesList
-import com.melvin.ongandroid.model.data.testimonials.Testimonial
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import com.melvin.ongandroid.model.data.HomeSlides
@@ -51,12 +55,16 @@ import com.melvin.ongandroid.model.data.Testimonials
 >>>>>>> 827da8a (Testimonials layout created)
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+import com.melvin.ongandroid.model.network.APIServices
+>>>>>>> ee97f54 (post PR en local)
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class HomeRepository @Inject constructor(private val APIService: APIServices) {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -139,11 +147,17 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
  //Calls APIservice getHomeSlides suspend function
     suspend fun getHomeSlides() : SlidesList {
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+    //Calls APIservice getHomeSlides suspend function
+    suspend fun getHomeSlides(): SlidesList {
+
+>>>>>>> ee97f54 (post PR en local)
         return APIService.getHomeSlides()
     }
 
 >>>>>>> dd3c420 (Testimony fragment added)
     //Calls APIservice getTestimonials suspend function
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     suspend fun getTestimonials(): Testimonials {
@@ -166,8 +180,9 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
     }
 
     //Calls APIservice getTestimonials suspend function
+=======
+>>>>>>> ee97f54 (post PR en local)
     suspend fun getTestimonials(): TestimonialsList {
->>>>>>> 5e4589c (Testimony fragment added)
         return APIService.getTestimonials()
     }
 

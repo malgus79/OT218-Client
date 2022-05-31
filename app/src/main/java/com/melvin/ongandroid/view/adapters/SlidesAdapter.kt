@@ -13,6 +13,7 @@ import com.melvin.ongandroid.model.data.slides.Slide
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 class SlidesAdapter(private val dataSet: List<Slide>) :
     RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
 
@@ -43,12 +44,15 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
     class TestimonyViewHolder(private var binding: SlidesListItemBinding):
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
+=======
+>>>>>>> ee97f54 (post PR en local)
 class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boolean) :
     RecyclerView.Adapter<SlidesAdapter.SlideViewHolder>() {
 
     private val homeDataSet = dataSet.take(4)
 
     class SlideViewHolder(private var binding: SlidesListItemBinding):
+<<<<<<< HEAD
 >>>>>>> 08a6025 (slider compiling)
 =======
 class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.TestimonyViewHolder>() {
@@ -63,6 +67,8 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
 
     class SlideViewHolder(private var binding: SlidesListItemBinding):
 >>>>>>> 08a6025 (slider compiling)
+=======
+>>>>>>> ee97f54 (post PR en local)
         RecyclerView.ViewHolder(binding.root){
 
             fun bind(slide: Slide){
@@ -83,6 +89,7 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlidesViewHolder {
@@ -114,17 +121,23 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
 =======
 =======
 >>>>>>> 08a6025 (slider compiling)
+=======
+>>>>>>> ee97f54 (post PR en local)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideViewHolder {
         val binding = SlidesListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 08a6025 (slider compiling)
+=======
+>>>>>>> ee97f54 (post PR en local)
         )
         return SlideViewHolder(binding)
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     override fun onBindViewHolder(holder: SlidesViewHolder, position: Int) {
@@ -149,6 +162,9 @@ class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boole
 
     override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
 >>>>>>> 08a6025 (slider compiling)
+=======
+    override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
+>>>>>>> ee97f54 (post PR en local)
         holder.bind(dataSet[position])
     }
 

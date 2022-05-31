@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
@@ -60,9 +61,10 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainActivityViewModel>()
 >>>>>>> 827da8a (Testimonials layout created)
 =======
+=======
+>>>>>>> ee97f54 (post PR en local)
 //    private lateinit var mainActivityViewModel: MainActivityViewModel
     private val viewModel by viewModels<MainActivityViewModel>()
->>>>>>> 5e4589c (Testimony fragment added)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Show Spinner Loading
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -138,6 +141,10 @@ class MainActivity : AppCompatActivity() {
     }
 >>>>>>> 5e4589c (Testimony fragment added)
 
+=======
+        viewModel.isShowProgress()
+    }
+>>>>>>> ee97f54 (post PR en local)
 }
 
 

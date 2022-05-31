@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
-<<<<<<< HEAD
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,6 +14,7 @@ import javax.inject.Inject
 import kotlin.Exception
 
 @HiltViewModel
+<<<<<<< HEAD
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
@@ -49,6 +49,9 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         getTestimonials()
         getNews()
     }
+=======
+class HomeViewModel @Inject constructor(private val homeRepository: HomeRepository) : ViewModel() {
+>>>>>>> ee97f54 (post PR en local)
 
     init {
         getSlides()
@@ -58,12 +61,11 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _slidesList = MutableLiveData<SlidesList>()
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     //External LiveData
     val slidesList: LiveData<SlidesList> = _slidesList
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -86,6 +88,8 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     val slidesList: LiveData<SlidesList> = _slidesList
 
 
+=======
+>>>>>>> ee97f54 (post PR en local)
     fun getSlides() {
         var homeSlides: SlidesList
         viewModelScope.launch {
@@ -105,13 +109,12 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
-<<<<<<< HEAD
-<<<<<<< HEAD
     private val _testimonialsList = MutableLiveData<TestimonialsList>()
 
     //External LiveData
     val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
 
+<<<<<<< HEAD
 
     fun getTestimonials() {
 =======
@@ -123,6 +126,9 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
 
     fun getTestimonials(){
 >>>>>>> 08a6025 (slider compiling)
+=======
+    fun getTestimonials() {
+>>>>>>> ee97f54 (post PR en local)
         var homeTestimonials: TestimonialsList
 
 =======
@@ -154,6 +160,7 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -207,6 +214,10 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
     //Internal MutableLiveData
 =======
     /* ---------------------------NEWS REQUEST--------------------------- */
+=======
+/* ---------------------------NEWS REQUEST--------------------------- *//*
+
+>>>>>>> ee97f54 (post PR en local)
     //Internal MutableLiveData
 >>>>>>> 5e4589c (Testimony fragment added)
     private val _newsStatus = MutableLiveData<State>()
@@ -243,5 +254,8 @@ class HomeViewModel @Inject constructor(private val homeRepository: HomeReposito
         class Loading() : State()
     }
 }
+<<<<<<< HEAD
 >>>>>>> 5e4589c (Testimony fragment added)
 >>>>>>> dd3c420 (Testimony fragment added)
+=======
+>>>>>>> ee97f54 (post PR en local)

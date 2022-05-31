@@ -17,6 +17,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <Button
 =======
 =======
@@ -56,6 +57,10 @@
     <!--
     <Button
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+    <!--
+    <Button
+>>>>>>> ee97f54 (post PR en local)
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,6 +71,7 @@
 <<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.5"/>
@@ -176,6 +182,8 @@
 =======
 >>>>>>> 03694ee (fix commit)
 =======
+=======
+>>>>>>> ee97f54 (post PR en local)
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
 =======
@@ -192,6 +200,7 @@
         android:layout_height="match_parent"
         android:name="com.melvin.ongandroid.view.HomeFragment"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
 >>>>>>> cb766a0 (fix commit)
@@ -204,6 +213,8 @@
 >>>>>>> 03694ee (fix commit)
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> ee97f54 (post PR en local)
 
     <ProgressBar
         android:id="@+id/progressBar2"

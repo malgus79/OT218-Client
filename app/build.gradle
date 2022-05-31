@@ -83,12 +83,15 @@ dependencies {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> ee97f54 (post PR en local)
     //ViewPager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     // Hilt
@@ -102,6 +105,7 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:2.41"
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     // Hilt
@@ -128,4 +132,6 @@ dependencies {
 =======
 
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> ee97f54 (post PR en local)
 }

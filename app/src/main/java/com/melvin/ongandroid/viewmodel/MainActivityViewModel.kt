@@ -13,6 +13,7 @@ import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import com.melvin.ongandroid.model.data.HomeSlides
 <<<<<<< HEAD
@@ -46,6 +47,8 @@ import com.melvin.ongandroid.model.data.HomeSlides
 =======
 
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> ee97f54 (post PR en local)
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -61,6 +64,7 @@ import javax.inject.Inject
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> c555745 (Hilt dependencies and spinner  added)
 =======
@@ -105,6 +109,10 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
     ViewModel() {
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
+    ViewModel() {
+>>>>>>> ee97f54 (post PR en local)
 
     //Create states
     private val _state = MutableLiveData<State>()
@@ -129,6 +137,7 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -175,15 +184,17 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
     suspend fun getTestimonials() {
 >>>>>>> 03694ee (fix commit)
 =======
+=======
+>>>>>>> ee97f54 (post PR en local)
     //Call Testimonials
     suspend fun getTestimonials() {
->>>>>>> 5e4589c (Testimony fragment added)
         _state.value = State.Loading()
         viewModelScope.launch {
             val testimonials = homeRepository.getTestimonials()
         }
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -248,11 +259,15 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 =======
     //Definition of states
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+    //Definition of states
+>>>>>>> ee97f54 (post PR en local)
     sealed class State() {
         class Success() : State()
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -282,4 +297,6 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
 >>>>>>> bb72910 (Hilt dependencies and spinner  added)
 =======
 >>>>>>> 5e4589c (Testimony fragment added)
+=======
+>>>>>>> ee97f54 (post PR en local)
 }
