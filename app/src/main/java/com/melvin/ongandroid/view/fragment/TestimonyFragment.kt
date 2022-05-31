@@ -33,28 +33,31 @@ class TestimonyFragment : Fragment() {
         viewmodel.state.observe(viewLifecycleOwner, Observer {
             when (it){
                 is TestimonyViewModel.State.Success -> showTestimony(it.testimonialsList)
-                is TestimonyViewModel.State.Failure -> showErrorDialog()
+                is TestimonyViewModel.State.Failure -> showErrorDialog(callback = {viewmodel.getTestimonials()})
                 is TestimonyViewModel.State.Loading -> showSpinnerLoading()
             }
         })
     }
 
-    private fun showSpinnerLoading() {
-        binding.progressBar1.isVisible = true
-    }
-
+    // show recyclerView of testimonials
     private fun showTestimony(testimonialsList: TestimonialsList) {
-       
 
     }
 
-    //llamar al metodo showErrorDialog dentro del recyclerview
-    private fun showErrorDialog() {
+    // show error message and try again
+    private fun showErrorDialog(
+        callback: (() -> Unit)? = null
+    ) {
         binding.progressBar1.isVisible = false
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage("Ha ocurrido un error obteniendo la información")
-            .setPositiveButton("Reintentar") { dialogInterface, i -> }
+            .setPositiveButton("Reintentar") { _, _ -> callback?.invoke() }
             .show()
+    }
+
+    // show progress spinner
+    private fun showSpinnerLoading() {
+
     }
 }

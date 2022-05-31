@@ -32,12 +32,12 @@ class TestimonyViewModel @Inject constructor(private val homeRepository: HomeRep
         }
     }
 
-
     //Definition of states
     sealed class State() {
         class Success(val testimonialsList: TestimonialsList) : State()
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
+
     class TestimonyListNotFoundedException : Exception("The api returned an empty list")
 }

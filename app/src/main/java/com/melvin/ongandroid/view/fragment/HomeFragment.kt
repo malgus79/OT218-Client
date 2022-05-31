@@ -34,15 +34,15 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         //Loads data and updates on changes
-        viewModel.slidesList.observe(this, Observer {
+        viewModel.slidesList.observe(viewLifecycleOwner, Observer {
             setSlides(viewModel, binding) //Load Slides
 
 
         })
-        viewModel.testimonialsList.observe(this, Observer{
+        viewModel.testimonialsList.observe(viewLifecycleOwner, Observer{
             setTestimonials(viewModel, binding) //Load testimonials
         })
-        viewModel.newsList.observe(this, Observer {
+        viewModel.newsList.observe(viewLifecycleOwner, Observer {
             setNews(viewModel, binding) //Load news
         })
         return binding.root
