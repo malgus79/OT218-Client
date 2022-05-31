@@ -9,24 +9,25 @@ import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.SlidesListItemBinding
 import com.melvin.ongandroid.model.data.slides.Slide
 
-class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
+class SlidesAdapter(private val dataSet: List<Slide>) :
+    RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
 
-    class SlidesViewHolder(private var binding: SlidesListItemBinding):
-        RecyclerView.ViewHolder(binding.root){
+    class SlidesViewHolder(private var binding: SlidesListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(slide: Slide){
-                //Set title
-                binding.tvSlideTitle.text = slide.name
-                //Set description
-                binding.tvActivityDescription.text = slide.description
-                //Load image
-                Glide.with(binding.root.context)
-                    .load(slide.imageSlide)
-                    .error(R.drawable.ic_baseline_broken_image_100)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(binding.ivSlideImage)
-            }
+        fun bind(slide: Slide) {
+            //Set title
+            binding.tvSlideTitle.text = slide.name
+            //Set description
+            binding.tvActivityDescription.text = slide.description
+            //Load image
+            Glide.with(binding.root.context)
+                .load(slide.imageSlide)
+                .error(R.drawable.ic_home) // ic_baseline_broken_image_100 not found
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(binding.ivSlideImage)
         }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlidesViewHolder {
         return SlidesViewHolder(
@@ -43,7 +44,7 @@ class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<Sl
     }
 
     override fun getItemCount(): Int {
-      return  dataSet.size
+        return dataSet.size
     }
 
 

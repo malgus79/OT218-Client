@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+
+
+    <fragment
+        android:id="@+id/nav_staff"
+        android:name="com.melvin.ongandroid.view.fragment.StaffFragment"
+        android:label="fragment_staff"
+        tools:layout="@layout/fragment_staff" />
+
+    <fragment
+        android:id="@+id/nav_contact"
+        android:name="com.melvin.ongandroid.view.fragment.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+
+    <fragment
+        android:id="@+id/nav_our_activities"
+        android:name="com.melvin.ongandroid.view.fragment.OurActivitiesFragment"
+        android:label="fragment_our_activities"
+        tools:layout="@layout/fragment_our_activities" />
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.melvin.ongandroid.view.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_staff"
+            app:destination="@id/nav_staff" />
+        <action
+            android:id="@+id/action_nav_home_to_ourActivitiesFragment"
+            app:destination="@id/nav_our_activities"/>
+        <action
+            android:id="@+id/action_nav_home_to_nav_contact"
+            app:destination="@id/nav_contact" />
+
+    </fragment>
+
+</navigation>

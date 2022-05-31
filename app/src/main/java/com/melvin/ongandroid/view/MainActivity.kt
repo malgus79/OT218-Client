@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         //Show Spinner Loading
         viewModel.isShowProgress()
 
+        binding.button.setOnClickListener {
+            startActivity(Intent(this, NavigationActivity::class.java))
+        }
+
     }
 }
-
-
