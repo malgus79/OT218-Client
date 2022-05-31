@@ -8,14 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.melvin.ongandroid.R
-import com.melvin.ongandroid.databinding.FragmentNewsBinding
 import com.melvin.ongandroid.databinding.FragmentOurActivitiesBinding
 import com.melvin.ongandroid.view.adapters.ActivitiesAdapter
-import com.melvin.ongandroid.view.adapters.NewsViewPagerAdapter
 import com.melvin.ongandroid.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class OurActivitiesFragment : Fragment() {
@@ -34,9 +30,9 @@ class OurActivitiesFragment : Fragment() {
     }
 
     private fun init() {
-
         binding.rcActivities.setHasFixedSize(true)
-        binding.rcActivities.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        binding.rcActivities.layoutManager =
+            LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
         setActivities(viewModel, binding)
     }

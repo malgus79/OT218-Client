@@ -1,9 +1,9 @@
 package com.melvin.ongandroid.businesslogic.repository
 
 import com.melvin.ongandroid.model.data.news.NewsList
-import com.melvin.ongandroid.model.network.APIServices
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
+import com.melvin.ongandroid.model.network.APIServices
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,4 +24,5 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
     suspend fun getNews(): NewsList {
         return APIService.getNews()
     }
+
 }

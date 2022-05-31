@@ -8,7 +8,6 @@ import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
-import com.melvin.ongandroid.model.data.news.New
 import com.melvin.ongandroid.model.data.news.NewsList
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,7 +35,6 @@ class HomeViewModel @Inject constructor(
     fun getSlides() {
         var homeSlides: SlidesList
         viewModelScope.launch {
-
             try {
                 homeSlides = homeRepository.getHomeSlides()
                 _slidesList.value = homeSlides
@@ -59,6 +57,7 @@ class HomeViewModel @Inject constructor(
 
     fun getTestimonials() {
         var homeTestimonials: TestimonialsList
+
         viewModelScope.launch {
 
             try {
@@ -68,6 +67,7 @@ class HomeViewModel @Inject constructor(
             } catch (e: Exception) {
                 homeTestimonials = TestimonialsList(false, null, "Error retrieving testimonials")
                 _testimonialsList.value = homeTestimonials
+
             }
         }
     }

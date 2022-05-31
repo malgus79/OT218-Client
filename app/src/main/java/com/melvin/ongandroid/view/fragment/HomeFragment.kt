@@ -1,11 +1,11 @@
 package com.melvin.ongandroid.view.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
@@ -17,6 +17,7 @@ import com.melvin.ongandroid.view.adapters.SlidesAdapter
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
 import com.melvin.ongandroid.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -38,7 +39,6 @@ class HomeFragment : Fragment() {
             setTestimonials(viewModel, binding) //Load testimonials
             setNews(viewModel, binding) //Load news
         })
-
         return binding.root
     }
 
@@ -111,6 +111,5 @@ class HomeFragment : Fragment() {
             object : ViewPager2.OnPageChangeCallback() {}
         )
     }
-
 
 }
