@@ -7,113 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<Button
-=======
-=======
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-    <Button
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-    <Button
->>>>>>> 03694ee (fix commit)
-=======
-    <Button
->>>>>>> 03694ee (fix commit)
-=======
     <!--
     <Button
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-    <!--
-    <Button
->>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        app:layout_constraintHorizontal_bias="0.5"/>
-<<<<<<< HEAD
-=======
-
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:progressBarStyle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-
-=======
-        app:layout_constraintHorizontal_bias="0.5"
->>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
--->
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.melvin.ongandroid.view.HomeFragment"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:progressBarStyle"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:progressBarStyle"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> 03694ee (fix commit)
-=======
->>>>>>> 03694ee (fix commit)
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:progressBarStyle"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> 03694ee (fix commit)
-=======
->>>>>>> 03694ee (fix commit)
-=======
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -123,6 +24,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.melvin.ongandroid.view.HomeFragment"/>
->>>>>>> 5e4589c (Testimony fragment added)
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,27 +6,10 @@
     <string name="description_img_logo">Logo home</string>
     <string name="image_slide">Image Slide</string>
     <string name="contact_us">Contactanos</string>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-
->>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
-<<<<<<< HEAD
-=======
->>>>>>> 827da8a (Testimonials layout created)
-=======
->>>>>>> 827da8a (Testimonials layout created)
-=======
->>>>>>> 5e4589c (Testimony fragment added)
     <string name="testimony_name">Nombre y Apellido</string>
     <string name="description_testimony">Description testimony</string>
     <string name="testimonios">Testimonios</string>

@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class NewsList(
     @SerializedName("data") val data: List<New>,
     @SerializedName("message") val message: String?,
-    @SerializedName("success") val success: Boolean?
+    @SerializedName("success") val success: Boolean?,
 )

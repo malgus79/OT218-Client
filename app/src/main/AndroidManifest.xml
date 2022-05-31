@@ -5,11 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-<<<<<<< HEAD
         android:name=".model.ONGAndroidApp"
-=======
-        android:name=".model.data.ONGAndroidApp"
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +14,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ONGAndroid">
         <activity
-            android:name=".view.NavigationActivity"
+            android:name=".view.Navigation"
             android:exported="true" />
         <activity
             android:name=".view.MainActivity"

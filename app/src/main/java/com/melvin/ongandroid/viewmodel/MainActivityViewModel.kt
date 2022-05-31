@@ -5,57 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import com.melvin.ongandroid.model.data.HomeSlides
-<<<<<<< HEAD
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> 03694ee (fix commit)
-=======
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> 03694ee (fix commit)
-=======
-
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-
->>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
     ViewModel() {
-=======
-class MainActivityViewModel @Inject constructor (private val homeRepository: HomeRepository) : ViewModel() {
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
-    ViewModel() {
->>>>>>> 03694ee (fix commit)
-=======
-class MainActivityViewModel @Inject constructor (private val homeRepository: HomeRepository) : ViewModel() {
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
-    ViewModel() {
->>>>>>> 03694ee (fix commit)
-=======
-class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
-    ViewModel() {
->>>>>>> 5e4589c (Testimony fragment added)
 
     //Create states
     private val _state = MutableLiveData<State>()
@@ -80,80 +36,18 @@ class MainActivityViewModel @Inject constructor(private val homeRepository: Home
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    //Definition of states
-=======
-    //Call Testimonials
->>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
-    suspend fun getTestimonials() {
-=======
-<<<<<<< HEAD
-=======
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-    suspend fun getTestimonials(){
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-    suspend fun getTestimonials() {
->>>>>>> 03694ee (fix commit)
-=======
-    suspend fun getTestimonials() {
->>>>>>> 03694ee (fix commit)
-=======
     //Call Testimonials
     suspend fun getTestimonials() {
->>>>>>> 5e4589c (Testimony fragment added)
         _state.value = State.Loading()
         viewModelScope.launch {
             val testimonials = homeRepository.getTestimonials()
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     //Definition of states
-=======
-=======
-    //Definition of states
->>>>>>> f49350f (Hilt dependencies and spinner  added)
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-    //Definition of states
->>>>>>> 03694ee (fix commit)
-=======
-=======
-    //Definition of states
->>>>>>> f49350f (Hilt dependencies and spinner  added)
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-    //Definition of states
->>>>>>> 03694ee (fix commit)
-=======
-    //Definition of states
->>>>>>> 5e4589c (Testimony fragment added)
     sealed class State() {
         class Success() : State()
         class Failure(val cause: Throwable) : State()
         class Loading() : State()
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
->>>>>>> 5e4589c (Testimony fragment added)
-=======
->>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 }

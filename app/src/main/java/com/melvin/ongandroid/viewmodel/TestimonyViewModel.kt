@@ -24,7 +24,7 @@ class TestimonyViewModel @Inject constructor(private val homeRepository: HomeRep
         _state.value = State.Loading()
         viewModelScope.launch {
             val testimonyList = homeRepository.getTestimonials()
-            if (testimonyList.testimonialsList.isNullOrEmpty()) {
+            if (testimonyList.testimonials.isNullOrEmpty()) {
                 throw TestimonyListNotFoundedException()
             } else {
                 _state.postValue(State.Success(testimonyList))

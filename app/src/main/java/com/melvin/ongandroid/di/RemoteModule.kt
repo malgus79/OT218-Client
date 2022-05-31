@@ -1,14 +1,6 @@
 package com.melvin.ongandroid.di
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.melvin.ongandroid.model.network.APIServices
-=======
-import com.melvin.ongandroid.model.APIServices
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-import com.melvin.ongandroid.model.APIServices
->>>>>>> fa6b629bff1a6b831cd8375919dd7e6066fe9932
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
