@@ -9,11 +9,6 @@ import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.SlidesListItemBinding
 import com.melvin.ongandroid.model.data.slides.Slide
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 class SlidesAdapter(private val dataSet: List<Slide>) :
     RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
 
@@ -31,162 +26,25 @@ class SlidesAdapter(private val dataSet: List<Slide>) :
                 .error(R.drawable.ic_home) // ic_baseline_broken_image_100 not found
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivSlideImage)
-=======
-=======
->>>>>>> a53495d (slider compiling)
-<<<<<<< HEAD
-class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
-
-    class SlidesViewHolder(private var binding: SlidesListItemBinding):
-=======
-class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.TestimonyViewHolder>() {
-
-    class TestimonyViewHolder(private var binding: SlidesListItemBinding):
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-=======
->>>>>>> ee97f54 (post PR en local)
-class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boolean) :
-    RecyclerView.Adapter<SlidesAdapter.SlideViewHolder>() {
-
-    private val homeDataSet = dataSet.take(4)
-
-    class SlideViewHolder(private var binding: SlidesListItemBinding):
-<<<<<<< HEAD
->>>>>>> 08a6025 (slider compiling)
-=======
-class SlidesAdapter (private val dataSet: List<Slide>) : RecyclerView.Adapter<SlidesAdapter.TestimonyViewHolder>() {
-
-    class TestimonyViewHolder(private var binding: SlidesListItemBinding):
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-class SlidesAdapter (private val dataSet: List<Slide>, private val isHome: Boolean) :
-    RecyclerView.Adapter<SlidesAdapter.SlideViewHolder>() {
-
-    private val homeDataSet = dataSet.take(4)
-
-    class SlideViewHolder(private var binding: SlidesListItemBinding):
->>>>>>> 08a6025 (slider compiling)
-=======
->>>>>>> ee97f54 (post PR en local)
-        RecyclerView.ViewHolder(binding.root){
-
-            fun bind(slide: Slide){
-                //Set title
-                binding.tvSlideTitle.text = slide.name
-                //Set description
-                binding.tvActivityDescription.text = slide.description
-                //Load image
-                Glide.with(binding.root.context)
-                    .load(slide.imageSlide)
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(binding.ivSlideImage)
-            }
->>>>>>> dd3c420 (Testimony fragment added)
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlidesViewHolder {
         return SlidesViewHolder(
-=======
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestimonyViewHolder {
-        return TestimonyViewHolder(
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-                    //.error(R.drawable.ic_baseline_broken_image_100)
-=======
-                    .error(R.drawable.ic_contact) //ic_baseline_broken_image_24
->>>>>>> 08a6025 (slider compiling)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .into(binding.ivSlideImage)
-            }
-        }
-
-<<<<<<< HEAD
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestimonyViewHolder {
-        return TestimonyViewHolder(
->>>>>>> 5e4589c (Testimony fragment added)
             SlidesListItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
                 )
             )
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 08a6025 (slider compiling)
-=======
->>>>>>> ee97f54 (post PR en local)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SlideViewHolder {
-        val binding = SlidesListItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 08a6025 (slider compiling)
-=======
->>>>>>> ee97f54 (post PR en local)
         )
-        return SlideViewHolder(binding)
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     override fun onBindViewHolder(holder: SlidesViewHolder, position: Int) {
-=======
-    override fun onBindViewHolder(holder: TestimonyViewHolder, position: Int) {
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-
-    override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
->>>>>>> 08a6025 (slider compiling)
-=======
-=======
->>>>>>> 08a6025 (slider compiling)
-        )
-        return SlideViewHolder(binding)
-    }
-
-<<<<<<< HEAD
-    override fun onBindViewHolder(holder: TestimonyViewHolder, position: Int) {
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-
-    override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
->>>>>>> 08a6025 (slider compiling)
-=======
-    override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
->>>>>>> ee97f54 (post PR en local)
         holder.bind(dataSet[position])
     }
 
     override fun getItemCount(): Int {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         return dataSet.size
-=======
-=======
->>>>>>> 08a6025 (slider compiling)
-        if (isHome)
-            return homeDataSet.size
-
-        return  dataSet.size
-<<<<<<< HEAD
->>>>>>> a53495d (slider compiling)
-=======
-      return  dataSet.size
->>>>>>> 5e4589c (Testimony fragment added)
-=======
->>>>>>> 08a6025 (slider compiling)
     }
 
 

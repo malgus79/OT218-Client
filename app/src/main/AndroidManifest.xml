@@ -5,19 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         android:name=".model.ONGAndroidApp"
-=======
-        android:name=".model.data.ONGAndroidApp"
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-        android:name=".model.data.ONGAndroidApp"
->>>>>>> bb72910 (Hilt dependencies and spinner  added)
-=======
-        android:name=".model.ONGAndroidApp"
->>>>>>> ee97f54 (post PR en local)
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,20 +14,8 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ONGAndroid">
         <activity
-<<<<<<< HEAD
             android:name=".view.NavigationActivity"
-<<<<<<< HEAD
-<<<<<<< HEAD
             android:exported="false" />
-=======
-=======
-            android:name=".view.Navigation"
->>>>>>> ee97f54 (post PR en local)
-            android:exported="true" />
->>>>>>> dd3c420 (Testimony fragment added)
-=======
-            android:exported="true" />
->>>>>>> 5e4589c (Testimony fragment added)
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

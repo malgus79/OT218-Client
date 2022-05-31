@@ -14,18 +14,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-<<<<<<< HEAD
         app:layout_constraintTop_toTopOf="parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"/>
-=======
-        app:layout_constraintTop_toTopOf="parent"/>
->>>>>>> dd3c420 (Testimony fragment added)
-=======
-        app:layout_constraintTop_toTopOf="parent"/>
->>>>>>> 5e4589c (Testimony fragment added)
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -45,6 +37,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -55,6 +48,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_centerHorizontal="true"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

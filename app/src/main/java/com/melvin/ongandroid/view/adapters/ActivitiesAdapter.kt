@@ -2,31 +2,29 @@ package com.melvin.ongandroid.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.CardActivitiesLayoutBinding
-import com.melvin.ongandroid.databinding.FragmentOurActivitiesBinding
-import com.melvin.ongandroid.model.data.activities.Activities
-import com.melvin.ongandroid.model.data.news.New
+import com.melvin.ongandroid.model.data.activities.Activity
 
-class ActivitiesAdapter (private val newsList: List<Activities>) :
+
+class ActivitiesAdapter (private val activitiesList: List<Activity>) :
     RecyclerView.Adapter<ActivitiesAdapter.ViewPagerViewHolder>() {
-    private val data = newsList.shuffled().take(4)
+
 
     class ViewPagerViewHolder(private val binding: CardActivitiesLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun setData(new: Activities) {
+        fun setData(activity: Activity) {
             //Set title
-            binding.tvActivities.text = new.name
+            binding.tvActivities.text = activity.name
             //Set description
-            binding.tvActivitiesDesc.text = new.description
+            binding.tvActivitiesDesc.text = activity.description
             //Load image
             Glide.with(binding.root.context)
-                .load(new.image)
+                .load(activity.image)
                 .error(R.drawable.voluntario_pobreza) // (test image)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivActivities)
@@ -42,11 +40,11 @@ class ActivitiesAdapter (private val newsList: List<Activities>) :
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return activitiesList.size
     }
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
-        holder.setData(data[position])
+        holder.setData(activitiesList[position])
     }
 
 

@@ -6,74 +6,14 @@
     <string name="description_img_logo">Logo home</string>
     <string name="image_slide">Image Slide</string>
     <string name="contact_us">Contactanos</string>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 919f2e0 (Testimonials layout created)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 5e4589c (Testimony fragment added)
->>>>>>> dd3c420 (Testimony fragment added)
-=======
->>>>>>> e7b752f (Testimonials layout created)
-=======
-
->>>>>>> 5e4589c (Testimony fragment added)
-=======
->>>>>>> ee97f54 (post PR en local)
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> a49bb72 (Testimonials layout created)
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 827da8a (Testimonials layout created)
-=======
->>>>>>> 827da8a (Testimonials layout created)
-=======
->>>>>>> 5e4589c (Testimony fragment added)
-=======
-=======
->>>>>>> 827da8a (Testimonials layout created)
->>>>>>> e7b752f (Testimonials layout created)
-=======
->>>>>>> 827da8a (Testimonials layout created)
-=======
->>>>>>> 5e4589c (Testimony fragment added)
-=======
->>>>>>> ee97f54 (post PR en local)
     <string name="testimony_name">Nombre y Apellido</string>
     <string name="description_testimony">Description testimony</string>
     <string name="testimonios">Testimonios</string>
     <string name="add_my_testimonial">Agregar mi testimonio</string>
     <string name="img_testimony">Imagen de testimonio</string>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <string name="hello_blank_fragment">Hello blank fragment</string>
-=======
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment_Testimony">Hello blank fragment</string>
->>>>>>> dd3c420 (Testimony fragment added)
-=======
-    <!-- TODO: Remove or change this placeholder text -->
-<<<<<<< HEAD
-    <string name="hello_blank_fragment">Hello blank fragment</string>
->>>>>>> 827da8a (Testimonials layout created)
-=======
-    <string name="hello_blank_fragment_Testimony">Hello blank fragment</string>
->>>>>>> 5e4589c (Testimony fragment added)
     <string name="vector_down">Vector down</string>
+    <string name="activities">Actividades</string>
 </resources>

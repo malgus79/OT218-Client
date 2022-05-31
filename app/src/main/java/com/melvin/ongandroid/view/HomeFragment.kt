@@ -1,120 +1,97 @@
 package com.melvin.ongandroid.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
-=======
 import androidx.core.view.isVisible
->>>>>>> ee97f54 (post PR en local)
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
+import com.melvin.ongandroid.view.adapters.NewsViewPagerAdapter
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
 import com.melvin.ongandroid.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private val viewModel by viewModels<HomeViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentHomeBinding.inflate(inflater)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         //Loads data and updates on changes
-        viewModel.slidesList.observe(viewLifecycleOwner, Observer {
+        viewModel.slidesList.observe(this, Observer {
             setSlides(viewModel, binding) //Load Slides
+
+
+        })
+        viewModel.testimonialsList.observe(this, Observer{
             setTestimonials(viewModel, binding) //Load testimonials
         })
-<<<<<<< HEAD
-=======
-
->>>>>>> ee97f54 (post PR en local)
+        viewModel.newsList.observe(this, Observer {
+            setNews(viewModel, binding) //Load news
+        })
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        }
-
-<<<<<<< HEAD
     override fun onDestroyView() {
-
-=======
-
-    override fun onDestroyView() {
->>>>>>> ee97f54 (post PR en local)
         super.onDestroyView()
         onDestroyNews()
-
     }
+
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
 
-        if (slidesList == null || !slidesList.success!!) {
+        if (slidesList == null || !slidesList.success) {
             //TODO ERROR IMPLEMENTATION
         } else {
             if (!slidesList.slide.isNullOrEmpty()) {
-                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide, true)
+                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
             } else {
                 //TODO ERROR IMPLEMENTATION
             }
         }
     }
 
-<<<<<<< HEAD
-    private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding){
-/*        val newsList //Add news
-        //Initialize news adapter
-        binding.vpNews.adapter = NewsViewPagerAdapter()
-
-        //Set starting page for news viewpager
-        val currentPageIndex = 0
-        binding.vpNews.currentItem = currentPageIndex
-
-        //Registering for page change callback
-        binding.vpNews.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback(){
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                }
-            }
-        )*/
-=======
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        /* val newsList //Add news
-         //Initialize news adapter
-         binding.vpNews.adapter = NewsViewPagerAdapter()
+        val newsList = viewModel.newsList.value
 
-         //Set starting page for news viewpager
-         val currentPageIndex = 0
-         binding.vpNews.currentItem = currentPageIndex
-
-         //Registering for page change callback
-         binding.vpNews.registerOnPageChangeCallback(
-             object : ViewPager2.OnPageChangeCallback(){
-                 override fun onPageSelected(position: Int) {
-                     super.onPageSelected(position)
-                 }
-             }
-         )*/
->>>>>>> ee97f54 (post PR en local)
+        if (newsList == null || !newsList.success) {
+            //TODO ERROR IMPLEMENTATION
+        } else {
+            if (!newsList.data.isNullOrEmpty()) {
+                //Initialize news adapter
+                binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
+                //Set starting page for news viewpager
+                val currentPageIndex = 0
+                binding.vpNews.currentItem = currentPageIndex
+                //Registering for page change callback
+                binding.vpNews.registerOnPageChangeCallback(
+                    object : ViewPager2.OnPageChangeCallback() {
+                        override fun onPageSelected(position: Int) {
+                            super.onPageSelected(position)
+                        }
+                    }
+                )
+            } else {
+                //TODO ERROR IMPLEMENTATION
+            }
+        }
     }
 
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
@@ -123,27 +100,22 @@ class HomeFragment : Fragment() {
         if (testimonialsList == null || !testimonialsList.success) {
             //TODO ERROR IMPLEMENTATION
         } else {
-<<<<<<< HEAD
-            if (!testimonialsList.testimonialsList.isNullOrEmpty()) {
-                binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonialsList,true)
-            } else {
-                //TODO ERROR IMPLEMENTATION
-=======
             if (!testimonialsList.testimonials.isNullOrEmpty()) {
-                binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonials,true)
+                binding.rvTestimony.adapter =
+                    TestimonialsAdapter(testimonialsList.testimonials, true)
             } else {
                 //TODO ERROR IMPLEMENTATION
 
->>>>>>> ee97f54 (post PR en local)
             }
         }
     }
 
-    private fun onDestroyNews(){
+    private fun onDestroyNews() {
         val viewpager = view?.findViewById<ViewPager2>(R.id.vp_news)
         //Unregistering the onPageChangedCallback
         viewpager?.unregisterOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback(){}
+            object : ViewPager2.OnPageChangeCallback() {}
         )
     }
+
 }
