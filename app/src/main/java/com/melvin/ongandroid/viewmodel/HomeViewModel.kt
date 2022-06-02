@@ -19,33 +19,32 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     init {
-        getSlides()
+        //getSlides()
         getTestimonials()
         getNews()
     }
 
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _slidesList = MutableLiveData<SlidesList>()
+    private val _slidesList  = MutableLiveData<State<SlidesList>>()
 
     //External LiveData
-    val slidesList: LiveData<SlidesList> = _slidesList
-
+    val slidesList: LiveData<State<SlidesList>> = _slidesList
 
     fun getSlides() {
-        var homeSlides: SlidesList
+        _slidesList.postValue(State.Loading())
         viewModelScope.launch {
-            try {
-                homeSlides = homeRepository.getHomeSlides()
-                _slidesList.value = homeSlides
-
-            } catch (e: Exception) {
-                homeSlides = SlidesList(emptyList(), "Error retrieving slides", false)
-                _slidesList.value = homeSlides
-
+            val slidesList = homeRepository.getHomeSlides()
+            if (slidesList.slide.isNullOrEmpty()) {
+                throw SlidesListNotFoundedException()
+            } else {
+                _slidesList.postValue(State.Success(slidesList))
             }
         }
     }
+
+    class SlidesListNotFoundedException : Exception("The api returned an empty list")
+
 
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
