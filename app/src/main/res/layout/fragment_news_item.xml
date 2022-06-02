@@ -8,26 +8,33 @@
     <ImageView
         android:id="@+id/iv_news_image"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:scaleType="fitXY" />
+        android:layout_height="240dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/tv_new_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_margin="8dp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Hola"
+        android:layout_marginTop="6dp"/>
 
     <TextView
         android:id="@+id/tv_new_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/black"/>
+        android:textSize="16sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Hola" />
 
 
 </LinearLayout>

@@ -5,55 +5,96 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
-import com.melvin.ongandroid.model.APIServices
-import com.melvin.ongandroid.model.data.slides.Slide
-import com.melvin.ongandroid.model.data.testimonials.Testimonial
+import com.melvin.ongandroid.model.data.slides.SlidesList
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
+import dagger.hilt.android.lifecycle.HiltViewModel
+import com.melvin.ongandroid.model.data.news.NewsList
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import javax.inject.Inject
+import kotlin.Exception
 
-class HomeViewModel() : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val homeRepository: HomeRepository
+) : ViewModel() {
 
+    init {
+        getSlides()
+        getTestimonials()
+        getNews()
+    }
 
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _slidesStatus = MutableLiveData<State>()
-    private val _slidesList = MutableLiveData<List<Slide>>()
-    //External LiveData
-    val slidesStatus: LiveData<State> = _slidesStatus
-    val slidesList: LiveData<List<Slide>> = _slidesList
+    private val _slidesList = MutableLiveData<SlidesList>()
 
-    suspend fun getSlides() {
-        _slidesStatus.value = State.Loading()
+    //External LiveData
+    val slidesList: LiveData<SlidesList> = _slidesList
+
+
+    fun getSlides() {
+        var homeSlides: SlidesList
         viewModelScope.launch {
-           // val homeSlides = homeRepository.getHomeSlides()
+            try {
+                homeSlides = homeRepository.getHomeSlides()
+                _slidesList.value = homeSlides
+
+            } catch (e: Exception) {
+                homeSlides = SlidesList(emptyList(), "Error retrieving slides", false)
+                _slidesList.value = homeSlides
+
+            }
         }
     }
 
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _testimonialsStatus = MutableLiveData<State>()
-    private val _testimonialsList = MutableLiveData<List<Testimonial>?>()
-    //External LiveData
-    val testimonialsStatus: LiveData<State> = _testimonialsStatus
-    val testimonialsList: LiveData<List<Testimonial>?> = _testimonialsList
+    private val _testimonialsList = MutableLiveData<TestimonialsList>()
 
-    suspend fun getTestimonials(){
-        _testimonialsStatus.value = State.Loading()
+    //External LiveData
+    val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
+
+
+    fun getTestimonials() {
+        var homeTestimonials: TestimonialsList
+
         viewModelScope.launch {
+
             try {
-              //  val testimonials = homeRepository.getTestimonials().testimonialsList
-                _testimonialsStatus.value = State.Success()
-              //  _testimonialsList.value = testimonials
-            }
-            catch (e: Exception){
-                _testimonialsStatus.value = State.Failure(e)
+                homeTestimonials = homeRepository.getTestimonials()
+                _testimonialsList.value = homeTestimonials
+
+            } catch (e: Exception) {
+                homeTestimonials = TestimonialsList(false, null, "Error retrieving testimonials")
+                _testimonialsList.value = homeTestimonials
+
             }
         }
     }
 
-    sealed class State() {
-        class Success() : State()
-        class Failure(val cause: Throwable) : State()
-        class Loading() : State()
+    /* ---------------------------NEWS REQUEST--------------------------- */
+    //Internal MutableLiveData
+    private val _newsList = MutableLiveData<NewsList>()
+
+    //External LiveData
+    val newsList: LiveData<NewsList> = _newsList
+
+    private fun getNews() {
+        var newsList: NewsList
+        viewModelScope.launch {
+
+            try {
+                newsList = homeRepository.getNews()
+                _newsList.value = newsList
+
+            } catch (e: Exception) {
+                newsList = NewsList(emptyList(), "Error retrieving slides", false)
+                _newsList.value = newsList
+
+            }
+
+
+        }
     }
+
 }

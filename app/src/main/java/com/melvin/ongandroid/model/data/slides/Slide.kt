@@ -12,5 +12,5 @@ data class Slide(
     @SerializedName("group_id") val groupId: Any?,
     @SerializedName("order") val order: Int?,
     @SerializedName("updated_at") val updatedAt: String?,
-    @SerializedName("user_id") val userId: Any?
+    @SerializedName("user_id") val userId: Any?,
 )
