@@ -13,18 +13,19 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityNavigationBinding
+    private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainActivityViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNavigationBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //Show Spinner Loading
-        viewModel.isShowProgress()
-
-
+        //viewModel.isShowProgress()
+        binding.button.setOnClickListener {
+            startActivity(Intent(this, NavigationActivity::class.java))
+        }
 
     }
 }
