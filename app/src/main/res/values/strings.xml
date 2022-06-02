@@ -18,4 +18,11 @@
     <string name="activities">Actividades</string>
     <string name="hello_contact_fragment">Fragment Contact</string>
     <string name="hello_staff_fragment">Fragment Staff</string>
+    <string name="want_to_contribute">¿Quieres contribuir?</string>
+    <string name="donate">Donar</string>
+    <string name="contact_with_us">¡Contactate con nosotros!</string>
+    <string name="hint_name">Nombre y Apellido</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_message">Mensaje</string>
+    <string name="send_message">Enviar mensaje</string>
 </resources>
