@@ -16,4 +16,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="vector_down">Vector down</string>
     <string name="activities">Actividades</string>
+    <string name="hello_contact_fragment">Fragment Contact</string>
+    <string name="hello_staff_fragment">Fragment Staff</string>
 </resources>
