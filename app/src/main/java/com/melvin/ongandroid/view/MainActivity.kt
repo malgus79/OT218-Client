@@ -73,32 +73,33 @@ class MainActivity : AppCompatActivity() {
         fragmentManager.beginTransaction()
             .add(R.id.navHostFragment, homeFragment, HomeFragment::class.java.name)
             .commit()
-
-        //Navigate to the different fragments
-//        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.nav_home -> {
-//                    fragmentManager.beginTransaction().hide(activeFragment).show(homeFragment).commit()
-//                    activeFragment = homeFragment
-//                    true
-//                }
-//                R.id.nav_staff -> {
-//                    fragmentManager.beginTransaction().hide(activeFragment).show(staffFragment).commit()
-//                    activeFragment = staffFragment
-//                    true
-//                }
-//                R.id.nav_our_activities -> {
-//                    fragmentManager.beginTransaction().hide(activeFragment).show(ourActivitiesFragment).commit()
-//                    activeFragment = ourActivitiesFragment
-//                    true
-//                }
-//                R.id.nav_contact -> {
-//                    fragmentManager.beginTransaction().hide(activeFragment).show(contactFragment).commit()
-//                    activeFragment = contactFragment
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
+        /*
+        Navigate to the different fragments
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_home -> {
+                    fragmentManager.beginTransaction().hide(activeFragment).show(homeFragment).commit()
+                    activeFragment = homeFragment
+                    true
+                }
+                R.id.nav_staff -> {
+                    fragmentManager.beginTransaction().hide(activeFragment).show(staffFragment).commit()
+                    activeFragment = staffFragment
+                    true
+                }
+                R.id.nav_our_activities -> {
+                    fragmentManager.beginTransaction().hide(activeFragment).show(ourActivitiesFragment).commit()
+                    activeFragment = ourActivitiesFragment
+                    true
+                }
+                R.id.nav_contact -> {
+                    fragmentManager.beginTransaction().hide(activeFragment).show(contactFragment).commit()
+                    activeFragment = contactFragment
+                    true
+                }
+                else -> false
+            }
+        }
+        */
     }
 }

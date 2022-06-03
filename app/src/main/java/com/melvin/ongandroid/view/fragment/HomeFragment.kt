@@ -34,12 +34,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        viewModel.getSlides()
         //Loads data and updates on changes
         viewModel.getSlides()
-        //Loads data and updates on changes
         viewModel.slidesList.observe(viewLifecycleOwner, Observer {
-            //setSlides(viewModel, binding) //Load Slides
             when (it) {
                 is State.Success -> setSlides(it.data)
                 is State.Failure -> showErrorDialog(callback = { viewModel.getSlides() })
@@ -81,17 +78,11 @@ class HomeFragment : Fragment() {
 
 
     private fun setSlides(slidesList: SlidesList) {
-        // val slidesList = viewModel.slidesList.value
-
-//        if (slidesList == null || !slidesList.success) {
-//            //TODO ERROR IMPLEMENTATION
-//        } else {
-            if (!slidesList.slide.isNullOrEmpty()) {
-                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
-            } else {
-                //TODO ERROR IMPLEMENTATION
-            }
-//        }
+        if (!slidesList.slide.isNullOrEmpty()) {
+            binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
+        } else {
+            //TODO ERROR IMPLEMENTATION
+        }
     }
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
