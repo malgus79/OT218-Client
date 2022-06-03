@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
 
         //Show Spinner Loading
         //viewModel.isShowProgress()
-
         //Add the fragments to the nav menu
         // setupBottomNav()
         //viewModel.isShowProgress()
