@@ -12,10 +12,12 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
+import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.view.adapters.NewsViewPagerAdapter
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
 import com.melvin.ongandroid.viewmodel.HomeViewModel
+import com.melvin.ongandroid.viewmodel.State
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -32,14 +34,16 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         //Loads data and updates on changes
+        viewModel.getSlides()
         viewModel.slidesList.observe(viewLifecycleOwner, Observer {
-            setSlides(viewModel, binding) //Load Slides
-
-
+            when (it) {
+                is State.Success -> setSlides(it.data)
+                is State.Failure -> showErrorDialog(callback = { viewModel.getSlides() })
+                is State.Loading -> showSpinnerLoading()
+            }
         })
-        viewModel.testimonialsList.observe(viewLifecycleOwner, Observer{
+        viewModel.testimonialsList.observe(this, Observer {
             setTestimonials(viewModel, binding) //Load testimonials
         })
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
@@ -48,23 +52,36 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+
+    // show error message and try again
+    private fun showErrorDialog(
+        callback: (() -> Unit)? = null
+    ) {
+        binding.progressBar1.isVisible = false
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Error")
+            .setMessage("Ha ocurrido un error obteniendo la información")
+            .setPositiveButton("Reintentar") { _, _ -> callback?.invoke() }
+            .show()
+    }
+
+
+    // show progress spinner
+    private fun showSpinnerLoading() {
+
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         onDestroyNews()
     }
 
 
-    private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val slidesList = viewModel.slidesList.value
-
-        if (slidesList == null || !slidesList.success) {
-            //TODO ERROR IMPLEMENTATION
+    private fun setSlides(slidesList: SlidesList) {
+        if (!slidesList.slide.isNullOrEmpty()) {
+            binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
         } else {
-            if (!slidesList.slide.isNullOrEmpty()) {
-                binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
-            } else {
-                //TODO ERROR IMPLEMENTATION
-            }
+            //TODO ERROR IMPLEMENTATION
         }
     }
 

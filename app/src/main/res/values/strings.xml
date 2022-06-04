@@ -21,4 +21,7 @@
     <string name="error_dialog">Error</string>
     <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
     <string name="try_again">Reintentar</string>
+    <string name="error_dialog">Error</string>
+    <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
+    <string name="try_again">Reintentar</string>
 </resources>
