@@ -13,35 +13,14 @@ import javax.inject.Inject
 class MainActivityViewModel @Inject constructor(private val homeRepository: HomeRepository) :
     ViewModel() {
 
-    //Create states
-    private val _state = MutableLiveData<State>()
-    val state: LiveData<State>
-        get() = _state
-
-    //Create Spinner Loading
-    private val _showProgress: MutableLiveData<State> = MutableLiveData()
-    val showProgress: LiveData<State>
-        get() = _state
-
-    //Create progressBar
-    fun isShowProgress(): LiveData<State> {
-        return showProgress
-    }
-
-    //Call Slides
-    suspend fun getHomeSlides() {
-        _state.value = State.Loading()
-        viewModelScope.launch {
-            val homeSlides = homeRepository.getHomeSlides()
-        }
-    }
-
-    //Definition of states
-    suspend fun getTestimonials() {
-        _state.value = State.Loading()
-        viewModelScope.launch {
-            val testimonials = homeRepository.getTestimonials()
-        }
-    }
+//    //Create Spinner Loading
+//    private val _showProgress: MutableLiveData<State> = MutableLiveData()
+//    val showProgress: LiveData<State>
+//        get() = _state
+//
+//    //Create progressBar
+//    fun isShowProgress(): LiveData<State> {
+//        return showProgress
+//    }
 
 }
