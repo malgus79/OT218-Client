@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
-
+        
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
@@ -227,4 +227,5 @@ class HomeFragment : Fragment() {
             .setPositiveButton("Reintentar") { _, _ -> viewModel.retryFailedHomeSections() }
             .show()
     }
+
 }
