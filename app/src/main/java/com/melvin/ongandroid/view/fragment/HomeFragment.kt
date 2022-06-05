@@ -12,7 +12,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
+import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import com.melvin.ongandroid.view.adapters.NewsViewPagerAdapter
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
@@ -34,20 +36,32 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        //Loads data and updates on changes
+        // Load and manage Slides data
         viewModel.getSlides()
         viewModel.slidesList.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is State.Success -> setSlides(it.data)
                 is State.Failure -> showErrorDialog(callback = { viewModel.getSlides() })
-                is State.Loading -> showSpinnerLoading()
+                is State.Loading -> showSpinnerLoading(true)
             }
         })
-        viewModel.testimonialsList.observe(this, Observer {
-            setTestimonials(viewModel, binding) //Load testimonials
+        // Load and manage Testimonials data
+        viewModel.getTestimonials()
+        viewModel.testimonialsList.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is State.Success -> setTestimonials(it.data)
+                is State.Failure -> showErrorDialog(callback = { viewModel.getTestimonials() })
+                is State.Loading -> showSpinnerLoading(true)
+            }
         })
+        // Load and manage Nes data
+        viewModel.getNews()
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
-            setNews(viewModel, binding) //Load news
+            when (it) {
+                is State.Success -> setNews(it.data)
+                is State.Failure -> showErrorDialog(callback = { viewModel.getNews() })
+                is State.Loading -> showSpinnerLoading(true)
+            }
         })
         return binding.root
     }
@@ -67,8 +81,8 @@ class HomeFragment : Fragment() {
 
 
     // show progress spinner
-    private fun showSpinnerLoading() {
-
+    private fun showSpinnerLoading(loading: Boolean) {
+        binding.progressBar1.isVisible = loading
     }
 
     override fun onDestroyView() {
@@ -76,54 +90,42 @@ class HomeFragment : Fragment() {
         onDestroyNews()
     }
 
-
     private fun setSlides(slidesList: SlidesList) {
         if (!slidesList.slide.isNullOrEmpty()) {
+            showSpinnerLoading(false)
             binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
         } else {
             //TODO ERROR IMPLEMENTATION
         }
     }
 
-    private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val newsList = viewModel.newsList.value
-
-        if (newsList == null || !newsList.success) {
-            //TODO ERROR IMPLEMENTATION
-        } else {
-            if (!newsList.data.isNullOrEmpty()) {
-                //Initialize news adapter
-                binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
-                //Set starting page for news viewpager
-                val currentPageIndex = 0
-                binding.vpNews.currentItem = currentPageIndex
-                //Registering for page change callback
-                binding.vpNews.registerOnPageChangeCallback(
-                    object : ViewPager2.OnPageChangeCallback() {
-                        override fun onPageSelected(position: Int) {
-                            super.onPageSelected(position)
-                        }
+    private fun setNews(newsList: NewsList) {
+        if (!newsList.data.isNullOrEmpty()) {
+            showSpinnerLoading(false)
+            //Initialize news adapter
+            binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
+            //Set starting page for news viewpager
+            val currentPageIndex = 0
+            binding.vpNews.currentItem = currentPageIndex
+            //Registering for page change callback
+            binding.vpNews.registerOnPageChangeCallback(
+                object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
                     }
-                )
-            } else {
-                //TODO ERROR IMPLEMENTATION
-            }
+                }
+            )
+        } else {
+            //TODO ERROR IMPLEMENTATION
         }
     }
 
-    private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val testimonialsList = viewModel.testimonialsList.value
-
-        if (testimonialsList == null || !testimonialsList.success) {
-            //TODO ERROR IMPLEMENTATION
+    private fun setTestimonials(testimonialsList: TestimonialsList) {
+        if (!testimonialsList.testimonials.isNullOrEmpty()) {
+            showSpinnerLoading(false)
+            binding.rvTestimony.adapter = TestimonialsAdapter(testimonialsList.testimonials, true)
         } else {
-            if (!testimonialsList.testimonials.isNullOrEmpty()) {
-                binding.rvTestimony.adapter =
-                    TestimonialsAdapter(testimonialsList.testimonials, true)
-            } else {
-                //TODO ERROR IMPLEMENTATION
-
-            }
+            //TODO ERROR IMPLEMENTATION
         }
     }
 
