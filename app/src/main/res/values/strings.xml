@@ -27,13 +27,6 @@
     <!-- Contact -->
     <string name="hello_contact_fragment">Fragment Contact</string>
     <string name="our_staff">¡Nuestro staff!</string>
-    <string name="error_dialog">Error</string>
-    <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
-    <string name="try_again">Reintentar</string>
-    <string name="want_to_contribute">¿Quieres contribuir?</string>
-    <string name="donate">Donar</string>
-    <string name="contact_with_us">¡Contactate con nosotros!</string>
-
     <string name="hint_name">Nombre y Apellido</string>
     <string name="hint_email">Email</string>
     <string name="hint_message">Mensaje</string>
