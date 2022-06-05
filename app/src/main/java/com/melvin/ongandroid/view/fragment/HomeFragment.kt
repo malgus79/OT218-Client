@@ -69,15 +69,10 @@ class HomeFragment : Fragment() {
 
 
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is State.Success -> setNews(it.data)
-                is State.Failure -> showErrorDialog(callback = { viewModel.getNews() })
-                is State.Loading -> showSpinnerLoading(true)
-            }
+          setNews(viewModel, binding) //Load news
         })
 
         return binding.root
-
     }
 
 
