@@ -5,14 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.databinding.FragmentOurActivitiesBinding
+import com.melvin.ongandroid.model.data.activities.ActivitiesList
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import com.melvin.ongandroid.view.adapters.ActivitiesAdapter
+import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
 import com.melvin.ongandroid.viewmodel.ActivitiesViewModel
-import com.melvin.ongandroid.viewmodel.HomeViewModel
+import com.melvin.ongandroid.viewmodel.State
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,33 +31,48 @@ class OurActivitiesFragment : Fragment() {
         binding = FragmentOurActivitiesBinding.inflate(inflater, container, false)
         init()
 
-        //Loads data and updates on changes
-        viewModel.activitiesList.observe(this, Observer {
-            setActivities(viewModel,binding)
+        // Load and manage Nes data
+        viewModel.getActivities()
+        viewModel.activitiesList.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is State.Success -> setActivities(it.data)
+                is State.Failure -> showErrorDialog(callback = { viewModel.getActivities() })
+                is State.Loading -> showSpinnerLoading(true)
+            }
         })
         return binding.root
     }
 
     private fun init() {
         binding.rcActivities.setHasFixedSize(true)
-
-
     }
 
-    private fun setActivities(viewModel: ActivitiesViewModel, binding: FragmentOurActivitiesBinding) {
-        val activitiesList = viewModel.activitiesList.value
+    // show error message and try again
+    private fun showErrorDialog(
+        callback: (() -> Unit)? = null
+    ) {
+        binding.progressBar1.isVisible = false
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Error")
+            .setMessage("Ha ocurrido un error obteniendo la información")
+            .setPositiveButton("Reintentar") { _, _ -> callback?.invoke() }
+            .show()
+    }
 
-        if (activitiesList == null || !activitiesList.success){
-            //TODO ERROR IMPLEMENTATION
-        } else{
+    private fun setActivities(activitiesList: ActivitiesList) {
+
             if (!activitiesList.data.isNullOrEmpty()){
+                showSpinnerLoading(false)
                 binding.rcActivities.adapter = ActivitiesAdapter(activitiesList.data)
             } else{
                 //TODO ERROR IMPLEMENTATION
             }
         }
 
-
-
+    // show progress spinner
+    private fun showSpinnerLoading(loading: Boolean) {
+        binding.progressBar3.isVisible = loading
     }
 }
+
+

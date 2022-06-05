@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         binding.button.setOnClickListener {
             startActivity(Intent(this, NavigationActivity::class.java))
         }
-
     }
 
     private fun setupBottomNav() {
