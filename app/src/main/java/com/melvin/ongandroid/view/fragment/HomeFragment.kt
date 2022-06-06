@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.dialog.MaterialDialogs
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.ktx.Firebase
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
 import com.melvin.ongandroid.model.data.news.NewsList
@@ -39,7 +41,6 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
@@ -65,14 +66,12 @@ class HomeFragment : Fragment() {
             setTestimonials(viewModel, binding) //Load testimonials
         })
 
-
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
           setNews(viewModel, binding) //Load news
         })
 
         return binding.root
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -81,18 +80,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val slidesList = viewModel.slidesList.value
+        //Success Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "slider_retrieve_success")
+        analytics.logEvent("InitScreen", bundle)
 
+        val slidesList = viewModel.slidesList.value
         if (slidesList != null && slidesList.success && !slidesList.slide.isNullOrEmpty()) {
             binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
         }
-
     }
 
-
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val newsList = viewModel.newsList.value
+        //Success Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "last_news_retrieve_success")
+        analytics.logEvent("InitScreen", bundle)
 
+        val newsList = viewModel.newsList.value
         if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
             //Initialize news adapter
             binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
@@ -111,8 +118,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val testimonialsList = viewModel.testimonialsList.value
 
+        //Success Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "testimonios_retrieve_success")
+        analytics.logEvent("InitScreen", bundle)
+
+        val testimonialsList = viewModel.testimonialsList.value
 
         if (testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
             binding.rvTestimony.adapter =
@@ -199,6 +212,5 @@ class HomeFragment : Fragment() {
             .setPositiveButton("Reintentar") { _, _ -> viewModel.retryFailedHomeSections() }
             .show()
     }
-
 
 }
