@@ -42,6 +42,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
+
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
@@ -85,7 +86,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        //Success Analytics Event
+//Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "slider_retrieve_success")
         analytics.logEvent("Slider", bundle)
@@ -97,7 +98,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        //Success Analytics Event
+//Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "last_news_retrieve_success")
         analytics.logEvent("News", bundle)
@@ -121,7 +122,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        //Success Analytics Event
+//Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "testimonios_retrieve_success")
         analytics.logEvent("Testimonials", bundle)
@@ -142,6 +143,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupStatusLiveDataMerger(viewModel: HomeViewModel) {
+
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.slidesStatus, Observer {
             viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
                 viewModel.slidesStatus,
@@ -218,6 +220,7 @@ class HomeFragment : Fragment() {
                 analytics.logEvent("Testimonials", bundle)
             }
         }
+
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage(
