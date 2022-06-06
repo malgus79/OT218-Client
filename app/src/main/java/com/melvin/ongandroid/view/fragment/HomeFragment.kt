@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
-          setNews(viewModel, binding) //Load news
+            setNews(viewModel, binding) //Load news
         })
 
         return binding.root
@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        //Success Analytics Event
+//Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "slider_retrieve_success")
         analytics.logEvent("Slider", bundle)
@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        //Success Analytics Event
+//Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "last_news_retrieve_success")
         analytics.logEvent("News", bundle)
@@ -121,7 +121,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        //Success Analytics Event
+//Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "testimonios_retrieve_success")
         analytics.logEvent("Testimonials", bundle)
@@ -218,6 +218,7 @@ class HomeFragment : Fragment() {
                 analytics.logEvent("Testimonials", bundle)
             }
         }
+
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage(
@@ -226,5 +227,4 @@ class HomeFragment : Fragment() {
             .setPositiveButton("Reintentar") { _, _ -> viewModel.retryFailedHomeSections() }
             .show()
     }
-
 }
