@@ -27,8 +27,11 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
     }
 
     //Calls APIservices getActivites function
-    suspend fun getActivites(): ActivitiesList{
+    suspend fun getActivities(): ActivitiesList{
         return APIService.getActivities()
     }
+
+   
+
 
 }

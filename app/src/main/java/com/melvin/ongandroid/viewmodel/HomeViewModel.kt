@@ -1,72 +1,121 @@
 package com.melvin.ongandroid.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import com.melvin.ongandroid.model.data.news.NewsList
+import com.melvin.ongandroid.model.network.ApiStatus
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
-import kotlin.Exception
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
 
-    init {
-        //getSlides()
-        getTestimonials()
-        getNews()
+
+    val homeStatusLiveDataMerger = MediatorLiveData<ApiStatus>()
+
+    fun combineHomeStatusData(
+        slidesStatus: LiveData<ApiStatus>,
+        newsStatus: LiveData<ApiStatus>,
+        testimonialsStatus: LiveData<ApiStatus>
+    ): ApiStatus {
+        val slides = slidesStatus.value!!
+        val news: ApiStatus = newsStatus.value!!
+        val testimonials = testimonialsStatus.value!!
+
+        if (slides.ordinal + news.ordinal + testimonials.ordinal == 0) {
+            return ApiStatus.DONE
+        } else if ((slides.ordinal + news.ordinal + testimonials.ordinal) <= 3 && (slides != ApiStatus.ERROR) && (news != ApiStatus.ERROR) && (testimonials != ApiStatus.ERROR)) {
+            return ApiStatus.LOADING
+        }
+
+        return ApiStatus.ERROR
+    }
+
+    fun messageCombineHomeStatusData(
+        slidesStatus: LiveData<ApiStatus>,
+        newsStatus: LiveData<ApiStatus>,
+        testimonialsStatus: LiveData<ApiStatus>
+    ): Int {
+        val slides = slidesStatus.value!!
+        val news: ApiStatus = newsStatus.value!!
+        val testimonials = testimonialsStatus.value!!
+
+        if (slides.ordinal + news.ordinal + testimonials.ordinal == 0) {
+            return 0 //"Exito"
+        } else if ((slides.ordinal + news.ordinal + testimonials.ordinal) <= 3 && (slides != ApiStatus.ERROR) && (news != ApiStatus.ERROR) && (testimonials != ApiStatus.ERROR)) {
+            return 1 // "Cargando"
+        } else if ((slides == ApiStatus.ERROR) && (news == ApiStatus.ERROR) && (testimonials == ApiStatus.ERROR)) {
+            return 2 // "Inicio - Error general"
+        } else if (slides == ApiStatus.ERROR) {
+            return 3 // "Error al cargar slides"
+        } else if (news == ApiStatus.ERROR) {
+            return 4 // "Error al cargar novedades"
+        } else {
+            return 5 // "Error al cargar testimonios"
+        }
+
+
     }
 
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _slidesList  = MutableLiveData<State<SlidesList>>()
+    private val _slidesList = MutableLiveData<SlidesList>()
+    private val _slidesStatus = MutableLiveData<ApiStatus>()
 
     //External LiveData
-    val slidesList: LiveData<State<SlidesList>> = _slidesList
+    val slidesList: LiveData<SlidesList> = _slidesList
+    val slidesStatus: LiveData<ApiStatus> = _slidesStatus
 
     fun getSlides() {
-        _slidesList.postValue(State.Loading())
+        _slidesStatus.value = ApiStatus.LOADING
         viewModelScope.launch {
-            val slidesList = homeRepository.getHomeSlides()
-            if (slidesList.slide.isNullOrEmpty()) {
-                throw SlidesListNotFoundedException()
-            } else {
-                _slidesList.postValue(State.Success(slidesList))
+            try {
+
+
+                val slidesList = homeRepository.getHomeSlides()
+                if (slidesList.slide.isNullOrEmpty()) {
+                    _slidesStatus.value = ApiStatus.ERROR
+
+                } else {
+                    _slidesList.value = slidesList
+                    _slidesStatus.value = ApiStatus.DONE
+
+                }
+            }catch (e: Exception){
+                _slidesStatus.value = ApiStatus.ERROR
             }
         }
     }
 
-    class SlidesListNotFoundedException : Exception("The api returned an empty list")
-
-
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _testimonialsList = MutableLiveData<TestimonialsList>()
+    private val _testimonialsStatus = MutableLiveData<ApiStatus>()
 
     //External LiveData
     val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
+    val testimonialsStatus: LiveData<ApiStatus> = _testimonialsStatus
 
 
     fun getTestimonials() {
-        var homeTestimonials: TestimonialsList
-
+        _testimonialsStatus.value = ApiStatus.LOADING
         viewModelScope.launch {
-
             try {
-                homeTestimonials = homeRepository.getTestimonials()
-                _testimonialsList.value = homeTestimonials
-
+                val testimonialsList = homeRepository.getTestimonials()
+                if (testimonialsList.testimonials.isNullOrEmpty()) {
+                    _testimonialsStatus.value = ApiStatus.ERROR
+                } else {
+                    _testimonialsList.value = testimonialsList
+                    _testimonialsStatus.value = ApiStatus.DONE
+                }
             } catch (e: Exception) {
-                homeTestimonials = TestimonialsList(false, null, "Error retrieving testimonials")
-                _testimonialsList.value = homeTestimonials
-
+                _testimonialsStatus.value = ApiStatus.ERROR
             }
         }
     }
@@ -74,26 +123,49 @@ class HomeViewModel @Inject constructor(
     /* ---------------------------NEWS REQUEST--------------------------- */
     //Internal MutableLiveData
     private val _newsList = MutableLiveData<NewsList>()
+    private val _newsStatus = MutableLiveData<ApiStatus>()
 
     //External LiveData
     val newsList: LiveData<NewsList> = _newsList
+    val newsStatus: LiveData<ApiStatus> = _newsStatus
 
-    private fun getNews() {
-        var newsList: NewsList
+    fun getNews() {
+        _newsStatus.value = ApiStatus.LOADING
         viewModelScope.launch {
-
             try {
-                newsList = homeRepository.getNews()
-                _newsList.value = newsList
-
+                val newsList = homeRepository.getNews()
+                if (newsList.data.isNullOrEmpty()) {
+                    _newsStatus.value = ApiStatus.ERROR
+                } else {
+                    _newsList.value = newsList
+                    _newsStatus.value = ApiStatus.DONE
+                }
             } catch (e: Exception) {
-                newsList = NewsList(emptyList(), "Error retrieving slides", false)
-                _newsList.value = newsList
-
+                _newsStatus.value = ApiStatus.ERROR
             }
-
-
         }
     }
 
+    fun updateHome() {
+        getSlides()
+        getNews()
+        getTestimonials()
+    }
+
+    fun updateSlidesAndNews() {
+        getSlides()
+        getNews()
+    }
+
+    fun updateSlidesAndTestimonials() {
+        getSlides()
+        getTestimonials()
+    }
+
+    fun updateNewsAndTestimonials() {
+        getNews()
+        getTestimonials()
+    }
 }
+
+
