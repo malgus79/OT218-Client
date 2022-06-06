@@ -1,5 +1,6 @@
 package com.melvin.ongandroid.viewmodel
 
+import android.app.PendingIntent.getActivities
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,27 +18,24 @@ class ActivitiesViewModel @Inject constructor(
 ) : ViewModel() {
 
     init {
-        getActivities()
+        //getActivities()
     }
 
     //Internal MutableLiveData
-    private val _activitiesList = MutableLiveData<ActivitiesList>()
+    private val _activitiesList = MutableLiveData<State<ActivitiesList>>()
 
     //External LiveData
-    val activitiesList: LiveData<ActivitiesList> = _activitiesList
+    val activitiesList: LiveData<State<ActivitiesList>> = _activitiesList
 
 
     fun getActivities() {
-        var activities: ActivitiesList
+        _activitiesList.postValue(State.Loading())
         viewModelScope.launch {
-            try {
-                activities = repository.getActivites()
-                _activitiesList.value = activities
-
-            } catch (e: Exception) {
-                activities = ActivitiesList(false, emptyList(), "Error retrieving activities")
-                _activitiesList.value = activities
-
+            val activitiesList = repository.getActivities()
+            if (activitiesList.data.isNullOrEmpty()) {
+                throw ResourceNotFoundException()
+            } else {
+                _activitiesList.postValue(State.Success(activitiesList))
             }
         }
     }

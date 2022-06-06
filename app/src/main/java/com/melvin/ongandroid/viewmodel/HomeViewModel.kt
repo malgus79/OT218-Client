@@ -20,13 +20,13 @@ class HomeViewModel @Inject constructor(
 
     init {
         //getSlides()
-        getTestimonials()
-        getNews()
+        //getTestimonials()
+        //getNews()
     }
 
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _slidesList  = MutableLiveData<State<SlidesList>>()
+    private val _slidesList = MutableLiveData<State<SlidesList>>()
 
     //External LiveData
     val slidesList: LiveData<State<SlidesList>> = _slidesList
@@ -36,63 +36,48 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val slidesList = homeRepository.getHomeSlides()
             if (slidesList.slide.isNullOrEmpty()) {
-                throw SlidesListNotFoundedException()
+                throw ResourceNotFoundException()
             } else {
                 _slidesList.postValue(State.Success(slidesList))
             }
         }
     }
 
-    class SlidesListNotFoundedException : Exception("The api returned an empty list")
-
-
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _testimonialsList = MutableLiveData<TestimonialsList>()
+    private val _testimonialsList = MutableLiveData<State<TestimonialsList>>()
 
     //External LiveData
-    val testimonialsList: LiveData<TestimonialsList> = _testimonialsList
-
+    val testimonialsList: LiveData<State<TestimonialsList>> = _testimonialsList
 
     fun getTestimonials() {
-        var homeTestimonials: TestimonialsList
-
+        _testimonialsList.postValue(State.Loading())
         viewModelScope.launch {
-
-            try {
-                homeTestimonials = homeRepository.getTestimonials()
-                _testimonialsList.value = homeTestimonials
-
-            } catch (e: Exception) {
-                homeTestimonials = TestimonialsList(false, null, "Error retrieving testimonials")
-                _testimonialsList.value = homeTestimonials
-
+            val testimonialsList = homeRepository.getTestimonials()
+            if (testimonialsList.testimonials.isNullOrEmpty()) {
+                throw ResourceNotFoundException()
+            } else {
+                _testimonialsList.postValue(State.Success(testimonialsList))
             }
         }
     }
 
     /* ---------------------------NEWS REQUEST--------------------------- */
     //Internal MutableLiveData
-    private val _newsList = MutableLiveData<NewsList>()
+    private val _newsList = MutableLiveData<State<NewsList>>()
 
     //External LiveData
-    val newsList: LiveData<NewsList> = _newsList
+    val newsList: LiveData<State<NewsList>> = _newsList
 
-    private fun getNews() {
-        var newsList: NewsList
+    fun getNews() {
+        _newsList.postValue(State.Loading())
         viewModelScope.launch {
-
-            try {
-                newsList = homeRepository.getNews()
-                _newsList.value = newsList
-
-            } catch (e: Exception) {
-                newsList = NewsList(emptyList(), "Error retrieving slides", false)
-                _newsList.value = newsList
-
+            val newsList = homeRepository.getNews()
+            if (newsList.data.isNullOrEmpty()) {
+                throw ResourceNotFoundException()
+            } else {
+                _newsList.postValue(State.Success(newsList))
             }
-
-
         }
     }
 
