@@ -11,9 +11,7 @@
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
     <string name="activities">Actividades</string>
-    <string name="want_to_contribute">¿Quieres contribuir?</string>
-    <string name="donate">Donar</string>
-    <string name="contact_with_us">¡Contactate con nosotros!</string>
+
 
     <!-- Testimonials -->
     <string name="testimony_name">Nombre y Apellido</string>
@@ -27,9 +25,6 @@
     <!-- Contact -->
     <string name="hello_contact_fragment">Fragment Contact</string>
     <string name="our_staff">¡Nuestro staff!</string>
-    <string name="error_dialog">Error</string>
-    <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
-    <string name="try_again">Reintentar</string>
     <string name="want_to_contribute">¿Quieres contribuir?</string>
     <string name="donate">Donar</string>
     <string name="contact_with_us">¡Contactate con nosotros!</string>
@@ -41,6 +36,7 @@
     <string name="required_name">El nombre debe contener al menos 5 letras</string>
     <string name="required_email">Email inválido</string>
     <string name="required_send_message">El mensaje debe contener al menos 10 letras</string>
+
     <string name="api_failed_error">Ha ocurrido un error. Intente nuevamente mas tarde</string>
 
     <!-- Staff -->
@@ -57,4 +53,8 @@
     <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
     <string name="try_again">Reintentar</string>
 
+    <!-- Login -->
+    <string name="hint_password">Password</string>
+    <string name="btn_register">Login</string>
+    <string name="register_string">No tienes cuenta? Registrate!</string>
 </resources>
