@@ -63,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_donate" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cv_name_field"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -85,9 +85,9 @@
             android:inputType="textPersonName"
             tools:ignore="TouchTargetSizeCheck" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cv_email_field"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -109,9 +109,9 @@
             android:textSize="13sp"
             tools:ignore="TouchTargetSizeCheck" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/cv_message_field"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -134,9 +134,9 @@
             android:minHeight="48dp"
             android:textSize="13sp" />
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_send_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
