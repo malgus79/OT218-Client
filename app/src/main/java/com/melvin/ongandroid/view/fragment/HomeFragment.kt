@@ -33,13 +33,14 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<HomeViewModel>()
-
+    private lateinit var analytics: FirebaseAnalytics
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
         viewModel.getSlides()
         viewModel.getTestimonials()
@@ -48,13 +49,17 @@ class HomeFragment : Fragment() {
         setupStatusLiveDataMerger(viewModel)
 
         viewModel.homeStatusLiveDataMerger.observe(viewLifecycleOwner, Observer {
-            if (it == ApiStatus.LOADING) {
-                homeIsLoading(true, binding)
-            } else if (it == ApiStatus.DONE) {
-                homeIsLoading(false, binding)
-            } else {
-                binding.progressBar1.visibility = View.GONE
-                showErrorDialog(viewModel)
+            when (it) {
+                ApiStatus.LOADING -> {
+                    homeIsLoading(true, binding)
+                }
+                ApiStatus.DONE -> {
+                    homeIsLoading(false, binding)
+                }
+                ApiStatus.ERROR -> {
+                    binding.progressBar1.visibility = View.GONE
+                    showErrorDialog(viewModel)
+                }
             }
         })
 
@@ -71,7 +76,6 @@ class HomeFragment : Fragment() {
         })
 
         return binding.root
-
     }
 
     override fun onDestroyView() {
@@ -82,10 +86,9 @@ class HomeFragment : Fragment() {
 
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         //Success Analytics Event
-        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
         val bundle = Bundle()
         bundle.putString("message", "slider_retrieve_success")
-        analytics.logEvent("InitScreen", bundle)
+        analytics.logEvent("Slider", bundle)
 
         val slidesList = viewModel.slidesList.value
         if (slidesList != null && slidesList.success && !slidesList.slide.isNullOrEmpty()) {
@@ -95,10 +98,9 @@ class HomeFragment : Fragment() {
 
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         //Success Analytics Event
-        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
         val bundle = Bundle()
         bundle.putString("message", "last_news_retrieve_success")
-        analytics.logEvent("InitScreen", bundle)
+        analytics.logEvent("News", bundle)
 
         val newsList = viewModel.newsList.value
         if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
@@ -119,15 +121,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-
         //Success Analytics Event
-        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
         val bundle = Bundle()
         bundle.putString("message", "testimonios_retrieve_success")
-        analytics.logEvent("InitScreen", bundle)
+        analytics.logEvent("Testimonials", bundle)
 
         val testimonialsList = viewModel.testimonialsList.value
-
         if (testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
             binding.rvTestimony.adapter =
                 TestimonialsAdapter(testimonialsList.testimonials, true)
@@ -143,7 +142,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupStatusLiveDataMerger(viewModel: HomeViewModel) {
-
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.slidesStatus, Observer {
             viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
                 viewModel.slidesStatus,
@@ -173,7 +171,6 @@ class HomeFragment : Fragment() {
         viewModel.homeStatusLiveDataMerger.removeSource(viewModel.slidesStatus)
         viewModel.homeStatusLiveDataMerger.removeSource(viewModel.newsStatus)
         viewModel.homeStatusLiveDataMerger.removeSource(viewModel.testimonialsStatus)
-
     }
 
     private fun homeIsLoading(loading: Boolean, binding: FragmentHomeBinding) {
@@ -201,14 +198,30 @@ class HomeFragment : Fragment() {
     }
 
     private fun showErrorDialog(viewModel: HomeViewModel) {
+        val message = viewModel.messageCombineHomeStatusData(
+            viewModel.slidesStatus,
+            viewModel.newsStatus,
+            viewModel.testimonialsStatus
+        )
+        val bundle = Bundle()
+        when {
+            message.contains("slides") -> {
+                bundle.putString("message", "slider_retrieve_error")
+                analytics.logEvent("Slider", bundle)
+            }
+            message.contains("novedades") -> {
+                bundle.putString("message", "last_news_retrieve_error")
+                analytics.logEvent("News", bundle)
+            }
+            message.contains("testimonios") -> {
+                bundle.putString("message", "testimonies_retrieve_error")
+                analytics.logEvent("Testimonials", bundle)
+            }
+        }
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage(
-                viewModel.messageCombineHomeStatusData(
-                    viewModel.slidesStatus,
-                    viewModel.newsStatus,
-                    viewModel.testimonialsStatus
-                )
+                message
             )
             .setPositiveButton("Reintentar") { _, _ -> viewModel.retryFailedHomeSections() }
             .show()

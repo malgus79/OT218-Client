@@ -31,4 +31,7 @@
     <string name="required_name">El nombre debe contener al menos 5 letras</string>
     <string name="required_email">Email inválido</string>
     <string name="required_send_message">El mensaje debe contener al menos 10 letras</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_register">Login</string>
+    <string name="register_string">No tienes cuenta? Registrate!</string>
 </resources>
