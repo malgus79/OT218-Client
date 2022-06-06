@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
-
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
@@ -224,7 +223,6 @@ class HomeFragment : Fragment() {
                 analytics.logEvent("Testimonials", bundle)
             }
         }
-
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage(
