@@ -41,8 +41,6 @@ class NewsFragment : Fragment() {
     private fun setNews(viewModel: HomeViewModel, binding: FragmentNewsBinding) {
         val newsList = viewModel.newsList.value
         //Initialize slides adapter
-        if (newsList != null)
-            binding.rvNews.adapter = NewsViewPagerAdapter(newsList.data)
         // TODO: Remove after add api call
         binding.rvNews.adapter = NewsViewPagerAdapter(emptyList())
     }

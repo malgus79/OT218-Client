@@ -14,8 +14,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.dialog.MaterialDialogs
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
+import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.network.ApiStatus
+import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import com.melvin.ongandroid.view.adapters.NewsViewPagerAdapter
 import com.melvin.ongandroid.view.adapters.SlidesAdapter
 import com.melvin.ongandroid.view.adapters.TestimonialsAdapter
@@ -37,11 +39,13 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
 
         setupStatusLiveDataMerger(viewModel)
+        
         viewModel.homeStatusLiveDataMerger.observe(viewLifecycleOwner, Observer {
             if (it == ApiStatus.LOADING){homeIsLoading(true,binding)}
             else if (it == ApiStatus.DONE){homeIsLoading(false,binding)}
@@ -55,9 +59,6 @@ class HomeFragment : Fragment() {
             }
         })
 
-
-
-
         viewModel.slidesList.observe(viewLifecycleOwner, Observer {
             setSlides(viewModel,binding) //Load slides
         })
@@ -66,13 +67,17 @@ class HomeFragment : Fragment() {
             setTestimonials(viewModel, binding) //Load testimonials
         })
 
+
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
-            setNews(viewModel, binding) //Load news
+            when (it) {
+                is State.Success -> setNews(it.data)
+                is State.Failure -> showErrorDialog(callback = { viewModel.getNews() })
+                is State.Loading -> showSpinnerLoading(true)
+            }
         })
 
-
-
         return binding.root
+
     }
 
 
@@ -80,8 +85,7 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         onDestroyNews()
     }
-
-
+    
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
 
@@ -91,9 +95,9 @@ class HomeFragment : Fragment() {
 
     }
 
+
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val newsList = viewModel.newsList.value
-
 
             if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
                 //Initialize news adapter
@@ -119,7 +123,6 @@ class HomeFragment : Fragment() {
             if ( testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
                 binding.rvTestimony.adapter =
                     TestimonialsAdapter(testimonialsList.testimonials, true)
-
         }
     }
 

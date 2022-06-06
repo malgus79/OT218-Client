@@ -34,7 +34,7 @@ class TestimonyFragment : Fragment() {
             when (it){
                 is TestimonyViewModel.State.Success -> showTestimony(it.testimonialsList)
                 is TestimonyViewModel.State.Failure -> showErrorDialog(callback = {viewmodel.getTestimonials()})
-                is TestimonyViewModel.State.Loading -> showSpinnerLoading()
+                is TestimonyViewModel.State.Loading -> showSpinnerLoading(true)
             }
         })
     }
@@ -57,7 +57,8 @@ class TestimonyFragment : Fragment() {
     }
 
     // show progress spinner
-    private fun showSpinnerLoading() {
+    private fun showSpinnerLoading(loading: Boolean) {
+        binding.progressBar1.isVisible = loading
 
     }
 }

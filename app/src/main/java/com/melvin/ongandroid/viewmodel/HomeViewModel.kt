@@ -16,7 +16,6 @@ class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
 
-
     val homeStatusLiveDataMerger = MediatorLiveData<ApiStatus>()
 
     fun combineHomeStatusData(
@@ -61,12 +60,15 @@ class HomeViewModel @Inject constructor(
         }
 
 
+
     }
 
     /* ---------------------------SLIDES REQUEST--------------------------- */
     //Internal MutableLiveData
+
     private val _slidesList = MutableLiveData<SlidesList>()
     private val _slidesStatus = MutableLiveData<ApiStatus>()
+
 
     //External LiveData
     val slidesList: LiveData<SlidesList> = _slidesList
@@ -75,6 +77,7 @@ class HomeViewModel @Inject constructor(
     fun getSlides() {
         _slidesStatus.value = ApiStatus.LOADING
         viewModelScope.launch {
+
             try {
 
 
@@ -89,12 +92,14 @@ class HomeViewModel @Inject constructor(
                 }
             }catch (e: Exception){
                 _slidesStatus.value = ApiStatus.ERROR
+
             }
         }
     }
 
     /* ---------------------------TESTIMONIALS REQUEST--------------------------- */
     //Internal MutableLiveData
+
     private val _testimonialsList = MutableLiveData<TestimonialsList>()
     private val _testimonialsStatus = MutableLiveData<ApiStatus>()
 
@@ -116,12 +121,14 @@ class HomeViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 _testimonialsStatus.value = ApiStatus.ERROR
+
             }
         }
     }
 
     /* ---------------------------NEWS REQUEST--------------------------- */
     //Internal MutableLiveData
+
     private val _newsList = MutableLiveData<NewsList>()
     private val _newsStatus = MutableLiveData<ApiStatus>()
 
@@ -152,20 +159,6 @@ class HomeViewModel @Inject constructor(
         getTestimonials()
     }
 
-    fun updateSlidesAndNews() {
-        getSlides()
-        getNews()
-    }
-
-    fun updateSlidesAndTestimonials() {
-        getSlides()
-        getTestimonials()
-    }
-
-    fun updateNewsAndTestimonials() {
-        getNews()
-        getTestimonials()
-    }
 }
 
 
