@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.dialog.MaterialDialogs
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.ktx.Firebase
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
 import com.melvin.ongandroid.model.data.news.NewsList
@@ -39,18 +41,23 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
 
         setupStatusLiveDataMerger(viewModel)
-        
+
         viewModel.homeStatusLiveDataMerger.observe(viewLifecycleOwner, Observer {
-            if (it == ApiStatus.LOADING){homeIsLoading(true,binding)}
-            else if (it == ApiStatus.DONE){homeIsLoading(false,binding)}
-            else {
-                when (viewModel.messageCombineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)){
+            if (it == ApiStatus.LOADING) {
+                homeIsLoading(true, binding)
+            } else if (it == ApiStatus.DONE) {
+                homeIsLoading(false, binding)
+            } else {
+                when (viewModel.messageCombineHomeStatusData(
+                    viewModel.slidesStatus,
+                    viewModel.newsStatus,
+                    viewModel.testimonialsStatus
+                )) {
                     2 -> showErrorDialog2(viewModel)
                     3 -> showErrorDialog3(viewModel)
                     4 -> showErrorDialog4(viewModel)
@@ -60,69 +67,78 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.slidesList.observe(viewLifecycleOwner, Observer {
-            setSlides(viewModel,binding) //Load slides
+            setSlides(viewModel, binding) //Load slides
         })
 
         viewModel.testimonialsList.observe(viewLifecycleOwner, Observer {
             setTestimonials(viewModel, binding) //Load testimonials
         })
 
-
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is State.Success -> setNews(it.data)
-                is State.Failure -> showErrorDialog(callback = { viewModel.getNews() })
-                is State.Loading -> showSpinnerLoading(true)
-            }
+            setNews(viewModel, binding) //Load News
         })
 
         return binding.root
 
     }
 
-
     override fun onDestroyView() {
         super.onDestroyView()
         onDestroyNews()
     }
-    
-    private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val slidesList = viewModel.slidesList.value
 
+    private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
+
+        //Success Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "slider_retrieve_success")
+        analytics.logEvent("InitScreen",bundle)
+
+        val slidesList = viewModel.slidesList.value
         if (slidesList != null && slidesList.success && !slidesList.slide.isNullOrEmpty()) {
             binding.rvSlides.adapter = SlidesAdapter(slidesList.slide)
         }
-
     }
 
-
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
-        val newsList = viewModel.newsList.value
 
-            if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
-                //Initialize news adapter
-                binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
-                //Set starting page for news viewpager
-                val currentPageIndex = 0
-                binding.vpNews.currentItem = currentPageIndex
-                //Registering for page change callback
-                binding.vpNews.registerOnPageChangeCallback(
-                    object : ViewPager2.OnPageChangeCallback() {
-                        override fun onPageSelected(position: Int) {
-                            super.onPageSelected(position)
-                        }
+        //Success Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "last_news_retrieve_success")
+        analytics.logEvent("InitScreen",bundle)
+
+        val newsList = viewModel.newsList.value
+        if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
+            //Initialize news adapter
+            binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
+            //Set starting page for news viewpager
+            val currentPageIndex = 0
+            binding.vpNews.currentItem = currentPageIndex
+            //Registering for page change callback
+            binding.vpNews.registerOnPageChangeCallback(
+                object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
                     }
-                )
+                }
+            )
         }
     }
 
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
+
+        //Success Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "testimonios_retrieve_success")
+        analytics.logEvent("InitScreen",bundle)
+
         val testimonialsList = viewModel.testimonialsList.value
-
-
-            if ( testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
-                binding.rvTestimony.adapter =
-                    TestimonialsAdapter(testimonialsList.testimonials, true)
+        if (testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
+            binding.rvTestimony.adapter =
+                TestimonialsAdapter(testimonialsList.testimonials, true)
         }
     }
 
@@ -134,23 +150,35 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun setupStatusLiveDataMerger(viewModel: HomeViewModel){
+    private fun setupStatusLiveDataMerger(viewModel: HomeViewModel) {
 
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.slidesStatus, Observer {
-            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)
+            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
+                viewModel.slidesStatus,
+                viewModel.newsStatus,
+                viewModel.testimonialsStatus
+            )
         })
 
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.newsStatus, Observer {
-            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)
+            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
+                viewModel.slidesStatus,
+                viewModel.newsStatus,
+                viewModel.testimonialsStatus
+            )
         })
 
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.testimonialsStatus, Observer {
-            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)
+            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
+                viewModel.slidesStatus,
+                viewModel.newsStatus,
+                viewModel.testimonialsStatus
+            )
         })
     }
 
-    private fun homeIsLoading(loading:Boolean, binding: FragmentHomeBinding){
-        if(loading){
+    private fun homeIsLoading(loading: Boolean, binding: FragmentHomeBinding) {
+        if (loading) {
             binding.progressBar1.visibility = View.VISIBLE
             binding.rvSlides.visibility = View.GONE
             binding.btnContact.visibility = View.GONE
@@ -160,8 +188,7 @@ class HomeFragment : Fragment() {
             binding.tvTestimonyTitle.visibility = View.GONE
             binding.rvTestimony.visibility = View.GONE
             binding.btnAddMyTestimonial.visibility = View.GONE
-        }
-        else{
+        } else {
             binding.progressBar1.visibility = View.GONE
             binding.rvSlides.visibility = View.VISIBLE
             binding.btnContact.visibility = View.VISIBLE
@@ -173,7 +200,8 @@ class HomeFragment : Fragment() {
             binding.btnAddMyTestimonial.visibility = View.VISIBLE
         }
     }
-    private fun showErrorDialog2(viewModel: HomeViewModel){
+
+    private fun showErrorDialog2(viewModel: HomeViewModel) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage("Inicio - Error general")
@@ -181,7 +209,14 @@ class HomeFragment : Fragment() {
             .show()
     }
 
-    private fun showErrorDialog3(viewModel: HomeViewModel){
+    private fun showErrorDialog3(viewModel: HomeViewModel) {
+
+        //Error Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "slider_retrieve_error")
+        analytics.logEvent("InitScreen",bundle)
+
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage("Error al cargar slides")
@@ -189,7 +224,14 @@ class HomeFragment : Fragment() {
             .show()
     }
 
-    private fun showErrorDialog4(viewModel: HomeViewModel){
+    private fun showErrorDialog4(viewModel: HomeViewModel) {
+
+        //Error Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "last_news_retrieve_error")
+        analytics.logEvent("InitScreen",bundle)
+
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage("Error al cargar novedades")
@@ -197,7 +239,14 @@ class HomeFragment : Fragment() {
             .show()
     }
 
-    private fun showErrorDialog5(viewModel: HomeViewModel){
+    private fun showErrorDialog5(viewModel: HomeViewModel) {
+
+        //Error Analytics Event
+        val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
+        bundle.putString("message", "testimonies_retrieve_error")
+        analytics.logEvent("InitScreen",bundle)
+
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
             .setMessage("Error al cargar testimonios")
