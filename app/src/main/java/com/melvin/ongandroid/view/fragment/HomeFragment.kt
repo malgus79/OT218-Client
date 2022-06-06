@@ -117,7 +117,6 @@ class HomeFragment : Fragment() {
                         super.onPageSelected(position)
                         binding.ibArrowRight.isVisible = 3 == position
 
-
                     }
 
                 }
@@ -201,7 +200,6 @@ class HomeFragment : Fragment() {
             binding.btnAddMyTestimonial.visibility = View.VISIBLE
         }
     }
-
     private fun showErrorDialog(viewModel: HomeViewModel) {
         val message = viewModel.messageCombineHomeStatusData(
             viewModel.slidesStatus,
