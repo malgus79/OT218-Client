@@ -23,7 +23,7 @@ private val retrofit = Retrofit.Builder()
     .client(client.build())
     .build()
 
-enum class ApiStatus {LOADING, ERROR, DONE}
+enum class ApiStatus {DONE, LOADING, ERROR  }
 
 
 //Create retrofit instance
