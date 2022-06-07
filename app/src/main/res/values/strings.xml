@@ -28,4 +28,7 @@
     <string name="hint_email">Email</string>
     <string name="hint_message">Mensaje</string>
     <string name="send_message">Enviar mensaje</string>
+    <string name="required_name">El nombre debe contener al menos 5 letras</string>
+    <string name="required_email">Email inválido</string>
+    <string name="required_send_message">El mensaje debe contener al menos 10 letras</string>
 </resources>
