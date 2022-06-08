@@ -9,7 +9,7 @@ import com.melvin.ongandroid.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class StaffFragment : Fragment() {
+class MembersFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,7 @@ class StaffFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_staff, container, false)
+        return inflater.inflate(R.layout.fragment_members, container, false)
     }
 
 }

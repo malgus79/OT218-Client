@@ -17,7 +17,7 @@
     <string name="vector_down">Vector down</string>
     <string name="activities">Actividades</string>
     <string name="hello_contact_fragment">Fragment Contact</string>
-    <string name="hello_staff_fragment">Fragment Staff</string>
+    <string name="our_staff">¡Nuestro staff!</string>
     <string name="error_dialog">Error</string>
     <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
     <string name="try_again">Reintentar</string>
