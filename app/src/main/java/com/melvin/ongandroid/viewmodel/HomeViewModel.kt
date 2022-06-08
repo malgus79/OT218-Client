@@ -29,10 +29,9 @@ class HomeViewModel @Inject constructor(
 
         if (slides.ordinal + news.ordinal + testimonials.ordinal == 0) {
             return ApiStatus.DONE
-        } else if ((slides.ordinal + news.ordinal + testimonials.ordinal) <= 3 && (slides != ApiStatus.ERROR) && (news != ApiStatus.ERROR) && (testimonials != ApiStatus.ERROR)) {
+        } else if ((slides == ApiStatus.LOADING) || (news == ApiStatus.LOADING) || (testimonials == ApiStatus.LOADING)) {
             return ApiStatus.LOADING
         }
-
         return ApiStatus.ERROR
     }
 
@@ -40,27 +39,28 @@ class HomeViewModel @Inject constructor(
         slidesStatus: LiveData<ApiStatus>,
         newsStatus: LiveData<ApiStatus>,
         testimonialsStatus: LiveData<ApiStatus>
-    ): Int {
+    ): String {
         val slides = slidesStatus.value!!
         val news: ApiStatus = newsStatus.value!!
         val testimonials = testimonialsStatus.value!!
 
-        if (slides.ordinal + news.ordinal + testimonials.ordinal == 0) {
-            return 0 //"Exito"
-        } else if ((slides.ordinal + news.ordinal + testimonials.ordinal) <= 3 && (slides != ApiStatus.ERROR) && (news != ApiStatus.ERROR) && (testimonials != ApiStatus.ERROR)) {
-            return 1 // "Cargando"
-        } else if ((slides == ApiStatus.ERROR) && (news == ApiStatus.ERROR) && (testimonials == ApiStatus.ERROR)) {
-            return 2 // "Inicio - Error general"
+
+        if ((slides == ApiStatus.ERROR) && (news == ApiStatus.ERROR) && (testimonials == ApiStatus.ERROR)) {
+            return "Inicio - Error general"
+        } else if (slides == ApiStatus.ERROR && news == ApiStatus.ERROR) {
+            return "Error al cargar slides y novedades"
+        } else if (slides == ApiStatus.ERROR && testimonials == ApiStatus.ERROR) {
+            return "Error al cargar slides y testimonios"
+        } else if (news == ApiStatus.ERROR && testimonials == ApiStatus.ERROR) {
+            return "Error al cargar novedades y testimonios"
         } else if (slides == ApiStatus.ERROR) {
-            return 3 // "Error al cargar slides"
+            return "Error al cargar slides"
         } else if (news == ApiStatus.ERROR) {
-            return 4 // "Error al cargar novedades"
-        } else {
-            return 5 // "Error al cargar testimonios"
+            return "Error al cargar novedades"
+        } else if (testimonials == ApiStatus.ERROR) {
+            return "Error al cargar testimonios"
         }
-
-
-
+        return ""
     }
 
     /* ---------------------------SLIDES REQUEST--------------------------- */
@@ -90,7 +90,7 @@ class HomeViewModel @Inject constructor(
                     _slidesStatus.value = ApiStatus.DONE
 
                 }
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 _slidesStatus.value = ApiStatus.ERROR
 
             }
@@ -153,10 +153,19 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun updateHome() {
-        getSlides()
-        getNews()
-        getTestimonials()
+    fun retryFailedHomeSections() {
+
+        if (_slidesStatus.value == ApiStatus.ERROR) {
+            getSlides()
+        }
+        if (_newsStatus.value == ApiStatus.ERROR) {
+            getNews()
+        }
+        if (_testimonialsStatus.value == ApiStatus.ERROR) {
+            getTestimonials()
+        }
+
+
     }
 
 }

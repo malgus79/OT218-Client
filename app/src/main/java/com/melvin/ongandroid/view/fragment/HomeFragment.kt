@@ -45,22 +45,20 @@ class HomeFragment : Fragment() {
         viewModel.getNews()
 
         setupStatusLiveDataMerger(viewModel)
-        
+
         viewModel.homeStatusLiveDataMerger.observe(viewLifecycleOwner, Observer {
-            if (it == ApiStatus.LOADING){homeIsLoading(true,binding)}
-            else if (it == ApiStatus.DONE){homeIsLoading(false,binding)}
-            else {
-                when (viewModel.messageCombineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)){
-                    2 -> showErrorDialog2(viewModel)
-                    3 -> showErrorDialog3(viewModel)
-                    4 -> showErrorDialog4(viewModel)
-                    5 -> showErrorDialog5(viewModel)
-                }
+            if (it == ApiStatus.LOADING) {
+                homeIsLoading(true, binding)
+            } else if (it == ApiStatus.DONE) {
+                homeIsLoading(false, binding)
+            } else {
+                binding.progressBar1.visibility = View.GONE
+                showErrorDialog(viewModel)
             }
         })
 
         viewModel.slidesList.observe(viewLifecycleOwner, Observer {
-            setSlides(viewModel,binding) //Load slides
+            setSlides(viewModel, binding) //Load slides
         })
 
         viewModel.testimonialsList.observe(viewLifecycleOwner, Observer {
@@ -69,11 +67,7 @@ class HomeFragment : Fragment() {
 
 
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is State.Success -> setNews(it.data)
-                is State.Failure -> showErrorDialog(callback = { viewModel.getNews() })
-                is State.Loading -> showSpinnerLoading(true)
-            }
+            setNews(viewModel, binding)
         })
 
         return binding.root
@@ -84,8 +78,9 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         onDestroyNews()
+        undoStatusLiveDataMerger(viewModel)
     }
-    
+
     private fun setSlides(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val slidesList = viewModel.slidesList.value
 
@@ -99,20 +94,20 @@ class HomeFragment : Fragment() {
     private fun setNews(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         val newsList = viewModel.newsList.value
 
-            if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
-                //Initialize news adapter
-                binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
-                //Set starting page for news viewpager
-                val currentPageIndex = 0
-                binding.vpNews.currentItem = currentPageIndex
-                //Registering for page change callback
-                binding.vpNews.registerOnPageChangeCallback(
-                    object : ViewPager2.OnPageChangeCallback() {
-                        override fun onPageSelected(position: Int) {
-                            super.onPageSelected(position)
-                        }
+        if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
+            //Initialize news adapter
+            binding.vpNews.adapter = NewsViewPagerAdapter(newsList.data)
+            //Set starting page for news viewpager
+            val currentPageIndex = 0
+            binding.vpNews.currentItem = currentPageIndex
+            //Registering for page change callback
+            binding.vpNews.registerOnPageChangeCallback(
+                object : ViewPager2.OnPageChangeCallback() {
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
                     }
-                )
+                }
+            )
         }
     }
 
@@ -120,9 +115,9 @@ class HomeFragment : Fragment() {
         val testimonialsList = viewModel.testimonialsList.value
 
 
-            if ( testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
-                binding.rvTestimony.adapter =
-                    TestimonialsAdapter(testimonialsList.testimonials, true)
+        if (testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
+            binding.rvTestimony.adapter =
+                TestimonialsAdapter(testimonialsList.testimonials, true)
         }
     }
 
@@ -134,23 +129,42 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun setupStatusLiveDataMerger(viewModel: HomeViewModel){
+    private fun setupStatusLiveDataMerger(viewModel: HomeViewModel) {
 
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.slidesStatus, Observer {
-            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)
+            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
+                viewModel.slidesStatus,
+                viewModel.newsStatus,
+                viewModel.testimonialsStatus
+            )
         })
 
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.newsStatus, Observer {
-            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)
+            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
+                viewModel.slidesStatus,
+                viewModel.newsStatus,
+                viewModel.testimonialsStatus
+            )
         })
 
         viewModel.homeStatusLiveDataMerger.addSource(viewModel.testimonialsStatus, Observer {
-            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(viewModel.slidesStatus,viewModel.newsStatus,viewModel.testimonialsStatus)
+            viewModel.homeStatusLiveDataMerger.value = viewModel.combineHomeStatusData(
+                viewModel.slidesStatus,
+                viewModel.newsStatus,
+                viewModel.testimonialsStatus
+            )
         })
     }
 
-    private fun homeIsLoading(loading:Boolean, binding: FragmentHomeBinding){
-        if(loading){
+    private fun undoStatusLiveDataMerger(viewModel: HomeViewModel) {
+        viewModel.homeStatusLiveDataMerger.removeSource(viewModel.slidesStatus)
+        viewModel.homeStatusLiveDataMerger.removeSource(viewModel.newsStatus)
+        viewModel.homeStatusLiveDataMerger.removeSource(viewModel.testimonialsStatus)
+
+    }
+
+    private fun homeIsLoading(loading: Boolean, binding: FragmentHomeBinding) {
+        if (loading) {
             binding.progressBar1.visibility = View.VISIBLE
             binding.rvSlides.visibility = View.GONE
             binding.btnContact.visibility = View.GONE
@@ -160,8 +174,7 @@ class HomeFragment : Fragment() {
             binding.tvTestimonyTitle.visibility = View.GONE
             binding.rvTestimony.visibility = View.GONE
             binding.btnAddMyTestimonial.visibility = View.GONE
-        }
-        else{
+        } else {
             binding.progressBar1.visibility = View.GONE
             binding.rvSlides.visibility = View.VISIBLE
             binding.btnContact.visibility = View.VISIBLE
@@ -173,35 +186,20 @@ class HomeFragment : Fragment() {
             binding.btnAddMyTestimonial.visibility = View.VISIBLE
         }
     }
-    private fun showErrorDialog2(viewModel: HomeViewModel){
+
+    private fun showErrorDialog(viewModel: HomeViewModel) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Error")
-            .setMessage("Inicio - Error general")
-            .setPositiveButton("Reintentar") { _, _ -> viewModel.updateHome() }
+            .setMessage(
+                viewModel.messageCombineHomeStatusData(
+                    viewModel.slidesStatus,
+                    viewModel.newsStatus,
+                    viewModel.testimonialsStatus
+                )
+            )
+            .setPositiveButton("Reintentar") { _, _ -> viewModel.retryFailedHomeSections() }
             .show()
     }
 
-    private fun showErrorDialog3(viewModel: HomeViewModel){
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Error")
-            .setMessage("Error al cargar slides")
-            .setPositiveButton("Reintentar") { _, _ -> viewModel.getSlides() }
-            .show()
-    }
 
-    private fun showErrorDialog4(viewModel: HomeViewModel){
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Error")
-            .setMessage("Error al cargar novedades")
-            .setPositiveButton("Reintentar") { _, _ -> viewModel.getNews() }
-            .show()
-    }
-
-    private fun showErrorDialog5(viewModel: HomeViewModel){
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Error")
-            .setMessage("Error al cargar testimonios")
-            .setPositiveButton("Reintentar") { _, _ -> viewModel.getTestimonials() }
-            .show()
-    }
 }
