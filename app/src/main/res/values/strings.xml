@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ONGAndroid</string>
+
+    <!-- Home -->
     <string name="description_img_home">Image slides</string>
     <string name="slide_descriptions">Slide Descriptions</string>
     <string name="slide_name">Slide Name</string>
@@ -8,6 +10,12 @@
     <string name="contact_us">Contactanos</string>
     <string name="want_to_join">¡Quiero ser parte!</string>
     <string name="news">Novedades</string>
+    <string name="activities">Actividades</string>
+    <string name="want_to_contribute">¿Quieres contribuir?</string>
+    <string name="donate">Donar</string>
+    <string name="contact_with_us">¡Contactate con nosotros!</string>
+
+    <!-- Testimonials -->
     <string name="testimony_name">Nombre y Apellido</string>
     <string name="description_testimony">Description testimony</string>
     <string name="testimonios">Testimonios</string>
@@ -15,15 +23,9 @@
     <string name="img_testimony">Imagen de testimonio</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="vector_down">Vector down</string>
-    <string name="activities">Actividades</string>
+
+    <!-- Contact -->
     <string name="hello_contact_fragment">Fragment Contact</string>
-    <string name="hello_staff_fragment">Fragment Staff</string>
-    <string name="error_dialog">Error</string>
-    <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
-    <string name="try_again">Reintentar</string>
-    <string name="want_to_contribute">¿Quieres contribuir?</string>
-    <string name="donate">Donar</string>
-    <string name="contact_with_us">¡Contactate con nosotros!</string>
     <string name="hint_name">Nombre y Apellido</string>
     <string name="hint_email">Email</string>
     <string name="hint_message">Mensaje</string>
@@ -31,4 +33,19 @@
     <string name="required_name">El nombre debe contener al menos 5 letras</string>
     <string name="required_email">Email inválido</string>
     <string name="required_send_message">El mensaje debe contener al menos 10 letras</string>
+    <string name="api_failed_error">Ha ocurrido un error. Intente nuevamente mas tarde</string>
+
+    <!-- Staff -->
+    <string name="hello_staff_fragment">Fragment Staff</string>
+    <string name="name_detail_members">Nombre y Apellido</string>
+    <string name="descriptions_detail_members">Descripción</string>
+    <string name="link_linkedin">Link hacia Linkedin</string>
+    <string name="link_facebook">Link hacia Facebook</string>
+
+    <!-- Error -->
+    <string name="error_dialog">Error</string>
+    <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
+    <string name="try_again">Reintentar</string>
+
+
 </resources>
