@@ -31,12 +31,12 @@ class MainActivity : AppCompatActivity() {
         //Show Spinner Loading
         //viewModel.isShowProgress()
         //Add the fragments to the nav menu
-        // setupBottomNav()
+        setupBottomNav()
         //viewModel.isShowProgress()
-        binding.button.setOnClickListener {
-            startActivity(Intent(this, NavigationActivity::class.java))
+        //binding.button.setOnClickListener {
+        //    startActivity(Intent(this, NavigationActivity::class.java))
+
         }
-    }
 
     private fun setupBottomNav() {
         //Initialize Fragment Manager
@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
         fragmentManager.beginTransaction()
             .add(R.id.navHostFragment, homeFragment, HomeFragment::class.java.name)
             .commit()
-        /*
-        Navigate to the different fragments
+
+        //Navigate to the different fragments
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> {
@@ -79,9 +79,9 @@ class MainActivity : AppCompatActivity() {
                     activeFragment = homeFragment
                     true
                 }
-                R.id.nav_staff -> {
-                    fragmentManager.beginTransaction().hide(activeFragment).show(staffFragment).commit()
-                    activeFragment = staffFragment
+                R.id.nav_members -> {
+                    fragmentManager.beginTransaction().hide(activeFragment).show(membersFragment).commit()
+                    activeFragment = membersFragment
                     true
                 }
                 R.id.nav_our_activities -> {
@@ -97,6 +97,5 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        */
     }
 }
