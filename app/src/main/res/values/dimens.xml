@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Dimens Margin -->
     <dimen name="common_margin_none">0dp</dimen>
     <dimen name="common_margin_min">8dp</dimen>
     <dimen name="common_margin_default">16dp</dimen>
     <dimen name="common_margin_middle">32dp</dimen>
 
+    <!-- Dimens Size -->
     <dimen name="common_size_default">20sp</dimen>
-    <dimen name="common_padding_min">8dp</dimen>
 
+    <!-- Dimens Padding -->
+    <dimen name="common_padding_min">8dp</dimen>
 </resources>

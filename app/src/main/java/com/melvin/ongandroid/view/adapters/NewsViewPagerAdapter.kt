@@ -12,7 +12,7 @@ import com.melvin.ongandroid.model.data.news.New
 
 class NewsViewPagerAdapter(private val newsList: List<New>) :
     RecyclerView.Adapter<NewsViewPagerAdapter.ViewPagerViewHolder>() {
-    private val data = newsList.shuffled().take(4)
+    private val data = newsList.take(4)
 
     class ViewPagerViewHolder(private val binding: FragmentNewsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -47,6 +47,4 @@ class NewsViewPagerAdapter(private val newsList: List<New>) :
     override fun getItemCount(): Int {
         return data.size
     }
-
-
 }

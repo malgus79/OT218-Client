@@ -25,7 +25,7 @@ class ActivitiesAdapter (private val activitiesList: List<Activity>) :
             //Load image
             Glide.with(binding.root.context)
                 .load(activity.image)
-                .error(R.drawable.voluntario_pobreza) // (test image)
+                .error(R.drawable.ic_baseline_broken_image_100)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivActivities)
         }
