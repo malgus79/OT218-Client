@@ -67,11 +67,10 @@ class HomeFragment : Fragment() {
 
 
         viewModel.newsList.observe(viewLifecycleOwner, Observer {
-            setNews(viewModel, binding)
+          setNews(viewModel, binding) //Load news
         })
 
         return binding.root
-
     }
 
 
