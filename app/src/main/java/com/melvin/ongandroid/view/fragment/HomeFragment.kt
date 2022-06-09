@@ -101,10 +101,15 @@ class HomeFragment : Fragment() {
             binding.vpNews.currentItem = currentPageIndex
             //Registering for page change callback
             binding.vpNews.registerOnPageChangeCallback(
+
                 object : ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
                         super.onPageSelected(position)
+                        binding.ibArrowRight.isVisible = 3 == position
+
+
                     }
+
                 }
             )
         }
