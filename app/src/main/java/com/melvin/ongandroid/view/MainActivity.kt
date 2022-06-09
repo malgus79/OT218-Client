@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.ActivityMainBinding
-import com.melvin.ongandroid.databinding.ActivityNavigationBinding
 import com.melvin.ongandroid.view.fragment.ContactFragment
 import com.melvin.ongandroid.view.fragment.HomeFragment
 import com.melvin.ongandroid.view.fragment.OurActivitiesFragment
-import com.melvin.ongandroid.view.fragment.StaffFragment
+import com.melvin.ongandroid.view.fragment.MembersFragment
 import com.melvin.ongandroid.viewmodel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         //Instantiate fragments
         val homeFragment = HomeFragment()
-        val staffFragment = StaffFragment()
+        val membersFragment = MembersFragment()
         val ourActivitiesFragment = OurActivitiesFragment()
         val contactFragment = ContactFragment()
 
@@ -64,8 +63,8 @@ class MainActivity : AppCompatActivity() {
 
         //Add fragment Staff
         fragmentManager.beginTransaction()
-            .add(R.id.navHostFragment, staffFragment, StaffFragment::class.java.name)
-            .hide(staffFragment).commit()
+            .add(R.id.navHostFragment, membersFragment, MembersFragment::class.java.name)
+            .hide(membersFragment).commit()
 
         //Add fragment Home
         fragmentManager.beginTransaction()

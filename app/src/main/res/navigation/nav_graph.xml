@@ -6,12 +6,11 @@
     app:startDestination="@id/nav_home">
 
 
-
     <fragment
-        android:id="@+id/nav_staff"
-        android:name="com.melvin.ongandroid.view.fragment.StaffFragment"
-        android:label="fragment_staff"
-        tools:layout="@layout/fragment_staff" />
+        android:id="@+id/nav_members"
+        android:name="com.melvin.ongandroid.view.fragment.MembersFragment"
+        android:label="fragment_members"
+        tools:layout="@layout/fragment_members" />
 
     <fragment
         android:id="@+id/nav_contact"
@@ -32,7 +31,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_nav_staff"
-            app:destination="@id/nav_staff" />
+            app:destination="@id/nav_members" />
         <action
             android:id="@+id/action_nav_home_to_ourActivitiesFragment"
             app:destination="@id/nav_our_activities"/>
