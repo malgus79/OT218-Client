@@ -65,38 +65,45 @@
             android:id="@+id/vp_news"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_news">
-
+            app:layout_constraintTop_toBottomOf="@+id/tv_news"
+            tools:listitem="@layout/fragment_news_item">
 
         </androidx.viewpager2.widget.ViewPager2>
+
+
+
 
         <Button
             android:id="@+id/btn_want_to_join"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:layout_marginTop="16dp"
             android:text="@string/want_to_join"
-            app:layout_constraintEnd_toEndOf="@id/vp_news"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@id/vp_news"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vp_news" />
 
         <TextView
             android:id="@+id/tv_Testimony_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_margin_middle"
+            android:layout_margin="@dimen/common_margin_min"
+            android:layout_marginTop="16dp"
             android:text="@string/testimonios"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_want_to_join" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_want_to_join" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_testimony"
@@ -120,6 +127,7 @@
             android:layout_marginTop="@dimen/common_margin_middle"
             android:layout_marginBottom="@dimen/common_margin_default"
             android:text="@string/add_my_testimonial"
+            android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_ong_logo"
             app:layout_constraintHorizontal_bias="0.0"
@@ -135,6 +143,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_ong_logo"
             />
+
+        <ImageButton
+            android:id="@+id/ib_arrow_right"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_news"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vp_news"
+            app:layout_constraintTop_toTopOf="@+id/vp_news"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
