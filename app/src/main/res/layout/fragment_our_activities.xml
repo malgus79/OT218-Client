@@ -27,7 +27,8 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/iv_ong_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/poppins_regular"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcActivities"

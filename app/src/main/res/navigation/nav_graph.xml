@@ -25,6 +25,12 @@
         tools:layout="@layout/fragment_our_activities" />
 
     <fragment
+        android:id="@+id/nav_news"
+        android:name="com.melvin.ongandroid.view.fragment.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.melvin.ongandroid.view.fragment.HomeFragment"
         android:label="fragment_home"
@@ -38,6 +44,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_contact"
             app:destination="@id/nav_contact" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_news"
+            app:destination="@id/nav_news" />
 
     </fragment>
 
