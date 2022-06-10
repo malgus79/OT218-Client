@@ -37,7 +37,6 @@ class NewsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
-        // init()
 
         // Load and manage News data
         viewModel.getNews()
@@ -49,11 +48,6 @@ class NewsFragment : Fragment() {
             }
         })
         return binding.root
-    }
-
-    //Start recyclerView
-    private fun init() {
-        //binding.rvNews.setHasFixedSize(true)
     }
 
     // show error message and try again
@@ -69,12 +63,9 @@ class NewsFragment : Fragment() {
     }
 
     private fun setNews(newsList: NewsList) {
-        Log.i("spinner",newsList.data[0].content.toString());
         showSpinnerLoading(false)
-        // binding.rvNews1.setHasFixedSize(true)
-        binding.rvNews1.layoutManager = LinearLayoutManager(binding.root.context)
+        // binding.rvNews1.layoutManager = LinearLayoutManager(binding.root.context)
         binding.rvNews1.adapter = NewsAdapter(newsList.data)
-        //binding.rvTestimony1.adapter = NewsAdapter(newsList.data)
     }
 
 
