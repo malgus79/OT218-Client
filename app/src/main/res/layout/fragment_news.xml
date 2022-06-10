@@ -5,91 +5,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".view.fragment.NewsFragment">
 
-    <TextView
-        android:id="@+id/tvNewsHead"
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:id="@+id/iv_ong_logo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center"
-        android:text="Novedades"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:src="@drawable/ong_logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNews"
-        android:layout_width="410dp"
-        android:layout_height="557dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="198dp"
-        android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:backgroundTint="#FF0000"
+    <TextView
+        android:id="@+id/tv_news_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
-        android:text="¡Quiero ser parte!"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/tv_news"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.952" />
+        app:layout_constraintTop_toBottomOf="@id/iv_ong_logo" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNews1"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tv_news_screen"
+        tools:listitem="@layout/last_news_item" />
 
-        <TextView
-            android:id="@+id/tvError"
-            android:layout_width="413dp"
-            android:layout_height="31dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Ha ocurrido un error obteniendo la información"
-            android:textColor="@color/black"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.321" />
-
-        <Button
-            android:id="@+id/buttonRetry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="reintentar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.955" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/rv_testimony1"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical"-->
+    <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/rvNews1"-->
+    <!--        tools:listitem="@layout/fragment_news_item"/>-->
 
     <ProgressBar
         android:id="@+id/progressBar1"
@@ -97,11 +64,21 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
