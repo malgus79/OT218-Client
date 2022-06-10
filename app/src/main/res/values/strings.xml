@@ -40,6 +40,8 @@
     <string name="link_facebook">Link hacia Facebook</string>
     <string name="logo_facebook">Logo Facebook</string>
     <string name="logo_linkedin">Logo Linkedin</string>
+    <!-- News -->
+    <string name="tv_news">Novedades</string>
     <!-- Error -->
     <string name="error_dialog">Error</string>
     <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
