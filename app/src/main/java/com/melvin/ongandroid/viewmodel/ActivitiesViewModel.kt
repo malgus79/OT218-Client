@@ -10,6 +10,7 @@ import com.melvin.ongandroid.model.data.activities.ActivitiesList
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,9 +18,6 @@ class ActivitiesViewModel @Inject constructor(
     private val repository: HomeRepository
 ) : ViewModel() {
 
-    init {
-        //getActivities()
-    }
 
     //Internal MutableLiveData
     private val _activitiesList = MutableLiveData<State<ActivitiesList>>()
@@ -31,12 +29,17 @@ class ActivitiesViewModel @Inject constructor(
     fun getActivities() {
         _activitiesList.postValue(State.Loading())
         viewModelScope.launch {
-            val activitiesList = repository.getActivities()
-            if (activitiesList.data.isNullOrEmpty()) {
-                throw ResourceNotFoundException()
-            } else {
-                _activitiesList.postValue(State.Success(activitiesList))
+            try {
+                val activitiesList = repository.getActivities()
+                if (activitiesList.data.isNullOrEmpty()) {
+                    _activitiesList.postValue(State.Failure(ResourceNotFoundException()))
+                } else {
+                    _activitiesList.postValue(State.Success(activitiesList))
+                }
+            } catch (e: Exception){
+                _activitiesList.postValue(State.Failure(e))
             }
+
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.melvin.ongandroid.businesslogic.repository
 
+import com.melvin.ongandroid.model.data.MembersList
 import com.melvin.ongandroid.model.data.activities.ActivitiesList
 import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
@@ -26,9 +27,14 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
         return APIService.getNews()
     }
 
-    //Calls APIservices getActivites function
-
+    //Calls APIServices getActivities function
     suspend fun getActivities(): ActivitiesList {
         return APIService.getActivities()
     }
+
+    suspend fun getMembers(): MembersList{
+        return APIService.getMembers()
+    }
+
+
 }
