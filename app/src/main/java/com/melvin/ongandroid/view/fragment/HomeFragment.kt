@@ -1,5 +1,6 @@
 package com.melvin.ongandroid.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,10 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
+        binding.ibArrowRight.setOnClickListener {
+            val intent = Intent(binding.root.context, NewsFragment::class.java)
+            startActivity(intent)
+        }
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
