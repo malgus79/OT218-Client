@@ -15,10 +15,15 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding= ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val navHostFragmentLogin =
+            supportFragmentManager.findFragmentById(R.id.fragment_container_log_in) as NavHostFragment
+        navController = navHostFragmentLogin.findNavController()
     }
 }

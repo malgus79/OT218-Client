@@ -26,7 +26,6 @@
     <string name="ok">Aceptar</string>
     <!-- Contact -->
     <string name="hello_contact_fragment">Fragment Contact</string>
-
     <string name="hint_name">Nombre y Apellido</string>
     <string name="hint_email">Email</string>
     <string name="hint_message">Mensaje</string>
@@ -52,6 +51,8 @@
     <string name="try_again">Reintentar</string>
     <!-- Login -->
     <string name="hint_password">Password</string>
+    <string name="invalid_email">Email inválido</string>
+    <string name="invalid_pass">Contraseña inválida</string>
     <string name="btn_register">Login</string>
     <string name="register_string">No tienes cuenta? Registrate!</string>
 </resources>
