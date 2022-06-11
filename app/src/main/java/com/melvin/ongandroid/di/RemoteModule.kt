@@ -39,4 +39,4 @@ class RemoteModule {
     }
 }
 
-const val BASE_URL = "http://ongapi.alkemy.org/"
+const val BASE_URL = "https://ongapi.alkemy.org/"
