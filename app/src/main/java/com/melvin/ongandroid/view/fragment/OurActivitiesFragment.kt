@@ -52,7 +52,7 @@ class OurActivitiesFragment : Fragment() {
     private fun showErrorDialog(
         callback: (() -> Unit)? = null
     ) {
-        binding.progressBar1.isVisible = false
+        binding.progressBar.isVisible = false
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.error_dialog))
             .setMessage(getString(R.string.error_dialog_detail))
@@ -71,7 +71,7 @@ class OurActivitiesFragment : Fragment() {
 
     // show progress spinner
     private fun showSpinnerLoading(loading: Boolean) {
-        binding.progressBar3.isVisible = loading
+        binding.progressBar.isVisible = loading
     }
 }
 
