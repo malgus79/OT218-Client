@@ -49,24 +49,10 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
-//        binding.ibArrowRight.setOnClickListener {
-//            val host = NavHostFragment.create(R.navigation.navigation_last_news)
-//            parentFragmentManager.beginTransaction().replace(R.id.navHostFragment, host)
-//                .setPrimaryNavigationFragment(host).commit()
-//        }
-
-        // Inflate the layout for this fragment
-//        val view = inflater.inflate(R.layout.activity_main, container, false)
-//        binding.ibArrowRight.setOnClickListener{
-//            val fragment = NewsFragment() // navigate to last news fragment
-//            val transaction = fragmentManager?.beginTransaction()
-//            transaction?.replace(R.id.navHostFragment, fragment)?.commit()
-//        }
-
         binding.ibArrowRight.setOnClickListener {
-
             findNavController().navigate(R.id.action_nav_home_to_nav_news)
         }
+
         viewModel.getSlides()
         viewModel.getTestimonials()
         viewModel.getNews()
