@@ -1,5 +1,6 @@
 package com.melvin.ongandroid.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentMembersBinding
+import com.melvin.ongandroid.databinding.FragmentMembersDetailBinding
 import com.melvin.ongandroid.model.data.MembersList
 import com.melvin.ongandroid.view.adapters.MembersAdapter
 import com.melvin.ongandroid.viewmodel.MembersViewModel
@@ -29,6 +31,7 @@ class MembersFragment : Fragment() {
     ): View? {
         binding = FragmentMembersBinding.inflate(inflater, container, false)
 
+
         //Loads data
         viewModel.getMembers()
         viewModel.membersList.observe(viewLifecycleOwner, Observer {
@@ -37,12 +40,12 @@ class MembersFragment : Fragment() {
                     setMembers(it.data)
                     showSpinnerLoading(false)
                 }
-                /*is State.Failure -> {
+                is State.Failure -> {
                     showErrorDialog(callback = { viewModel.getMembers() })
                     binding.rvMembers.isVisible = false
                     binding.btnWantToJoin.isVisible = false
                     binding.rvMembers.isVisible = false
-                }*/
+                }
                 is State.Loading -> showSpinnerLoading(true)
             }
         })
@@ -75,4 +78,6 @@ class MembersFragment : Fragment() {
             .setPositiveButton(getString(R.string.try_again)) { _, _ -> callback?.invoke() }
             .show()
     }
+
+
 }
