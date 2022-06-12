@@ -5,7 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardCornerRadius="@dimen/common_margin_min">
+    app:cardCornerRadius="@dimen/common_margin_min"
+    android:id="@+id/cv_member_item">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"

@@ -11,4 +11,5 @@
 
     <!-- Dimens Padding -->
     <dimen name="common_padding_min">8dp</dimen>
+    <dimen name="common_margin_max">64dp</dimen>
 </resources>
