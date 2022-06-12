@@ -25,11 +25,13 @@ class ContactViewModel @Inject constructor(private val repository: HomeRepositor
 
     // Internal MutableLiveData - Enable "send message" button
     private val _sendMessageButton = MutableLiveData(false)
+
     // External LiveData - Enable "send message" button
     val sendMessageButton: LiveData<Boolean> = _sendMessageButton
 
     // Internal MutableLiveData - Api state
     private val _postContactStatus = MutableLiveData<ApiStatus>()
+
     // External LiveData - Api state
     val postContactStatus: LiveData<ApiStatus> = _postContactStatus
 
@@ -50,14 +52,18 @@ class ContactViewModel @Inject constructor(private val repository: HomeRepositor
     //calls repository postContact function and updates status
     fun sendMessage(name: String, email: String, message: String) {
         _postContactStatus.value = ApiStatus.LOADING
-        val contactDTO = ContactDTO(name,email,message)
+        val contactDTO = ContactDTO(name, email, message)
         viewModelScope.launch {
-              val postContactResponse = repository.postContact(contactDTO)
-                if (postContactResponse.success == true){
+            try {
+                val postContactResponse = repository.postContact(contactDTO)
+                if (postContactResponse.success == true) {
                     _postContactStatus.value = ApiStatus.DONE
-                }else{
+                } else {
                     _postContactStatus.value = ApiStatus.ERROR
                 }
+            } catch (e: Exception) {
+                _postContactStatus.value = ApiStatus.ERROR
+            }
         }
     }
 }

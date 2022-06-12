@@ -44,7 +44,10 @@ class ContactFragment : Fragment() {
                     isLoading(false)
                     showSuccessDialog()
                 }
-                //ApiStatus.ERROR -> isLoading(false)
+                ApiStatus.ERROR -> {
+                    isLoading(false)
+                    binding.tvContactError.visibility = View.VISIBLE
+                }
             }
         })
 
@@ -80,6 +83,7 @@ class ContactFragment : Fragment() {
             if (!it.toString().validateFormatName()) {
                 nameUI.error = getString(R.string.required_name)
             }
+            binding.tvContactError.visibility = View.GONE
             viewModel.fieldsValidations()
         }
 
@@ -89,6 +93,7 @@ class ContactFragment : Fragment() {
             if (!it.toString().validateFormatEmail()) {
                 emailUI.error = getString(R.string.required_email)
             }
+            binding.tvContactError.visibility = View.GONE
             viewModel.fieldsValidations()
         }
 
@@ -98,6 +103,7 @@ class ContactFragment : Fragment() {
             if (!it.toString().validateFormatQueryMessage()) {
                 messageUI.error = getString(R.string.required_send_message)
             }
+            binding.tvContactError.visibility = View.GONE
             viewModel.fieldsValidations()
         }
     }
@@ -115,7 +121,7 @@ class ContactFragment : Fragment() {
         binding.etMessageField.text.clear()
     }
 
-    private fun showSuccessDialog(){
+    private fun showSuccessDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.success_dialog))
             .setMessage(
