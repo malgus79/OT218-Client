@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -39,8 +40,8 @@
             android:id="@+id/btn_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
             android:text="@string/contact_us"
+            android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="@id/rv_slides"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="@id/rv_slides"
@@ -74,8 +75,6 @@
             tools:listitem="@layout/fragment_news_item">
 
         </androidx.viewpager2.widget.ViewPager2>
-
-
 
 
         <Button
@@ -132,7 +131,7 @@
             app:layout_constraintEnd_toStartOf="@+id/iv_ong_logo"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_testimony"/>
+            app:layout_constraintTop_toBottomOf="@+id/rv_testimony" />
 
         <ProgressBar
             android:id="@+id/progressBar1"
@@ -141,8 +140,7 @@
             android:layout_margin="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_ong_logo"
-            />
+            app:layout_constraintTop_toBottomOf="@id/iv_ong_logo" />
 
         <ImageButton
             android:id="@+id/ib_arrow_right"
@@ -154,6 +152,20 @@
             app:layout_constraintStart_toEndOf="@+id/vp_news"
             app:layout_constraintTop_toTopOf="@+id/vp_news"
             app:srcCompat="@drawable/ic_keyboard_arrow_down" />
+
+<!--I did this Button for make the firebase log, then will be improve -!-->
+        <ImageButton
+            android:id="@+id/ib_arrow_right2"
+            android:layout_width="55dp"
+            android:layout_height="49dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.832"
+            app:layout_constraintStart_toEndOf="@+id/btn_add_my_testimonial"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.98"
+            app:srcCompat="@drawable/ic_keyboard_arrow_down" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
