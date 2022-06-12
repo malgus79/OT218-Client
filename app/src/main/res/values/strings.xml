@@ -56,4 +56,5 @@
     <string name="invalid_pass">Contraseña inválida</string>
     <string name="btn_register">Login</string>
     <string name="register_string">No tienes cuenta? Registrate!</string>
+    <string name="message_contact_error">Ha ocurrido un error. Intente nuevamente mas tarde</string>
 </resources>
