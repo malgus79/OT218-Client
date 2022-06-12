@@ -1,14 +1,13 @@
 package com.melvin.ongandroid.businesslogic.repository
 
 
-import com.melvin.ongandroid.model.data.MembersList
-import com.melvin.ongandroid.model.data.ContactDTO
-import com.melvin.ongandroid.model.data.ContactResponse
+import com.melvin.ongandroid.model.data.*
 import com.melvin.ongandroid.model.data.activities.ActivitiesList
 import com.melvin.ongandroid.model.data.news.NewsList
 import com.melvin.ongandroid.model.data.slides.SlidesList
 import com.melvin.ongandroid.model.data.testimonials.TestimonialsList
 import com.melvin.ongandroid.model.network.APIServices
+import retrofit2.Call
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -39,10 +38,13 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
         return APIService.getMembers()
     }
 
-
     //Calls APIServices postContact function
     suspend fun postContact(contactDTO: ContactDTO): ContactResponse {
         return APIService.postContact(contactDTO)
+    }
+
+    fun logIn(loginCredentials: LoginCredentials): Call<LoginResponse>{
+        return APIService.login(loginCredentials)
     }
 
 
