@@ -26,9 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class NewsFragment : Fragment() {
 
-    private var _binding: FragmentNewsBinding? = null
-    private val binding get() = _binding!!
-
+    private lateinit var binding: FragmentNewsBinding
     private val viewModel by viewModels<NewsViewModel>()
 
     override fun onCreateView(
@@ -36,7 +34,7 @@ class NewsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        _binding = FragmentNewsBinding.inflate(inflater, container, false)
+        binding = FragmentNewsBinding.inflate(inflater, container, false)
 
         // Load and manage News data
         viewModel.getNews()
@@ -64,7 +62,6 @@ class NewsFragment : Fragment() {
 
     private fun setNews(newsList: NewsList) {
         showSpinnerLoading(false)
-        // binding.rvNews1.layoutManager = LinearLayoutManager(binding.root.context)
         binding.rvNews1.adapter = NewsAdapter(newsList.data)
     }
 
@@ -72,5 +69,6 @@ class NewsFragment : Fragment() {
     // show progress spinner
     private fun showSpinnerLoading(loading: Boolean) {
         binding.progressBar1.isVisible = loading
+        binding.rvNews1.isVisible = !loading
     }
 }
