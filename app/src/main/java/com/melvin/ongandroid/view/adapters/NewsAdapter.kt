@@ -17,14 +17,14 @@ class NewsAdapter(private val newsList: List<New>) :
     class RecyclerViewHolder(private val binding: LastNewsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun setData(activity: New) {
+        fun setData(new: New) {
             //Set title
-            binding.tvNewName.text = activity.name
+            binding.tvNewName.text = new.name
             //Set description
-            binding.tvNewDesc.text = activity.toString()
+            binding.tvNewDesc.text = new.content
             //Load image
             Glide.with(binding.root.context)
-                .load(activity.image)
+                .load(new.image)
                 .error(R.drawable.ic_baseline_broken_image_100)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivNewsImage)
