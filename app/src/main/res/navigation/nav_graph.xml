@@ -10,7 +10,11 @@
         android:id="@+id/nav_members"
         android:name="com.melvin.ongandroid.view.fragment.MembersFragment"
         android:label="fragment_members"
-        tools:layout="@layout/fragment_members" />
+        tools:layout="@layout/fragment_members" >
+        <action
+            android:id="@+id/action_nav_members_to_membersFragmentDetail"
+            app:destination="@id/nav_members_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_contact"
@@ -56,6 +60,27 @@
             app:popUpTo="@id/nav_home"
             app:popUpToInclusive="true" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/nav_members_detail"
+        android:name="com.melvin.ongandroid.view.fragment.MembersFragmentDetail"
+        android:label="fragment_members_detail"
+        tools:layout="@layout/fragment_members_detail">
+        <argument
+            android:name="image"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="link_facebook"
+            app:argType="string" />
+        <argument
+            android:name="link_linkedin"
+            app:argType="string" />
     </fragment>
 
 </navigation>
