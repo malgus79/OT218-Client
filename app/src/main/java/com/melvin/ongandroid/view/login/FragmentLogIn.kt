@@ -1,7 +1,6 @@
 package com.melvin.ongandroid.view.login
 
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
+import com.melvin.ongandroid.model.data.LoginCredentials
 import com.melvin.ongandroid.utils.validateFormatEmail
 import com.melvin.ongandroid.utils.validateFormatPassword
 import com.melvin.ongandroid.viewmodel.login.LoginViewModel
@@ -32,6 +32,10 @@ class FragmentLogIn : Fragment() {
         buttonEnable()
         validateFields()
 
+        binding.btnLogin.setOnClickListener {
+            attemptLogin(binding,binding.outlinedTextFieldEmail.editText?.text.toString(),binding.outlinedTextFieldPassword.editText?.text.toString())
+        }
+
         return binding.root
 
     }
@@ -42,9 +46,7 @@ class FragmentLogIn : Fragment() {
             view.findNavController().navigate(R.id.action_fragmentLogIn_to_fragmentSignUp)
         }
     }
-
-
-
+    
     private fun validateFields() {
         val emailUI = binding.outlinedTextFieldEmail
         val passUI = binding.outlinedTextFieldPassword
@@ -81,5 +83,15 @@ class FragmentLogIn : Fragment() {
         viewModel.loginButtonLiveData.observe(viewLifecycleOwner){
             binding.btnLogin.isEnabled = it
         }
+    }
+
+    private fun attemptLogin (binding: FragmentLogInBinding,email: String, password: String) {
+
+        viewModel.logIn(LoginCredentials(email,password))
+    }
+
+    private fun clearFields(binding: FragmentLogInBinding){
+        binding.outlinedTextFieldEmail.editText?.text?.clear()
+        binding.outlinedTextFieldPassword.editText?.text?.clear()
     }
 }
