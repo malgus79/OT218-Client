@@ -1,7 +1,6 @@
 package com.melvin.ongandroid.view.login
 
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
+import com.melvin.ongandroid.model.data.LoginCredentials
 import com.melvin.ongandroid.utils.validateFormatEmail
 import com.melvin.ongandroid.utils.validateFormatPassword
 import com.melvin.ongandroid.viewmodel.login.LoginViewModel
@@ -32,6 +32,14 @@ class FragmentLogIn : Fragment() {
         buttonEnable()
         validateFields()
 
+        binding.btnLogin.setOnClickListener {
+            attemptLogin(
+                binding,
+                binding.outlinedTextFieldEmail.editText?.text.toString(),
+                binding.outlinedTextFieldPassword.editText?.text.toString()
+            )
+        }
+
         return binding.root
 
     }
@@ -43,43 +51,45 @@ class FragmentLogIn : Fragment() {
         }
     }
 
-
-
     private fun validateFields() {
         val emailUI = binding.outlinedTextFieldEmail
         val passUI = binding.outlinedTextFieldPassword
 
         //Checks if email valid after changes on editText
         emailUI.editText?.doAfterTextChanged {
-            if (it.toString().validateFormatEmail()){
-                viewModel.setEmailData(it.toString())
-                viewModel.validEmail = true
-            } else{
+
+            viewModel.validateEmail(it.toString())
+
+            if (!viewModel.validEmail) {
                 emailUI.editText!!.error = getString(R.string.invalid_email)
-                viewModel.validEmail = false
             }
-            viewModel.setLoginButtonLiveData()
         }
 
         //Checks if password valid after changes on editText
         passUI.editText?.doAfterTextChanged {
-            if (it.toString().validateFormatPassword()){
-                viewModel.setPasswordData(it.toString())
-                viewModel.validPassword = true
-            } else{
+
+            viewModel.validatePassword(it.toString())
+
+            if (!viewModel.validPassword){
                 passUI.editText!!.error = getString(R.string.invalid_pass)
-                viewModel.validPassword = false
             }
-            viewModel.setLoginButtonLiveData()
         }
-
-
     }
 
     //Enables login button if loginButtonLiveData is true
     private fun buttonEnable() {
-        viewModel.loginButtonLiveData.observe(viewLifecycleOwner){
+        viewModel.loginButtonLiveData.observe(viewLifecycleOwner) {
             binding.btnLogin.isEnabled = it
         }
+    }
+
+    private fun attemptLogin(binding: FragmentLogInBinding, email: String, password: String) {
+
+        viewModel.logIn(LoginCredentials(email, password))
+    }
+
+    private fun clearFields(binding: FragmentLogInBinding) {
+        binding.outlinedTextFieldEmail.editText?.text?.clear()
+        binding.outlinedTextFieldPassword.editText?.text?.clear()
     }
 }
