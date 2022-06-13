@@ -51,6 +51,17 @@ class HomeFragment : Fragment() {
 
         binding.ibArrowRight.setOnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_nav_news)
+            //Last news log
+            val bundle = Bundle()
+            bundle.putString("message", "last_news_see_more_pressed")
+            analytics.logEvent("last_news_see_more_pressed", bundle)
+        }
+
+        binding.ibArrowRight2.setOnClickListener {
+            //More testimonies log
+            val bundle = Bundle()
+            bundle.putString("message", "testimonies_see_more_pressed")
+            analytics.logEvent("testimonies_see_more_pressed", bundle)
         }
 
         viewModel.getSlides()
@@ -99,7 +110,7 @@ class HomeFragment : Fragment() {
         //Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "slider_retrieve_success")
-        analytics.logEvent("Slider", bundle)
+        analytics.logEvent("slider_retrieve_success", bundle)
 
         val slidesList = viewModel.slidesList.value
         if (slidesList != null && slidesList.success && !slidesList.slide.isNullOrEmpty()) {
@@ -111,7 +122,7 @@ class HomeFragment : Fragment() {
         //Success Analytics Event
         val bundle = Bundle()
         bundle.putString("message", "last_news_retrieve_success")
-        analytics.logEvent("News", bundle)
+        analytics.logEvent("last_news_retrieve_success", bundle)
 
         val newsList = viewModel.newsList.value
         if (newsList != null && newsList.success && !newsList.data.isNullOrEmpty()) {
@@ -138,8 +149,8 @@ class HomeFragment : Fragment() {
     private fun setTestimonials(viewModel: HomeViewModel, binding: FragmentHomeBinding) {
         //Success Analytics Event
         val bundle = Bundle()
-        bundle.putString("message", "testimonios_retrieve_success")
-        analytics.logEvent("Testimonials", bundle)
+        bundle.putString("message", "testimonies_retrieve_success")
+        analytics.logEvent("testimonies_retrieve_success", bundle)
 
         val testimonialsList = viewModel.testimonialsList.value
         if (testimonialsList != null && testimonialsList.success && !testimonialsList.testimonials.isNullOrEmpty()) {
@@ -222,15 +233,15 @@ class HomeFragment : Fragment() {
         when {
             message.contains("slides") -> {
                 bundle.putString("message", "slider_retrieve_error")
-                analytics.logEvent("Slider", bundle)
+                analytics.logEvent("slider_retrieve_error", bundle)
             }
             message.contains("novedades") -> {
                 bundle.putString("message", "last_news_retrieve_error")
-                analytics.logEvent("News", bundle)
+                analytics.logEvent("last_news_retrieve_error", bundle)
             }
             message.contains("testimonios") -> {
                 bundle.putString("message", "testimonies_retrieve_error")
-                analytics.logEvent("Testimonials", bundle)
+                analytics.logEvent("testimonies_retrieve_error", bundle)
             }
         }
         MaterialAlertDialogBuilder(requireContext())
