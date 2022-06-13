@@ -31,5 +31,5 @@ data class New(
     val updated_at: String,
 
     @SerializedName("deleted_at")
-    val deleted_at: String = "",
+    val deleted_at: String? = "",
 )

@@ -28,10 +28,13 @@ class HomeViewModel @Inject constructor(
         val testimonials = testimonialsStatus.value!!
 
         if (slides.ordinal + news.ordinal + testimonials.ordinal == 0) {
+            homeStatusLiveDataMerger.value = ApiStatus.DONE
             return ApiStatus.DONE
         } else if ((slides == ApiStatus.LOADING) || (news == ApiStatus.LOADING) || (testimonials == ApiStatus.LOADING)) {
+            homeStatusLiveDataMerger.value = ApiStatus.LOADING
             return ApiStatus.LOADING
         }
+        homeStatusLiveDataMerger.value = ApiStatus.ERROR
         return ApiStatus.ERROR
     }
 
@@ -79,7 +82,6 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
 
             try {
-
 
                 val slidesList = homeRepository.getHomeSlides()
                 if (slidesList.slide.isNullOrEmpty()) {
