@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.melvin.ongandroid.R
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.ONGAndroidApp
 import com.melvin.ongandroid.model.data.LoginCredentials
@@ -34,18 +35,8 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
     // External MutableLiveData - Enable login button
     val loginButtonLiveData: LiveData<Boolean> = _loginButtonLiveData
 
-    //setter for MutableLiveData
-    fun setEmailData(data: String){
-        _emailLiveData.postValue(data)
-    }
-
-    //setter for MutableLiveData
-    fun setPasswordData(data: String){
-        _passwordLiveData.postValue(data)
-    }
-
     //Updates login button liveData
-    fun setLoginButtonLiveData(){
+    private fun setLoginButtonLiveData(){
         _loginButtonLiveData.postValue(validEmail && validPassword)
     }
 
@@ -64,5 +55,25 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
                 //TODO IMPL ERROR WITH CODE != 200
             }
         }
+    }
+
+    fun validateEmail(email: String){
+        if (email.validateFormatEmail()){
+            _emailLiveData.value = email
+            validEmail = true
+        } else{
+            validEmail = false
+        }
+        setLoginButtonLiveData()
+    }
+
+    fun validatePassword(pass: String){
+        if (pass.validateFormatPassword()) {
+            _passwordLiveData.value = pass
+            validPassword = true
+        } else {
+            validPassword = false
+        }
+        setLoginButtonLiveData()
     }
 }

@@ -33,7 +33,11 @@ class FragmentLogIn : Fragment() {
         validateFields()
 
         binding.btnLogin.setOnClickListener {
-            attemptLogin(binding,binding.outlinedTextFieldEmail.editText?.text.toString(),binding.outlinedTextFieldPassword.editText?.text.toString())
+            attemptLogin(
+                binding,
+                binding.outlinedTextFieldEmail.editText?.text.toString(),
+                binding.outlinedTextFieldPassword.editText?.text.toString()
+            )
         }
 
         return binding.root
@@ -46,51 +50,45 @@ class FragmentLogIn : Fragment() {
             view.findNavController().navigate(R.id.action_fragmentLogIn_to_fragmentSignUp)
         }
     }
-    
+
     private fun validateFields() {
         val emailUI = binding.outlinedTextFieldEmail
         val passUI = binding.outlinedTextFieldPassword
 
         //Checks if email valid after changes on editText
         emailUI.editText?.doAfterTextChanged {
-            if (it.toString().validateFormatEmail()){
-                viewModel.setEmailData(it.toString())
-                viewModel.validEmail = true
-            } else{
+
+            viewModel.validateEmail(it.toString())
+
+            if (!viewModel.validEmail) {
                 emailUI.editText!!.error = getString(R.string.invalid_email)
-                viewModel.validEmail = false
             }
-            viewModel.setLoginButtonLiveData()
         }
 
         //Checks if password valid after changes on editText
         passUI.editText?.doAfterTextChanged {
-            if (it.toString().validateFormatPassword()){
-                viewModel.setPasswordData(it.toString())
-                viewModel.validPassword = true
-            } else{
+
+            viewModel.validatePassword(it.toString())
+
+            if (!viewModel.validPassword){
                 passUI.editText!!.error = getString(R.string.invalid_pass)
-                viewModel.validPassword = false
             }
-            viewModel.setLoginButtonLiveData()
         }
-
-
     }
 
     //Enables login button if loginButtonLiveData is true
     private fun buttonEnable() {
-        viewModel.loginButtonLiveData.observe(viewLifecycleOwner){
+        viewModel.loginButtonLiveData.observe(viewLifecycleOwner) {
             binding.btnLogin.isEnabled = it
         }
     }
 
-    private fun attemptLogin (binding: FragmentLogInBinding,email: String, password: String) {
+    private fun attemptLogin(binding: FragmentLogInBinding, email: String, password: String) {
 
-        viewModel.logIn(LoginCredentials(email,password))
+        viewModel.logIn(LoginCredentials(email, password))
     }
 
-    private fun clearFields(binding: FragmentLogInBinding){
+    private fun clearFields(binding: FragmentLogInBinding) {
         binding.outlinedTextFieldEmail.editText?.text?.clear()
         binding.outlinedTextFieldPassword.editText?.text?.clear()
     }
