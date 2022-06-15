@@ -34,6 +34,7 @@ class MembersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMembersBinding.inflate(inflater, container, false)
+        analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
 
         //Loads data

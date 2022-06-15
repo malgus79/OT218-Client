@@ -26,6 +26,7 @@ class MembersFragmentDetail : Fragment(R.layout.fragment_members_detail) {
         binding.tvDetailDescriptions.text = args.description
         binding.memberDetailFacebook.text = args.linkFacebook
         binding.memberDetailLinkedin.text = args.linkLinkedin
+        analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
         //Success Analytics Event
         val bundle = Bundle()
