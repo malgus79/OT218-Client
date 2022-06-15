@@ -14,10 +14,10 @@
         android:theme="@style/Theme.ONGAndroid"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".view.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

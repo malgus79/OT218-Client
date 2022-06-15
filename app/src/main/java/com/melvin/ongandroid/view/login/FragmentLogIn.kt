@@ -1,18 +1,24 @@
 package com.melvin.ongandroid.view.login
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
 import com.melvin.ongandroid.model.data.LoginCredentials
 import com.melvin.ongandroid.utils.validateFormatEmail
 import com.melvin.ongandroid.utils.validateFormatPassword
+import com.melvin.ongandroid.view.MainActivity
+import com.melvin.ongandroid.view.fragment.HomeFragment
 import com.melvin.ongandroid.viewmodel.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,11 +50,24 @@ class FragmentLogIn : Fragment() {
 
     }
 
+//    val callback = object : OnBackPressedCallback(true){
+//        override fun handleOnBackPressed() {
+//            findNavController().navigate(R.id.action_nav_log_in_to_mainActivity)
+//        }
+//    }
+
     // Navigation to Sign Up fragment
     private fun goSignUp() {
         binding.btnSignUp.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_fragmentLogIn_to_fragmentSignUp)
         }
+    }
+
+    // Navigation to Home
+    private fun goHome() {
+            findNavController().navigate(R.id.action_nav_log_in_to_mainActivity)
+            /*val intent = Intent(context, MainActivity::class.java)
+        startActivity(intent)*/
     }
 
     private fun validateFields() {
@@ -84,8 +103,10 @@ class FragmentLogIn : Fragment() {
     }
 
     private fun attemptLogin(binding: FragmentLogInBinding, email: String, password: String) {
-
         viewModel.logIn(LoginCredentials(email, password))
+        if (viewModel.loginStatus.value == true) {
+            goHome()
+        }
     }
 
     private fun clearFields(binding: FragmentLogInBinding) {

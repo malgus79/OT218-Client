@@ -1,16 +1,25 @@
 package com.melvin.ongandroid.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.ActivityLoginBinding
 import com.melvin.ongandroid.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.log
+import android.content.Intent
+
+
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -30,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         //Bottom Navigation
         binding.bottomNavigationView.setupWithNavController(navController)
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
     }
 
     override fun onSupportNavigateUp(): Boolean {
