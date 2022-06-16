@@ -8,6 +8,7 @@
 
     <!-- Dimens Size -->
     <dimen name="common_size_default">20sp</dimen>
+    <dimen name="common_size_min">15sp</dimen>
 
     <!-- Dimens Padding -->
     <dimen name="common_padding_min">8dp</dimen>
