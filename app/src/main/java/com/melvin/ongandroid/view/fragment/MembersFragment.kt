@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentMembersBinding
 import com.melvin.ongandroid.databinding.FragmentMembersDetailBinding
@@ -26,27 +27,38 @@ class MembersFragment : Fragment() {
 
     private val viewModel by viewModels<MembersViewModel>()
     private lateinit var binding: FragmentMembersBinding
+    private lateinit var analytics: FirebaseAnalytics
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMembersBinding.inflate(inflater, container, false)
+        analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
 
         //Loads data
         viewModel.getMembers()
         viewModel.membersList.observe(viewLifecycleOwner, Observer {
+            val bundle = Bundle()
             when (it) {
                 is State.Success -> {
                     setMembers(it.data)
                     showSpinnerLoading(false)
+                    //Success Analytics Event
+                    bundle.putString("message", "members_retrieve_success")
+                    analytics.logEvent("members_retrieve_success", bundle)
+
                 }
                 is State.Failure -> {
                     showErrorDialog(callback = { viewModel.getMembers() })
                     binding.rvMembers.isVisible = false
                     binding.btnWantToJoin.isVisible = false
                     binding.rvMembers.isVisible = false
+                    //Success Analytics Event
+                    bundle.putString("message", "members_retrieve_error")
+                    analytics.logEvent("members_retrieve_error", bundle)
+
                 }
                 is State.Loading -> showSpinnerLoading(true)
             }
