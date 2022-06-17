@@ -31,6 +31,7 @@ class FragmentLogIn : Fragment() {
         goSignUp()
         buttonEnable()
         validateFields()
+        loginGoogle()
 
         binding.btnLogin.setOnClickListener {
             attemptLogin(
@@ -91,5 +92,12 @@ class FragmentLogIn : Fragment() {
     private fun clearFields(binding: FragmentLogInBinding) {
         binding.outlinedTextFieldEmail.editText?.text?.clear()
         binding.outlinedTextFieldPassword.editText?.text?.clear()
+    }
+
+    //Sign in with Google
+    private fun loginGoogle() {
+        binding.btnGoogleLogin.setOnClickListener {
+            viewModel.singInGoogle(requireActivity())
+        }
     }
 }
