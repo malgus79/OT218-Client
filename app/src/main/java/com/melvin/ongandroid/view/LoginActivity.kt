@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.ActivityLoginBinding
 import com.melvin.ongandroid.viewmodel.login.LoginViewModel
+import com.melvin.ongandroid.model.ONGAndroidApp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +25,9 @@ class LoginActivity : AppCompatActivity() {
     private val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+//        setTheme(R.style.Theme_ONGAndroid)
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)

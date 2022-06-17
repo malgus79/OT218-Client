@@ -20,6 +20,8 @@ import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.ONGAndroidApp
 import com.melvin.ongandroid.model.data.LoginCredentials
 import com.melvin.ongandroid.model.data.LoginResponse
+import com.melvin.ongandroid.model.data.news.NewsList
+import com.melvin.ongandroid.model.network.ApiStatus
 import com.melvin.ongandroid.utils.validateFormatEmail
 import com.melvin.ongandroid.utils.validateFormatPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -39,6 +41,8 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
     var validEmail = false
     var validPassword = false
 
+    private val _loginStatus = MutableLiveData<Boolean>(false)
+    val loginStatus: LiveData<Boolean> = _loginStatus
 
     // Internal MutableLiveData - Enable login button
     private val _loginButtonLiveData = MutableLiveData(false)
@@ -59,6 +63,9 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
             if (response.isSuccessful) {
                 if (response.body()?.success == true) {
                     ONGAndroidApp.prefs.saveToken(response.body()!!.data.token) //Saves token on shared preferences
+
+                    _loginStatus.postValue(true)
+
                 } else {
                     //TODO IMPL ERROR WITH CODE 200
                 }

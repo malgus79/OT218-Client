@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list android:opacity="opaque"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@color/color_white"/>
+
+    <item android:left="10dp"
+        android:right="10dp"
+        android:top="260dp"
+        android:bottom="260dp">
+
+        <bitmap android:src="@drawable/somos_mas"/>
+
+    </item>
+
+</layer-list>
