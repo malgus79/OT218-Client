@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.179" />
+        app:layout_constraintVertical_bias="0.046" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextFieldName"
@@ -29,6 +29,8 @@
         android:layout_marginStart="@dimen/common_margin_default"
         android:layout_marginBottom="@dimen/common_margin_default"
         android:hint="@string/hint_name"
+        app:errorTextColor="@color/red"
+        app:errorIconTint="@color/red"
         app:hintTextColor="#B0B0B0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +51,8 @@
         android:layout_margin="@dimen/common_margin_default"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/hint_email"
+        app:errorTextColor="@color/red"
+        app:errorIconTint="@color/red"
         app:hintTextColor="#B0B0B0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,15 +74,19 @@
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/hint_password"
         app:hintTextColor="#B0B0B0"
+        app:errorIconDrawable="@null"
+        app:errorTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldEmail">
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldEmail"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_1" />
+            android:background="@drawable/rectangle_1"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,14 +99,18 @@
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/hint_repeat_password"
         app:hintTextColor="#B0B0B0"
+        app:errorIconDrawable="@null"
+        app:errorTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldPassword">
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldPassword"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_1" />
+            android:background="@drawable/rectangle_1"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,7 +122,8 @@
         android:text="@string/sign_up"
         android:fontFamily="@font/poppins_regular"
         android:textAllCaps="false"
-        android:textSize="20dp"
+        android:textSize="20sp"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldRepeatPassword" />
@@ -122,6 +135,7 @@
         android:layout_margin="@dimen/common_margin_min"
         android:text="@string/have_account_log_in"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />

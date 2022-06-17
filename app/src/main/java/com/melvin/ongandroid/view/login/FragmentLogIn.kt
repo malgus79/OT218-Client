@@ -46,7 +46,7 @@ class FragmentLogIn : Fragment() {
 
     // Navegation to Sign Up fragment
     private fun goSignUp() {
-        binding.btnSignUp.setOnClickListener { view ->
+        binding.tvSignUp.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_fragmentLogIn_to_fragmentSignUp)
         }
     }

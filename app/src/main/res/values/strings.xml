@@ -61,4 +61,6 @@
     <string name="hint_repeat_password">Repite la contraseña</string>
     <string name="sign_up">Registrarme</string>
     <string name="have_account_log_in">Ya tienes cuenta? Ingresa!</string>
+    <string name="pass_dont_match">Las contraseñas no coinciden</string>
+
 </resources>
