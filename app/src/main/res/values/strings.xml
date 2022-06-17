@@ -61,4 +61,7 @@
     <string name="hint_repeat_password">Repite la contraseña</string>
     <string name="sign_up">Registrarme</string>
     <string name="have_account_log_in">Ya tienes cuenta? Ingresa!</string>
+    <string name="text_register_with">O registrarse con</string>
+    <string name="btn_facebook">Facebook</string>
+    <string name="btn_google">Google</string>
 </resources>
