@@ -43,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
         if(requestCode == 200){
             val task  = GoogleSignIn.getSignedInAccountFromIntent(data)
             viewModel.endUpGoogleLogIn(task)
+            startActivity(Intent (this,  MainActivity::class.java))
         }
     }
 }

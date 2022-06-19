@@ -2,7 +2,6 @@ package com.melvin.ongandroid.viewmodel.login
 
 import android.app.Activity
 import android.content.ContentValues
-import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,16 +18,13 @@ import com.melvin.ongandroid.R
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.ONGAndroidApp
 import com.melvin.ongandroid.model.data.LoginCredentials
-import com.melvin.ongandroid.model.data.LoginResponse
-import com.melvin.ongandroid.model.data.news.NewsList
-import com.melvin.ongandroid.model.network.ApiStatus
 import com.melvin.ongandroid.utils.validateFormatEmail
 import com.melvin.ongandroid.utils.validateFormatPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
 import javax.inject.Inject
+
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val repository: HomeRepository) : ViewModel() {
@@ -49,6 +45,11 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
 
     // External MutableLiveData - Enable login button
     val loginButtonLiveData: LiveData<Boolean> = _loginButtonLiveData
+
+    private val _isLoading = MutableLiveData(false)
+    private val _hasErrors = MutableLiveData(false)
+    val isLoading: LiveData<Boolean> = _isLoading
+    val hasErrors: LiveData<Boolean> = _hasErrors
 
     //Updates login button liveData
     private fun setLoginButtonLiveData() {
@@ -96,13 +97,16 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
     }
 
     fun singInGoogle(activity: Activity) {
+        _isLoading.postValue(true)
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(activity.getString(R.string.services_client_id))
             .requestEmail()
             .build()
 
+        // Getting the client
         val client = GoogleSignIn.getClient(activity, gso)
+        // Initiate login intent
         val signInIntent = client.signInIntent
         activity.startActivityForResult(signInIntent, 200)
     }
@@ -111,25 +115,35 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val account = accountTask.getResult(ApiException::class.java)
+
+                // Signed in successfully, show authenticated UI.
                 account.idToken.let { token ->
                     val auth = FirebaseAuth.getInstance()
                     val credentials = GoogleAuthProvider.getCredential(token, null)
+
                     auth.signInWithCredential(credentials)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 // Sign in success, update UI with the signed-in user's information
                                 val user = auth.currentUser
-                                Log.d(TAG, "${user?.displayName}")
+                                Log.d("ACA", "Ingreso ${user?.displayName}")
 
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Log.w(TAG, "signInWithCredential:failure", task.exception)
+                                Log.d("ACA", "Failed ${task.exception?.message}")
+                                _hasErrors.postValue(true)
                             }
+                            _isLoading.postValue(false)
+                        }
+                        .addOnCanceledListener {
+                            Log.d("ACA", "Error")
                         }
                 }
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(ContentValues.TAG, "Google sign in failed", e)
+                _hasErrors.postValue(true)
+                _isLoading.postValue(false)
             }
         }
     }
