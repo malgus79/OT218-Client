@@ -47,6 +47,8 @@ class HomeRepository @Inject constructor(private val APIService: APIServices) {
         return APIService.login(loginCredentials)
     }
 
-
+    fun register(registerCredentials: RegisterCredentials): Call<RegisterResponse> {
+        return APIService.register(registerCredentials)
+    }
 
 }

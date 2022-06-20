@@ -11,6 +11,15 @@ data class LoginCredentials(
     val pass: String,
 )
 
+data class RegisterCredentials(
+    @SerializedName("name")
+    val name: String?,
+    @SerializedName("email")
+    val email: String?,
+    @SerializedName("password")
+    val pass: String,
+)
+
 data class User(
     @SerializedName("id")
     val id: Int?,
@@ -50,5 +59,18 @@ data class LoginResponseData(
 data class LoginResponse(
     @SerializedName("success") val success: Boolean = false,
     @SerializedName("data") val data: LoginResponseData,
+    @SerializedName("message") val message: String?
+)
+
+data class RegisterResponseData(
+    @SerializedName("user")
+    val user: User,
+    @SerializedName("token")
+    val token: String,
+)
+
+data class RegisterResponse(
+    @SerializedName("success") val success: Boolean = true,
+    //@SerializedName("data") val data: RegisterResponseData,
     @SerializedName("message") val message: String?
 )

@@ -66,9 +66,7 @@ class FragmentLogIn : Fragment() {
 
     // Navigation to Home
     private fun goHome() {
-            findNavController().navigate(R.id.action_nav_log_in_to_mainActivity)
-            /*val intent = Intent(context, MainActivity::class.java)
-        startActivity(intent)*/
+        findNavController().navigate(R.id.action_nav_log_in_to_mainActivity)
     }
 
     private fun validateFields() {

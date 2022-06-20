@@ -22,7 +22,11 @@
         android:id="@+id/nav_sign_up"
         android:name="com.melvin.ongandroid.view.login.FragmentSignUp"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_nav_sign_up_to_nav_log_in"
+            app:destination="@id/nav_log_in" />
+    </fragment>
     <activity
         android:id="@+id/mainActivity"
         android:name="com.melvin.ongandroid.view.MainActivity"

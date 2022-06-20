@@ -1,15 +1,24 @@
 package com.melvin.ongandroid.view.login
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
+import com.melvin.ongandroid.databinding.FragmentLogInBinding
 import com.melvin.ongandroid.databinding.FragmentSignUpBinding
+import com.melvin.ongandroid.model.data.LoginCredentials
+import com.melvin.ongandroid.model.data.RegisterCredentials
 import com.melvin.ongandroid.viewmodel.login.LoginViewModel
 import com.melvin.ongandroid.viewmodel.login.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,13 +39,29 @@ class FragmentSignUp : Fragment() {
         enableSignupButton()
         validateFields()
 
+        binding.btnSignUp.setOnClickListener {
+            attemptRegister(
+                binding,
+                binding.outlinedTextFieldEmail.editText?.text.toString(),
+                binding.outlinedTextFieldPassword.editText?.text.toString(),
+                binding.outlinedTextFieldName.editText?.text.toString()
+            )
+        }
+
+        viewModel.registerStatus.observe(viewLifecycleOwner, {
+            if (it){
+                showModal()
+            }
+        })
+
         return binding.root
     }
 
     // Navegation to Log In fragment
     private fun goLogIn() {
         binding.tvHaveAccountLogIn.setOnClickListener {
-            it.findNavController().popBackStack()
+            //it.findNavController().popBackStack()
+            goLogin()
         }
     }
 
@@ -45,6 +70,24 @@ class FragmentSignUp : Fragment() {
         viewModel.signupButtonLiveData.observe(viewLifecycleOwner) {
             binding.btnSignUp.isEnabled = it
         }
+    }
+
+    private fun goLogin() {
+        findNavController().navigate(R.id.action_nav_sign_up_to_nav_log_in)
+    }
+
+    private fun showModal() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.success_dialog))
+            .setMessage(
+                getString(R.string.message_successful)
+            )
+            .setPositiveButton(getString(R.string.ok)) { _, _ -> goLogin() }
+            .show()
+    }
+
+    private fun attemptRegister(binding: FragmentSignUpBinding, email: String, password: String, name: String) {
+        viewModel.register(RegisterCredentials(name, email, password))
     }
 
     private fun validateFields() {
