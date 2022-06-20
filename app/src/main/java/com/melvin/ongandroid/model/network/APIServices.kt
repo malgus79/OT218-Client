@@ -38,5 +38,7 @@ interface APIServices {
     @POST("api/login")
     fun login(@Body loginCredentials: LoginCredentials): Call<LoginResponse>
 
+    @POST("api/register")
+    fun register(@Body registerCredentials: RegisterCredentials): Call<RegisterResponse>
 
 }
