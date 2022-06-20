@@ -88,5 +88,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     // Circle View
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //Firebase messaging
+    implementation 'com.google.firebase:firebase-messaging-ktx'
 
 }
