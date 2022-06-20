@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -40,8 +41,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == 200){
-            val task  = GoogleSignIn.getSignedInAccountFromIntent(data)
+        if (requestCode == 200) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             viewModel.endUpGoogleLogIn(task)
         }
     }
