@@ -13,10 +13,19 @@
         <action
             android:id="@+id/action_fragmentLogIn_to_fragmentSignUp"
             app:destination="@id/nav_sign_up" />
+        <action
+            android:id="@+id/action_nav_log_in_to_mainActivity"
+            app:destination="@id/mainActivity"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/nav_sign_up"
         android:name="com.melvin.ongandroid.view.login.FragmentSignUp"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.melvin.ongandroid.view.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

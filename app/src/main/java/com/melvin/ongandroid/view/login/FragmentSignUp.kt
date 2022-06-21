@@ -31,7 +31,7 @@ class FragmentSignUp : Fragment() {
 
     // Navegation to Log In fragment
     private fun goLogIn() {
-        binding.btnBackLogIn.setOnClickListener{
+        binding.tvHaveAccountLogIn.setOnClickListener{
             it.findNavController().popBackStack()
         }
     }
