@@ -6,19 +6,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FacebookAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
 import com.melvin.ongandroid.model.data.LoginCredentials
-import com.melvin.ongandroid.utils.validateFormatEmail
-import com.melvin.ongandroid.utils.validateFormatPassword
-import com.melvin.ongandroid.view.MainActivity
-import com.melvin.ongandroid.view.fragment.HomeFragment
 import com.melvin.ongandroid.viewmodel.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,17 +33,22 @@ class FragmentLogIn : Fragment() {
 
     private lateinit var binding: FragmentLogInBinding
     private val viewModel by viewModels<LoginViewModel>()
+    private val facebookCallbackManager = CallbackManager.Factory.create()
+    private lateinit var auth: FirebaseAuth
+    private val TAG = "Testing"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentLogInBinding.inflate(layoutInflater, container, false)
-
+        auth = Firebase.auth
         goSignUp()
         buttonEnable()
         validateFields()
         loginGoogle()
+        facebookLogIn()
+
 
         binding.btnLogin.setOnClickListener {
             attemptLogin(
@@ -51,11 +62,60 @@ class FragmentLogIn : Fragment() {
 
     }
 
-//    val callback = object : OnBackPressedCallback(true){
-//        override fun handleOnBackPressed() {
-//            findNavController().navigate(R.id.action_nav_log_in_to_mainActivity)
-//        }
-//    }
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        if (currentUser != null){
+            goHome()
+        }
+    }
+
+    private fun facebookLogIn() {
+        binding.btnFacebookLogin.setOnClickListener {
+            Log.d(TAG, "facebook:ButtonClick")
+            LoginManager.getInstance()
+                .logInWithReadPermissions(requireActivity(), listOf("email","public_profile"))
+
+            // Registers a login callback
+            LoginManager.getInstance().registerCallback(
+                facebookCallbackManager,
+                object : FacebookCallback<LoginResult> {
+                    override fun onCancel() {
+                        Log.d(TAG, "facebook:onCancel")
+
+                    }
+
+                    override fun onError(error: FacebookException) {
+                        Log.d(TAG, "facebook:onError", error)
+                        showErrorDialog()
+                    }
+
+                    override fun onSuccess(result: LoginResult) {
+                        Log.d(TAG, "facebook:onSuccess:$result")
+                        handleFacebookAccessToken(result.accessToken)
+                    }
+                })
+        }
+    }
+
+  private fun  showErrorDialog(){
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.error_dialog))
+            .setMessage(
+                getString(R.string.error_dialog_login)
+            )
+            .setPositiveButton(getString(R.string.ok)) { _, _ ->   }
+            .show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        // Passes the activity result to the Facebook SDK
+        facebookCallbackManager.onActivityResult(requestCode, resultCode, data)
+
+        super.onActivityResult(requestCode, resultCode, data)
+
+
+    }
 
     // Navigation to Sign Up fragment
     private fun goSignUp() {
@@ -118,5 +178,23 @@ class FragmentLogIn : Fragment() {
         binding.btnGoogleLogin.setOnClickListener {
             viewModel.singInGoogle(requireActivity())
         }
+    }
+
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        Log.d(TAG, "handleFacebookAccessToken:$token")
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithCredential:success")
+                    goHome()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    showErrorDialog()
+                }
+            }
     }
 }
