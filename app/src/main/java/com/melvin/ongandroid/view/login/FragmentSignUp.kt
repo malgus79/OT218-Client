@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
 import com.melvin.ongandroid.databinding.FragmentSignUpBinding
@@ -28,18 +29,23 @@ class FragmentSignUp : Fragment() {
 
     private lateinit var binding: FragmentSignUpBinding
     private val viewModel by viewModels<SignUpViewModel>()
+    private lateinit var analytics: FirebaseAnalytics
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
+        analytics = FirebaseAnalytics.getInstance(binding.root.context)
+        val bundle = Bundle()
 
         goLogIn()
         enableSignupButton()
         validateFields()
 
         binding.btnSignUp.setOnClickListener {
+            bundle.putString("message","register_pressed")
+            analytics.logEvent("register_pressed",bundle)
             attemptRegister(
                 binding,
                 binding.outlinedTextFieldEmail.editText?.text.toString(),
@@ -51,8 +57,12 @@ class FragmentSignUp : Fragment() {
         viewModel.registerStatus.observe(viewLifecycleOwner, {
             if (it){
                 showModal()
+                bundle.putString("message","sign_up_success")
+                analytics.logEvent("sign_up_success",bundle)
             } else{
                 showErrorDialog()
+                bundle.putString("message","sign_up_error")
+                analytics.logEvent("sign_up_error",bundle)
             }
         })
 
