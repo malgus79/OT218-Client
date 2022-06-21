@@ -18,6 +18,7 @@ import com.melvin.ongandroid.R
 import com.melvin.ongandroid.businesslogic.repository.HomeRepository
 import com.melvin.ongandroid.model.ONGAndroidApp
 import com.melvin.ongandroid.model.data.LoginCredentials
+import com.melvin.ongandroid.model.network.ApiStatus
 import com.melvin.ongandroid.utils.validateFormatEmail
 import com.melvin.ongandroid.utils.validateFormatPassword
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -37,7 +38,7 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
     var validEmail = false
     var validPassword = false
 
-    private val _loginStatus = MutableLiveData<Boolean>(false)
+    private val _loginStatus = MutableLiveData<Boolean>()
     val loginStatus: LiveData<Boolean> = _loginStatus
 
     // Internal MutableLiveData - Enable login button
@@ -51,6 +52,17 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
     val isLoading: LiveData<Boolean> = _isLoading
     val hasErrors: LiveData<Boolean> = _hasErrors
 
+    // Internal/External MutableLiveData - Api state
+    private val _postContactStatus = MutableLiveData<ApiStatus>()
+    val postContactStatus: LiveData<ApiStatus> = _postContactStatus
+
+    // Internal MutableLiveData - Login state
+    private val _postLoginStatus = MutableLiveData<LoginStatus>()
+    val postLoginStatus: LiveData<LoginStatus> = _postLoginStatus
+
+    enum class LoginStatus { SUCCESS, ERROR200, ERROR }
+
+
     //Updates login button liveData
     private fun setLoginButtonLiveData() {
         _loginButtonLiveData.postValue(validEmail && validPassword)
@@ -58,20 +70,32 @@ class LoginViewModel @Inject constructor(private val repository: HomeRepository)
 
     //Attempts login with credentials received from fragment
     fun logIn(loginCredentials: LoginCredentials) {
+
+        //_postContactStatus.value = ApiStatus.LOADING
         val request = repository.logIn(loginCredentials)
+
         viewModelScope.launch(Dispatchers.IO) {
-            val response = request.execute()
-            if (response.isSuccessful) {
-                if (response.body()?.success == true) {
-                    ONGAndroidApp.prefs.saveToken(response.body()!!.data.token) //Saves token on shared preferences
-
-                    _loginStatus.postValue(true)
-
+            try {
+                val response = request.execute()
+                if (response.isSuccessful) {
+                    if (response.body()?.success == true) {
+                        ONGAndroidApp.prefs.saveToken(response.body()!!.data.token) //Saves token on shared preferences
+                        //_postLoginStatus.value = LoginStatus.SUCCESS
+                        _loginStatus.postValue(true)
+                    } else {
+                        _loginStatus.postValue(false)
+                        //_postLoginStatus.postValue(LoginStatus.ERROR200)
+                        // _postContactStatus.value = ApiStatus.ERROR
+                        //TODO IMPL ERROR WITH CODE 200
+                    }
                 } else {
-                    //TODO IMPL ERROR WITH CODE 200
+                    _loginStatus.postValue(false)
+                    //_postLoginStatus.postValue(LoginStatus.ERROR)
+                    //_postContactStatus.value = ApiStatus.ERROR
+                    //TODO IMPL ERROR WITH CODE != 200
                 }
-            } else {
-                //TODO IMPL ERROR WITH CODE != 200
+            } catch (e: Exception) {
+                _loginStatus.postValue(false)
             }
         }
     }
