@@ -90,5 +90,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     //Firebase messaging
     implementation 'com.google.firebase:firebase-messaging-ktx'
+    //Facebook login
+    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
 
 }

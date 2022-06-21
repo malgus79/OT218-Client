@@ -38,11 +38,14 @@ class FragmentSignUp : Fragment() {
         binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
+
         goLogIn()
         enableSignupButton()
         validateFields()
 
         binding.btnSignUp.setOnClickListener {
+            bundle.putString("message","register_pressed")
+            analytics.logEvent("register_pressed",bundle)
             attemptRegister(
                 binding,
                 binding.outlinedTextFieldEmail.editText?.text.toString(),
@@ -54,10 +57,33 @@ class FragmentSignUp : Fragment() {
         viewModel.registerStatus.observe(viewLifecycleOwner, {
             if (it){
                 showModal()
+                bundle.putString("message","sign_up_success")
+                analytics.logEvent("sign_up_success",bundle)
+            } else{
+                showErrorDialog()
+                bundle.putString("message","sign_up_error")
+                analytics.logEvent("sign_up_error",bundle)
             }
         })
 
         return binding.root
+    }
+
+    private fun showErrorDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.error_dialog))
+            .setMessage(
+                getString(R.string.error_dialog_register)
+            )
+            .setPositiveButton(getString(R.string.ok)) { _, _ -> showErrorInFields()  }
+            .show()
+    }
+
+    private fun showErrorInFields(){
+        binding.outlinedTextFieldEmail.error = getString(R.string.error_dialog_register)
+        binding.outlinedTextFieldName.error = getString(R.string.error_dialog_register)
+        binding.outlinedTextFieldPassword.error = getString(R.string.error_dialog_register)
+        binding.outlinedTextFieldRepeatPassword.error = getString(R.string.error_dialog_register)
     }
 
     // Navegation to Log In fragment

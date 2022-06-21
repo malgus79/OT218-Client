@@ -49,11 +49,13 @@
     <!-- Error -->
     <string name="error_dialog">Error</string>
     <string name="error_dialog_detail">Ha ocurrido un error obteniendo la información</string>
+    <string name="error_dialog_register">Ha ocurrido un error al registrar el usuario</string>
     <string name="try_again">Reintentar</string>
     <!-- Login -->
     <string name="hint_password">Contraseña</string>
     <string name="invalid_email">Email inválido</string>
     <string name="invalid_pass">Contraseña inválida</string>
+    <string name="error_dialog_login">Ha ocurrido un error al iniciar sesión</string>
     <string name="btn_register">Login</string>
     <string name="register_string">No tienes cuenta? Registrate!</string>
     <string name="message_contact_error">Ha ocurrido un error. Intente nuevamente mas tarde</string>
@@ -70,4 +72,7 @@
     <string name="invalid_credentials">Credenciales Inválidas</string>
     <string name="error_login_description">Por favor revise los campos.</string>
     <string name="error_login_dialog">Error al iniciar sesión</string>
+    <string name="facebook_app_id">742407650221123</string>
+    <string name="fb_login_protocol_scheme">fb742407650221123</string>
+    <string name="facebook_client_token">92a4f64f0b4904090ed4e1071cae5d37</string>
 </resources>
