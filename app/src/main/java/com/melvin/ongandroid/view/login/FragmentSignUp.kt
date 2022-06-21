@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
 import com.melvin.ongandroid.databinding.FragmentSignUpBinding
@@ -28,12 +29,14 @@ class FragmentSignUp : Fragment() {
 
     private lateinit var binding: FragmentSignUpBinding
     private val viewModel by viewModels<SignUpViewModel>()
+    private lateinit var analytics: FirebaseAnalytics
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
+        analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
         goLogIn()
         enableSignupButton()

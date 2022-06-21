@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
 import com.melvin.ongandroid.model.data.LoginCredentials
@@ -22,12 +23,14 @@ class FragmentLogIn : Fragment() {
 
     private lateinit var binding: FragmentLogInBinding
     private val viewModel by viewModels<LoginViewModel>()
+    private lateinit var analytics: FirebaseAnalytics
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentLogInBinding.inflate(layoutInflater, container, false)
+        analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
         goSignUp()
         buttonEnable()
@@ -40,6 +43,10 @@ class FragmentLogIn : Fragment() {
                 binding.outlinedTextFieldEmail.editText?.text.toString(),
                 binding.outlinedTextFieldPassword.editText?.text.toString()
             )
+            //Success Analytics Event
+            val bundle = Bundle()
+            bundle.putString("message", "log_in_pressed")
+            analytics.logEvent("log_in_pressed", bundle)
         }
 
         viewModel.loginStatus.observe(viewLifecycleOwner) {
@@ -142,6 +149,11 @@ class FragmentLogIn : Fragment() {
     private fun loginGoogle() {
         binding.btnGoogleLogin.setOnClickListener {
             viewModel.singInGoogle(requireActivity())
+
+            //Success Analytics Event
+            val bundle = Bundle()
+            bundle.putString("message", "gmail_pressed")
+            analytics.logEvent("gmail_pressed", bundle)
         }
     }
 }
