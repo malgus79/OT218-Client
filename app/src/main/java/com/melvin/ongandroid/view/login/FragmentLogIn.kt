@@ -1,24 +1,19 @@
 package com.melvin.ongandroid.view.login
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentLogInBinding
 import com.melvin.ongandroid.model.data.LoginCredentials
-import com.melvin.ongandroid.utils.validateFormatEmail
-import com.melvin.ongandroid.utils.validateFormatPassword
-import com.melvin.ongandroid.view.MainActivity
-import com.melvin.ongandroid.view.fragment.HomeFragment
 import com.melvin.ongandroid.viewmodel.login.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,6 +40,14 @@ class FragmentLogIn : Fragment() {
                 binding.outlinedTextFieldEmail.editText?.text.toString(),
                 binding.outlinedTextFieldPassword.editText?.text.toString()
             )
+        }
+
+        viewModel.loginStatus.observe(viewLifecycleOwner) {
+            if (it) {
+                Toast.makeText(requireContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show()
+            } else {
+                showDialogLoginError()
+            }
         }
 
         return binding.root
@@ -88,7 +91,7 @@ class FragmentLogIn : Fragment() {
 
             viewModel.validatePassword(it.toString())
 
-            if (!viewModel.validPassword){
+            if (!viewModel.validPassword) {
                 passUI.editText!!.error = getString(R.string.invalid_pass)
             }
         }
@@ -106,6 +109,28 @@ class FragmentLogIn : Fragment() {
         if (viewModel.loginStatus.value == true) {
             goHome()
         }
+//        when (viewModel.postLoginStatus.value) {
+//            LoginViewModel.LoginStatus.ERROR -> showDialogLoginError ()
+//            LoginViewModel.LoginStatus.ERROR200 -> showDialogLoginError200 ()
+//            else -> goHome()
+//        }
+    }
+
+    //Dialog when error 200 in login
+    private fun showDialogLoginError200() {
+        binding.outlinedTextFieldEmail.editText?.error = getString(R.string.invalid_credentials)
+        binding.outlinedTextFieldPassword.editText?.error = getString(R.string.invalid_credentials)
+    }
+
+    //Message error when invalid login
+    private fun showDialogLoginError() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.error_login_dialog))
+            .setMessage(
+                getString(R.string.error_login_description)
+            )
+            .setPositiveButton(getString(R.string.ok)) { _, _ -> }
+            .show()
     }
 
     private fun clearFields(binding: FragmentLogInBinding) {
