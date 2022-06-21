@@ -49,6 +49,36 @@ class ContactViewModel @Inject constructor(private val repository: HomeRepositor
         _sendMessageButton.postValue(validated)
     }
 
+    fun validateEmail(email: String) {
+        if (email.validateFormatEmail()) {
+            emailVM.value = email
+            validEmail = true
+        } else {
+            validEmail = false
+        }
+        _sendMessageButton
+    }
+
+    fun validateName(name: String) {
+        if (name.validateFormatName()) {
+            nameVM.value = name
+            validName = true
+        } else {
+            validName = false
+        }
+        _sendMessageButton
+    }
+
+    fun validateMessage(message: String) {
+        if (message.validateFormatQueryMessage()) {
+            queryMessageVM.value = message
+            validQueryMessage = true
+        } else {
+            validQueryMessage = false
+        }
+        _sendMessageButton
+    }
+
     //calls repository postContact function and updates status
     fun sendMessage(name: String, email: String, message: String) {
         _postContactStatus.value = ApiStatus.LOADING
