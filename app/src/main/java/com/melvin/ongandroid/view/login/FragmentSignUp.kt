@@ -51,10 +51,29 @@ class FragmentSignUp : Fragment() {
         viewModel.registerStatus.observe(viewLifecycleOwner, {
             if (it){
                 showModal()
+            } else{
+                showErrorDialog()
             }
         })
 
         return binding.root
+    }
+
+    private fun showErrorDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.error_dialog))
+            .setMessage(
+                getString(R.string.error_dialog_register)
+            )
+            .setPositiveButton(getString(R.string.ok)) { _, _ -> showErrorInFields()  }
+            .show()
+    }
+
+    private fun showErrorInFields(){
+        binding.outlinedTextFieldEmail.error = getString(R.string.error_dialog_register)
+        binding.outlinedTextFieldName.error = getString(R.string.error_dialog_register)
+        binding.outlinedTextFieldPassword.error = getString(R.string.error_dialog_register)
+        binding.outlinedTextFieldRepeatPassword.error = getString(R.string.error_dialog_register)
     }
 
     // Navegation to Log In fragment
