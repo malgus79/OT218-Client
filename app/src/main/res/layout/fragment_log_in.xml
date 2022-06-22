@@ -8,42 +8,32 @@
 
     <ImageView
         android:id="@+id/iv_ong_logo_login"
-        android:layout_width="191dp"
-        android:layout_height="112dp"
-        android:src="@drawable/ong_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_ong_logo_with_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
+        app:layout_constraintVertical_bias="0.1" />
 
-    <TextView
-        android:layout_width="191dp"
-        android:layout_height="45dp"
-        android:fontFamily="@font/poppins_regular"
-        android:text="SOMOS MAS"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextFieldEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
         android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="@dimen/common_margin_default"
+        android:layout_marginEnd="@dimen/common_margin_default"
         android:hint="@string/hint_email"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:errorTextColor="@color/red"
+        app:errorIconTint="@color/red"
+        app:hintTextColor="#B0B0B0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/iv_ong_logo_login">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -58,17 +48,19 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginTop="@dimen/common_margin_middle"
+        android:layout_marginStart="@dimen/common_margin_default"
+        android:layout_marginEnd="@dimen/common_margin_default"
         android:fontFamily="@font/poppins_regular"
+        app:errorTextColor="@color/red"
+        app:errorIconTint="@color/red"
+        app:hintTextColor="#B0B0B0"
         android:hint="@string/hint_password"
         app:errorEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:errorIconDrawable="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607"
+        app:layout_constraintTop_toBottomOf="@id/outlinedTextFieldEmail"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -83,27 +75,29 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginStart="@dimen/common_margin_default"
+        android:layout_marginEnd="@dimen/common_margin_default"
         android:background="@drawable/custom_corners"
         android:fontFamily="@font/poppins_regular"
+        app:errorTextColor="@color/red"
+        app:errorIconTint="@color/red"
         android:text="@string/btn_register"
+        android:textSize="20sp"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldPassword" />
 
 
     <TextView
         android:id="@+id/tv_register_with"
+        style="@style/TextAppearance.AppCompat.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_margin_default"
+        android:layout_marginTop="40dp"
         android:text="@string/text_register_with"
-        style="@style/TextAppearance.AppCompat.Caption"
         android:textColor="@color/black"
         android:textSize="@dimen/common_size_min"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,35 +108,35 @@
         android:id="@+id/linear_layout_register"
         android:layout_width="350dp"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/common_margin_middle"
         android:gravity="center"
-        android:layout_marginTop="@dimen/common_size_min"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_register_with">
 
         <Button
             android:id="@+id/btn_facebook_login"
+            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            style="@style/Widget.Material3.Button.IconButton"
             android:backgroundTint="#105CBF"
             android:text="@string/btn_facebook"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="@dimen/common_size_default" />
+            android:textSize="@dimen/common_size_default"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_google_login"
+            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/common_margin_default"
-            style="@style/Widget.Material3.Button.IconButton"
             android:backgroundTint="#FF0000"
             android:text="@string/btn_google"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="@dimen/common_size_default" />
+            android:textSize="@dimen/common_size_default"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -151,7 +145,7 @@
         android:id="@+id/tv_sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_margin_min"
+        android:layout_marginTop="@dimen/common_margin_middle"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/register_string"
         android:textColor="@color/black"

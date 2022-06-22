@@ -8,6 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.CardActivitiesLayoutBinding
 import com.melvin.ongandroid.model.data.activities.Activity
+import com.melvin.ongandroid.utils.convertHtmlToString
 
 
 class ActivitiesAdapter (private val activitiesList: List<Activity>) :
@@ -21,7 +22,7 @@ class ActivitiesAdapter (private val activitiesList: List<Activity>) :
             //Set title
             binding.tvActivities.text = activity.name
             //Set description
-            binding.tvActivitiesDesc.text = activity.description
+            binding.tvActivitiesDesc.text = activity.description.convertHtmlToString().trim()
             //Load image
             Glide.with(binding.root.context)
                 .load(activity.image)

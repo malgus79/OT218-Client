@@ -157,7 +157,9 @@ class FragmentLogIn : Fragment() {
             viewModel.validateEmail(it.toString())
 
             if (!viewModel.validEmail) {
-                emailUI.editText!!.error = getString(R.string.invalid_email)
+                emailUI.error = getString(R.string.invalid_email)
+            } else {
+                emailUI.error = null
             }
         }
 
@@ -167,7 +169,9 @@ class FragmentLogIn : Fragment() {
             viewModel.validatePassword(it.toString())
 
             if (!viewModel.validPassword) {
-                passUI.editText!!.error = getString(R.string.invalid_pass)
+                passUI.error = getString(R.string.invalid_pass)
+            } else {
+                passUI.error = null
             }
         }
     }
@@ -200,7 +204,7 @@ class FragmentLogIn : Fragment() {
     //Message error when invalid login
     private fun showDialogLoginError() {
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle(getString(R.string.error_login_dialog))
+            .setTitle(getString(R.string.error_dialog))
             .setMessage(
                 getString(R.string.error_login_description)
             )

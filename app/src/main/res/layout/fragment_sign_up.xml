@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextFieldName"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="@dimen/common_margin_default"
         android:layout_marginStart="@dimen/common_margin_default"
         android:layout_marginBottom="@dimen/common_margin_default"
@@ -34,7 +34,9 @@
         app:hintTextColor="#B0B0B0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_ong_logo_signup">
+        app:layout_constraintTop_toBottomOf="@+id/iv_ong_logo_signup"
+        android:inputType="textCapWords"
+        app:helperText=" ">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -48,7 +50,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin_default"
+        android:layout_marginTop="@dimen/common_margin_default"
+        android:layout_marginEnd="@dimen/common_margin_default"
+        android:layout_marginStart="@dimen/common_margin_default"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/hint_email"
         app:errorTextColor="@color/red"
@@ -56,7 +60,8 @@
         app:hintTextColor="#B0B0B0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldName">
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldName"
+        app:helperText=" ">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -70,7 +75,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin_default"
+        android:layout_marginTop="@dimen/common_margin_default"
+        android:layout_marginEnd="@dimen/common_margin_default"
+        android:layout_marginStart="@dimen/common_margin_default"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/hint_password"
         app:hintTextColor="#B0B0B0"
@@ -80,7 +87,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldEmail"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:helperText=" ">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -95,7 +103,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin_default"
+        android:layout_marginTop="@dimen/common_margin_default"
+        android:layout_marginEnd="@dimen/common_margin_default"
+        android:layout_marginStart="@dimen/common_margin_default"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/hint_repeat_password"
         app:hintTextColor="#B0B0B0"
@@ -104,7 +114,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldPassword"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:helperText=" ">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -117,8 +128,10 @@
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="@dimen/common_margin_default"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin_middle"
+        android:layout_marginEnd="@dimen/common_margin_default"
+        android:layout_marginStart="@dimen/common_margin_default"
         android:text="@string/sign_up"
         android:fontFamily="@font/poppins_regular"
         android:textAllCaps="false"
@@ -126,16 +139,17 @@
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldRepeatPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextFieldRepeatPassword"
+        app:layout_constraintBottom_toTopOf="@+id/tv_have_account_log_in"
+        app:helperText=" "/>
 
     <TextView
         android:id="@+id/tv_have_account_log_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin_min"
+        android:layout_marginTop="@dimen/common_margin_middle"
         android:text="@string/have_account_log_in"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />

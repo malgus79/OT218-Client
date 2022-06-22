@@ -38,33 +38,36 @@ class FragmentSignUp : Fragment() {
         binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
         val bundle = Bundle()
-
+        
         goLogIn()
         enableSignupButton()
         validateFields()
 
         binding.btnSignUp.setOnClickListener {
-            bundle.putString("message","register_pressed")
-            analytics.logEvent("register_pressed",bundle)
             attemptRegister(
                 binding,
                 binding.outlinedTextFieldEmail.editText?.text.toString(),
                 binding.outlinedTextFieldPassword.editText?.text.toString(),
                 binding.outlinedTextFieldName.editText?.text.toString()
             )
+            val bundle = Bundle()
+            bundle.putString("message","register_pressed")
+            analytics.logEvent("register_pressed",bundle)
         }
 
-        viewModel.registerStatus.observe(viewLifecycleOwner, {
-            if (it){
+        viewModel.registerStatus.observe(viewLifecycleOwner) {
+            if (it) {
                 showModal()
+                val bundle = Bundle()
                 bundle.putString("message","sign_up_success")
                 analytics.logEvent("sign_up_success",bundle)
-            } else{
+            } else {
                 showErrorDialog()
+                val bundle = Bundle()
                 bundle.putString("message","sign_up_error")
                 analytics.logEvent("sign_up_error",bundle)
             }
-        })
+        }
 
         return binding.root
     }
