@@ -9,6 +9,7 @@ import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentNewsItemBinding
 import com.melvin.ongandroid.databinding.LastNewsItemBinding
 import com.melvin.ongandroid.model.data.news.New
+import com.melvin.ongandroid.utils.convertHtmlToString
 
 class NewsAdapter(private val newsList: List<New>) :
     RecyclerView.Adapter<NewsAdapter.RecyclerViewHolder>() {
@@ -21,7 +22,7 @@ class NewsAdapter(private val newsList: List<New>) :
             //Set title
             binding.tvNewName.text = new.name
             //Set description
-            binding.tvNewDesc.text = new.content
+            binding.tvNewDesc.text = new.content.convertHtmlToString().trim()
             //Load image
             Glide.with(binding.root.context)
                 .load(new.image)

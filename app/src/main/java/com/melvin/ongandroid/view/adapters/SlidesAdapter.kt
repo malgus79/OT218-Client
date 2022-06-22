@@ -8,6 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.SlidesListItemBinding
 import com.melvin.ongandroid.model.data.slides.Slide
+import com.melvin.ongandroid.utils.convertHtmlToString
 
 class SlidesAdapter(private val dataSet: List<Slide>) :
     RecyclerView.Adapter<SlidesAdapter.SlidesViewHolder>() {
@@ -19,7 +20,7 @@ class SlidesAdapter(private val dataSet: List<Slide>) :
             //Set title
             binding.tvSlideTitle.text = slide.name
             //Set description
-            binding.tvActivityDescription.text = slide.description
+            binding.tvActivityDescription.text = slide.description.convertHtmlToString().trim()
             //Load image
             Glide.with(binding.root.context)
                 .load(slide.imageSlide)

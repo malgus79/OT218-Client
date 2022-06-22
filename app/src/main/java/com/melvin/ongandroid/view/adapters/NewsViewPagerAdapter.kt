@@ -8,6 +8,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentNewsItemBinding
 import com.melvin.ongandroid.model.data.news.New
+import com.melvin.ongandroid.utils.convertHtmlToString
 
 
 class NewsViewPagerAdapter(private val newsList: List<New>) :
@@ -21,7 +22,7 @@ class NewsViewPagerAdapter(private val newsList: List<New>) :
             //Set title
             binding.tvNewName.text = new.name
             //Set description
-            binding.tvNewDesc.text = new.content
+            binding.tvNewDesc.text = new.content.convertHtmlToString().trim()
             //Load image
             Glide.with(binding.root.context)
                 .load(new.image)
