@@ -70,8 +70,7 @@
     <string name="services_client_id">437343928226-l5ufc4hcc5aedmn3e5pssuv9ankm5h56.apps.googleusercontent.com</string>
     <string name="message_successful">El usuario se ha registrado con éxito</string>
     <string name="invalid_credentials">Credenciales Inválidas</string>
-    <string name="error_login_description">Por favor revise los campos.</string>
-    <string name="error_login_dialog">Error al iniciar sesión</string>
+    <string name="error_login_description">Error al iniciar sesión</string>
     <string name="facebook_app_id">742407650221123</string>
     <string name="fb_login_protocol_scheme">fb742407650221123</string>
     <string name="facebook_client_token">92a4f64f0b4904090ed4e1071cae5d37</string>

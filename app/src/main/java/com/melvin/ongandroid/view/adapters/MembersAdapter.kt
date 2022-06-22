@@ -9,6 +9,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentMembersItemBinding
 import com.melvin.ongandroid.model.data.Member
+import com.melvin.ongandroid.utils.convertHtmlToString
 import com.melvin.ongandroid.view.fragment.MembersFragmentDirections
 
 class MembersAdapter(private val membersList: List<Member>) :
@@ -21,7 +22,7 @@ class MembersAdapter(private val membersList: List<Member>) :
             //Set name
             binding.tvMemberName.text = member.name
             //Set description
-            binding.tvMemberDescription.text = member.description
+            binding.tvMemberDescription.text = member.description.convertHtmlToString().trim()
             //Load image
             Glide.with(binding.root.context)
                 .load(member.image)

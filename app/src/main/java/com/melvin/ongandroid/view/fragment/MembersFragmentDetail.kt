@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.melvin.ongandroid.R
 import com.melvin.ongandroid.databinding.FragmentMembersDetailBinding
+import com.melvin.ongandroid.utils.convertHtmlToString
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +24,7 @@ class MembersFragmentDetail : Fragment(R.layout.fragment_members_detail) {
         binding = FragmentMembersDetailBinding.bind(view)
         Glide.with(requireContext()).load(args.image).centerCrop().into(binding.tvDetailImage)
         binding.tvDetailName.text = args.name
-        binding.tvDetailDescriptions.text = args.description
+        binding.tvDetailDescriptions.text = args.description.convertHtmlToString().trim()
         binding.memberDetailFacebook.text = args.linkFacebook
         binding.memberDetailLinkedin.text = args.linkLinkedin
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
