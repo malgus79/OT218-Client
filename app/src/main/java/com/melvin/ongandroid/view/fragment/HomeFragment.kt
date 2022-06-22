@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
 
-        binding.ibArrowRight.setOnClickListener {
+        binding.ibArrowMoreNews.setOnClickListener {
             findNavController().navigate(R.id.action_nav_home_to_nav_news)
             //Last news log
             val bundle = Bundle()
@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
             analytics.logEvent("last_news_see_more_pressed", bundle)
         }
 
-        binding.ibArrowRight2.setOnClickListener {
+        binding.ibArrowMoreTestimonials.setOnClickListener {
             //More testimonies log
             val bundle = Bundle()
             bundle.putString("message", "testimonies_see_more_pressed")
@@ -137,7 +137,7 @@ class HomeFragment : Fragment() {
                 object : ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
                         super.onPageSelected(position)
-                        binding.ibArrowRight.isVisible = 3 == position
+                        binding.ibArrowMoreNews.isVisible = 3 == position
 
                     }
 

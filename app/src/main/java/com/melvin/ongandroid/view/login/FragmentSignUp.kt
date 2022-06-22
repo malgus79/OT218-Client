@@ -37,7 +37,7 @@ class FragmentSignUp : Fragment() {
     ): View? {
         binding = FragmentSignUpBinding.inflate(layoutInflater, container, false)
         analytics = FirebaseAnalytics.getInstance(binding.root.context)
-
+        val bundle = Bundle()
 
         goLogIn()
         enableSignupButton()

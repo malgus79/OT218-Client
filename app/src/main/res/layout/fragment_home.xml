@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,12 +21,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_slides"
-            android:layout_width="0dp"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_ong_logo"
-            android:layout_centerHorizontal="true"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,14 +34,16 @@
             tools:itemCount="1"
             tools:listitem="@layout/slides_list_item" />
 
+
         <Button
             android:id="@+id/btn_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="@string/contact_us"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="@id/rv_slides"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/rv_slides"
             app:layout_constraintTop_toBottomOf="@id/rv_slides" />
 
@@ -60,34 +60,43 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_contact" />
+            app:layout_constraintTop_toBottomOf="@id/btn_contact" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_news"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="360dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_news"
             tools:listitem="@layout/fragment_news_item">
 
         </androidx.viewpager2.widget.ViewPager2>
 
+        <ImageButton
+            android:id="@+id/ib_arrow_more_news"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_news"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vp_news"
+            app:layout_constraintTop_toTopOf="@+id/vp_news"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right" />
+
 
         <Button
             android:id="@+id/btn_want_to_join"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/want_to_join"
             android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.071"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/vp_news"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/vp_news"
             app:layout_constraintTop_toBottomOf="@+id/vp_news" />
 
         <TextView
@@ -102,12 +111,13 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_want_to_join" />
+            app:layout_constraintTop_toBottomOf="@id/btn_want_to_join" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_testimony"
             android:layout_width="match_parent"
             android:layout_height="360dp"
+            android:layout_marginTop="8dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/btn_add_my_testimonial"
@@ -118,18 +128,31 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <ImageButton
+            android:id="@+id/ib_arrow_more_testimonials"
+            android:layout_width="55dp"
+            android:layout_height="49dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.832"
+            app:layout_constraintStart_toEndOf="@+id/btn_add_my_testimonial"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.98"
+            app:srcCompat="@drawable/ic_keyboard_arrow_down" />
+
+
         <Button
             android:id="@+id/btn_add_my_testimonial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/common_margin_min"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="@dimen/common_margin_middle"
             android:layout_marginBottom="@dimen/common_margin_default"
             android:text="@string/add_my_testimonial"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/iv_ong_logo"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_testimony" />
 
@@ -141,30 +164,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_ong_logo" />
-
-        <ImageButton
-            android:id="@+id/ib_arrow_right"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/vp_news"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vp_news"
-            app:layout_constraintTop_toTopOf="@+id/vp_news"
-            app:srcCompat="@drawable/ic_keyboard_arrow_down" />
-
-<!--I did this Button for make the firebase log, then will be improve -!-->
-        <ImageButton
-            android:id="@+id/ib_arrow_right2"
-            android:layout_width="55dp"
-            android:layout_height="49dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.832"
-            app:layout_constraintStart_toEndOf="@+id/btn_add_my_testimonial"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98"
-            app:srcCompat="@drawable/ic_keyboard_arrow_down" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.melvin.ongandroid.view.login
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +20,6 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -69,7 +70,7 @@ class FragmentLogIn : Fragment() {
 
         viewModel.loginStatus.observe(viewLifecycleOwner) {
             if (it) {
-                Toast.makeText(requireContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show()
+                goHome()
             } else {
                 showDialogLoginError()
             }
