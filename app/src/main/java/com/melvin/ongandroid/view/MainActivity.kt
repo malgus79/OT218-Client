@@ -17,8 +17,11 @@ import com.melvin.ongandroid.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.log
 import android.content.Intent
-
-
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import androidx.core.view.WindowInsetsCompat.Type.ime
+import androidx.core.view.WindowInsetsCompat.toWindowInsetsCompat
+import androidx.core.view.isGone
 
 
 @AndroidEntryPoint
@@ -38,13 +41,12 @@ class MainActivity : AppCompatActivity() {
 
         //Bottom Navigation
         binding.bottomNavigationView.setupWithNavController(navController)
-
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finishAffinity()
-    }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        finishAffinity()
+//    }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()

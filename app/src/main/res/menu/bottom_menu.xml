@@ -13,13 +13,14 @@
         android:title="Actividades"
         android:icon="@drawable/ic_activities"/>
 
+    <item android:id="@+id/nav_news"
+        android:title="Novedades"
+        android:icon="@drawable/ic_new"/>
+
     <item android:id="@+id/nav_contact"
         android:title="Contacto"
         android:icon="@drawable/ic_contact"/>
 
-    <item android:id="@+id/nav_news"
-        android:title="Novedades"
-        android:icon="@drawable/ic_new"/>
 
 <!--    <item android:id="@+id/nav_news"-->
 <!--        android:title="Novedades"-->
