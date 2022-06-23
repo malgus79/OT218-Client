@@ -49,20 +49,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/poppins_regular"/>
 
             <Button
                 android:id="@+id/btn_donate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="161dp"
+                android:layout_height="57dp"
                 android:layout_margin="16dp"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/donate"
                 android:text="@string/donate"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_want_to_contribute" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_want_to_contribute"
+                android:fontFamily="@font/poppins_regular"/>
 
             <TextView
                 android:id="@+id/tv_contact_us"
@@ -79,7 +82,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_donate" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_donate"
+                android:fontFamily="@font/poppins_regular"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/cv_name_field"
@@ -101,7 +105,8 @@
                     android:hint="@string/hint_name"
                     android:inputType="textCapWords"
                     android:textSize="13sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck"
+                    android:fontFamily="@font/poppins_regular"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,7 +130,8 @@
                     android:hint="@string/hint_email"
                     android:inputType="textEmailAddress"
                     android:textSize="13sp"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck"
+                    android:fontFamily="@font/poppins_regular"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,7 +156,8 @@
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
                     android:minHeight="48dp"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:fontFamily="@font/poppins_regular"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,20 +177,26 @@
                 app:layout_constraintBottom_toTopOf="@+id/btn_send_message"
                 app:layout_constraintTop_toBottomOf="@+id/cv_message_field" />
 
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btn_send_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="161dp"
+                android:layout_height="57dp"
                 android:layout_margin="16dp"
-                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/poppins_regular"
                 android:text="@string/send_message"
+                app:errorTextColor="@color/white"
+                app:errorIconTint="@color/blue"
+                android:background="@drawable/send_message"
+                android:theme="@style/Button.Blue"
                 android:textAllCaps="false"
+                android:textColor="@color/color_white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_message_field" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
     <ProgressBar

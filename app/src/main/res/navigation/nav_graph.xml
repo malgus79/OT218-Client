@@ -81,6 +81,9 @@
         <argument
             android:name="link_linkedin"
             app:argType="string" />
+        <action
+            android:id="@+id/action_nav_members_detail_to_nav_members"
+            app:destination="@id/nav_members" />
     </fragment>
 
 </navigation>
