@@ -3,14 +3,15 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24"
-    android:tint="#FFFFFF"
-    android:alpha="0.8">
-  <group android:scaleX="1.8181819"
-      android:scaleY="1.8181819"
-      android:translateX="-9.818182"
-      android:translateY="-9.818182">
+    android:tint="#000000"
+    android:alpha="0.8"
+    android:autoMirrored="true">
+  <group android:scaleX="1.2"
+      android:scaleY="1.2"
+      android:translateX="-2.4"
+      android:translateY="-2.4">
     <path
         android:fillColor="@android:color/white"
-        android:pathData="M8.59,16.59L13.17,12 8.59,7.41 10,6l6,6 -6,6 -1.41,-1.41z"/>
+        android:pathData="M6.23,20.23l1.77,1.77l10,-10l-10,-10l-1.77,1.77l8.23,8.23z"/>
   </group>
 </vector>

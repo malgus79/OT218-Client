@@ -12,8 +12,6 @@ import com.melvin.ongandroid.model.data.testimonials.Testimonial
 class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val isHome: Boolean) :
     RecyclerView.Adapter<TestimonialsAdapter.TestimonialsViewHolder>() {
 
-    private val homeDataSet = dataSet.take(4)
-
     class TestimonialsViewHolder(private var binding: FragmentTestimonyItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -45,9 +43,6 @@ class TestimonialsAdapter(private val dataSet: List<Testimonial>, private val is
     }
 
     override fun getItemCount(): Int {
-        if (isHome)
-            return homeDataSet.size
-
         return  dataSet.size
     }
 }
