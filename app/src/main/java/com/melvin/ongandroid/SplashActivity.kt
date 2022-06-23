@@ -35,6 +35,7 @@ class SplashActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
+
         // Add animations
         val bottomAnimation = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_abajo)
         binding.somosMasSplash.startAnimation(bottomAnimation)
@@ -43,8 +44,8 @@ class SplashActivity : AppCompatActivity() {
         binding.SplashScreenImage.startAnimation(headAnimation)
 
         activityScope.launch {
-            delay(5000)
-            Toast.makeText(applicationContext, "Timer has finished", Toast.LENGTH_SHORT).show()
+            delay(4000)
+            Toast.makeText(applicationContext, "", Toast.LENGTH_SHORT).show()
             val token = ONGAndroidApp.prefs.getToken()
             Log.i("SplashScreen", token)
 
