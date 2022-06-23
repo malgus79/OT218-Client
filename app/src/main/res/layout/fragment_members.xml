@@ -11,7 +11,7 @@
         android:id="@+id/iv_ong_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/common_margin_min"
+        android:layout_margin="16dp"
         android:src="@drawable/ong_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_ong_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_ong_logo"
+        android:fontFamily="@font/poppins_regular"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

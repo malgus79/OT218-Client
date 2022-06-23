@@ -21,18 +21,17 @@
 
     <TextView
         android:id="@+id/somosMasSplash"
-        android:layout_width="300dp"
-        android:layout_height="67dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
-        android:text="SOMOS MAS"
+        android:text="@string/somos_mas"
         android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57" />
+        app:layout_constraintVertical_bias="0.587" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

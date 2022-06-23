@@ -74,4 +74,6 @@
     <string name="facebook_app_id">742407650221123</string>
     <string name="fb_login_protocol_scheme">fb742407650221123</string>
     <string name="facebook_client_token">92a4f64f0b4904090ed4e1071cae5d37</string>
+    <!-- Splash -->
+    <string name="somos_mas">SOMOS MAS</string>
 </resources>

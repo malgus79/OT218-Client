@@ -61,7 +61,6 @@ class ContactFragment : Fragment() {
                 binding.etMessageField.text.toString()
             )
         }
-
     }
 
     // Tracking the "Send Message" button
