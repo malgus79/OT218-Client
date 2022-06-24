@@ -128,5 +128,6 @@ class ContactFragment : Fragment() {
             )
             .setPositiveButton(getString(R.string.ok)) { _, _ -> clearFields() }
             .show()
+        parentFragmentManager.beginTransaction().remove(this).replace(R.id.navHostFragment, ContactFragment()).commit()
     }
 }
